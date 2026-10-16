@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html lang="id" class="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Praktikum Mikrobiologi</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            'inter': ['Inter', 'sans-serif'],
+            'poppins': ['Poppins', 'sans-serif']
+          },
+          colors: {
+            'medis': {
+              50: '#f0fdfa', 100: '#ccfbf1', 500: '#14b8a6',
+              600: '#0d9488', 700: '#0f766e', 800: '#115e59'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Custom CSS -->
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3 { font-family: 'Poppins', sans-serif; }
+    * { transition: background-color 0.2s, color 0.2s, border-color 0.2s; }
+    
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    .dark ::-webkit-scrollbar-track { background: #1e293b; }
+    .dark ::-webkit-scrollbar-thumb { background: #475569; }
+    
+    @keyframes pulse-energy {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+    .energy-low { animation: pulse-energy 1s infinite; }
+    
+    @keyframes pulse-timer {
+      0%, 100% { color: #ef4444; }
+      50% { color: #991b1b; }
+    }
+    .timer-low { animation: pulse-timer 1s infinite; }
+    
+    .page { display: none !important; }
+    .page.active { display: block !important; animation: fadeIn 0.3s ease; }
+    #page-cover.active {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .palet-btn {
+      aspect-ratio: 1;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      transition: transform 0.15s;
+    }
+    .palet-btn:hover { transform: scale(1.1); }
+    
+    .preparat-img {
+      max-height: 70vh;
+      object-fit: contain;
+      cursor: zoom-in;
+      border-radius: 0.5rem;
+    }
+    
+    .confidence-btn.active {
+      background-color: #14b8a6;
+      color: white;
+      border-color: #0d9488;
+    }
+    
+    /* Placeholder gambar saat file belum ready */
+    .image-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 300px;
+      background: repeating-linear-gradient(
+        45deg,
+        #f1f5f9,
+        #f1f5f9 10px,
+        #e2e8f0 10px,
+        #e2e8f0 20px
+      );
+      border: 2px dashed #94a3b8;
+      border-radius: 0.5rem;
+      color: #64748b;
+      text-align: center;
+      padding: 1rem;
+    }
+    .dark .image-placeholder {
+      background: repeating-linear-gradient(
+        45deg,
+        #1e293b,
+        #1e293b 10px,
+        #334155 10px,
+        #334155 20px
+      );
+      border-color: #475569;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+
+  <!-- ============================================ -->
+  <!-- HEADER -->
+  <!-- ============================================ -->
+  <header id="app-header" class="hidden sticky top-0 z-30 bg-white dark:bg-gray-800 shadow-md">
+    <div class="container mx-auto px-4 py-3">
+      <div class="flex items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <div class="text-sm font-semibold">
+            <span id="header-progress">Soal 1 / 100</span>
+          </div>
+          <div id="header-timer" class="hidden text-sm font-bold text-teal-600 dark:text-teal-400">
+            <i class="fas fa-clock"></i> <span id="timer-display">00:00</span>
+          </div>
+        </div>
+        
+        <div class="flex items-center gap-2">
+          <!-- Toggle Gambar ON/OFF -->
+          <button onclick="toggleImagePanel()" 
+                  id="btn-toggle-image"
+                  class="w-9 h-9 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 flex items-center justify-center"
+                  title="Sembunyikan/Tampilkan Gambar">
+            <i id="toggle-image-icon" class="fas fa-image text-gray-700 dark:text-gray-300"></i>
+          </button>
+          
+          <button onclick="toggleDarkMode()" 
+                  class="w-9 h-9 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 flex items-center justify-center"
+                  title="Toggle Dark Mode">
+            <i id="dark-mode-icon" class="fas fa-moon text-gray-700 dark:text-yellow-400"></i>
+          </button>
+          
+          <button onclick="openModal('modal-shortcuts')" 
+                  class="hidden sm:flex w-9 h-9 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 items-center justify-center"
+                  title="Keyboard Shortcuts">
+            <i class="fas fa-keyboard text-gray-700 dark:text-gray-300"></i>
+          </button>
+          
+          <button onclick="confirmExit()" 
+                  class="w-9 h-9 rounded-lg bg-red-100 dark:bg-red-900/30 hover:bg-red-200 dark:hover:bg-red-900/50 flex items-center justify-center"
+                  title="Keluar">
+            <i class="fas fa-sign-out-alt text-red-600 dark:text-red-400"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================ -->
+  <!-- HALAMAN COVER -->
+  <!-- ============================================ -->
+  <section id="page-cover" class="page active min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-2xl w-full mx-auto">
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-6 md:p-10">
+        
+        <!-- Ikon + Judul -->
+        <div class="text-center mb-8">
+          <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-teal-400 to-teal-600 rounded-full mb-4 shadow-lg">
+            <i class="fas fa-bacteria text-white text-3xl"></i>
+          </div>
+          <h1 class="text-3xl md:text-4xl font-bold mb-2 bg-gradient-to-r from-teal-500 to-cyan-600 bg-clip-text text-transparent">
+            Latihan Praktikum Mikrobiologi
+          </h1>
+          <p class="text-gray-600 dark:text-gray-400 text-sm md:text-base">
+            Simulasi Uprak — 100 Soal Esai (A & B)
+          </p>
+        </div>
+        
+        <!-- Petunjuk -->
+        <details class="mb-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
+          <summary class="cursor-pointer font-semibold text-blue-700 dark:text-blue-300 flex items-center gap-2">
+            <i class="fas fa-info-circle"></i> Petunjuk Pengerjaan
+          </summary>
+          <div class="mt-3 text-sm text-gray-700 dark:text-gray-300 space-y-2 pl-6">
+            <p>1. Setiap soal memiliki <strong>kasus klinis</strong> dan <strong>2 sub-soal (A & B)</strong>.</p>
+            <p>2. Jawab dengan <strong>Bahasa Indonesia</strong> atau <strong>English</strong> — keduanya diterima.</p>
+            <p>3. Penilaian menggunakan <strong>fuzzy matching</strong> — tidak harus sama persis.</p>
+            <p>4. Gambar preparat dapat <strong>disembunyikan</strong> jika belum tersedia.</p>
+            <p>5. Pelajari <strong>pembahasan</strong> setelah submit.</p>
+          </div>
+        </details>
+        
+        <!-- Pengaturan -->
+        <div class="space-y-5">
+          
+          <!-- Mode Pembahasan -->
+          <div>
+            <label class="block text-sm font-semibold mb-2">
+              <i class="fas fa-comment-dots text-teal-500 mr-1"></i> Mode Pembahasan
+            </label>
+            <div class="grid grid-cols-2 gap-2">
+              <label class="cursor-pointer">
+                <input type="radio" name="mode" value="instant" class="peer sr-only" checked>
+                <div class="p-3 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-sm peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">
+                  <i class="fas fa-bolt text-teal-500"></i><br>
+                  <span class="text-xs">Instant</span>
+                  <p class="text-xs text-gray-500 mt-1">Pembahasan langsung</p>
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="radio" name="mode" value="exam" class="peer sr-only">
+                <div class="p-3 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-sm peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">
+                  <i class="fas fa-graduation-cap text-teal-500"></i><br>
+                  <span class="text-xs">Exam</span>
+                  <p class="text-xs text-gray-500 mt-1">Pembahasan di akhir</p>
+                </div>
+              </label>
+            </div>
+          </div>
+          
+          <!-- Urutan Soal -->
+          <div>
+            <label class="block text-sm font-semibold mb-2">
+              <i class="fas fa-list-ol text-teal-500 mr-1"></i> Urutan Soal
+            </label>
+            <div class="grid grid-cols-2 gap-2">
+              <label class="cursor-pointer">
+                <input type="radio" name="shuffle" value="false" class="peer sr-only" checked>
+                <div class="p-3 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-sm peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">
+                  <i class="fas fa-sort-numeric-up text-teal-500"></i><br>
+                  <span class="text-xs">Berurutan</span>
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="radio" name="shuffle" value="true" class="peer sr-only">
+                <div class="p-3 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-sm peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">
+                  <i class="fas fa-random text-teal-500"></i><br>
+                  <span class="text-xs">Acak</span>
+                </div>
+              </label>
+            </div>
+          </div>
+          
+          <!-- Filter Topik -->
+          <div>
+            <label class="block text-sm font-semibold mb-2">
+              <i class="fas fa-filter text-teal-500 mr-1"></i> Filter Topik
+            </label>
+            <div class="grid grid-cols-2 gap-2">
+              <label class="cursor-pointer">
+                <input type="checkbox" name="topik" value="Biosafety dan Pengenalan Alat" class="peer sr-only" checked>
+                <div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">
+                  Biosafety
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="checkbox" name="topik" value="Mikroskop dan Pewarnaan" class="peer sr-only" checked>
+                <div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">
+                  Mikroskop & Pewarnaan
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="checkbox" name="topik" value="Sterilisasi, Desinfeksi dan Perbenihan Bakteri" class="peer sr-only" checked>
+                <div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">
+                  Sterilisasi & Media
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="checkbox" name="topik" value="Vibrio, Pseudomonas, Acinetobacter" class="peer sr-only" checked>
+                <div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">
+                  Vibrio & Non-Fermenter
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="checkbox" name="topik" value="Uji Kepekaan Antimikroba Difusi, Dilusi" class="peer sr-only" checked>
+                <div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">
+                  Uji Kepekaan
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="checkbox" name="topik" value="Staphylococcus, Streptococcus, MRSA, M. leprae" class="peer sr-only" checked>
+                <div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">
+                  Staph & Strep
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="checkbox" name="topik" value="Neisseria, Bacterial Vaginosis, Anaerob" class="peer sr-only" checked>
+                <div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">
+                  Neisseria & Anaerob
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="checkbox" name="topik" value="Enterobacterales (LF dan NLF)" class="peer sr-only" checked>
+                <div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">
+                  Enterobacterales
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="checkbox" name="topik" value="Mycobacterium tuberculosis, C. diphtheriae" class="peer sr-only" checked>
+                <div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">
+                  TB & Difteri
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="checkbox" name="topik" value="Mycologi Kedokteran" class="peer sr-only" checked>
+                <div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">
+                  Mikologi
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="checkbox" name="topik" value="Virologi Kedokteran" class="peer sr-only" checked>
+                <div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">
+                  Virologi
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="checkbox" name="topik" value="Bakteriologi Sepsis & Imunologi" class="peer sr-only" checked>
+                <div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">
+                  Sepsis & Imunologi
+                </div>
+              </label>
+              <label class="cursor-pointer">
+                <input type="checkbox" name="topik" value="ISK dan Infeksi Genitalia" class="peer sr-only" checked>
+                <div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">
+                  ISK & Genitalia
+                </div>
+              </label>
+            </div>
+          </div>
+          
+          <!-- Timer (khusus exam) -->
+          <div id="timer-option" class="hidden">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" id="timer-enabled" class="w-4 h-4 accent-teal-500">
+              <span class="text-sm font-semibold">
+                <i class="fas fa-clock text-teal-500 mr-1"></i>
+                Aktifkan Timer (1 soal = 1 menit)
+              </span>
+            </label>
+          </div>
+          
+        </div>
+        
+        <!-- Tombol Mulai -->
+        <button onclick="startQuiz()" 
+                class="w-full mt-8 py-4 bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white font-bold text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all">
+          <i class="fas fa-play mr-2"></i> Mulai Latihan
+        </button>
+        
+        <p class="text-center text-xs text-gray-500 dark:text-gray-400 mt-4">
+          Total: <span id="cover-total-soal">100</span> soal
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- HALAMAN SOAL -->
+  <!-- ============================================ -->
+  <section id="page-quiz" class="page min-h-screen py-4 px-3 md:px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+
+        <!-- KOLOM KIRI: Gambar (span 5) — bisa di-hide -->
+        <div class="lg:col-span-5" id="image-panel">
+          <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-3 md:p-4 lg:sticky lg:top-20">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-semibold text-gray-500 dark:text-gray-400">
+                <i class="fas fa-image mr-1"></i> Gambar / Ilustrasi
+              </span>
+              <button onclick="zoomImage()" 
+                      class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 flex items-center justify-center text-xs"
+                      title="Zoom">
+                <i class="fas fa-search-plus"></i>
+              </button>
+            </div>
+            <div id="image-container" 
+                 class="bg-gray-100 dark:bg-gray-900 rounded-lg flex items-center justify-center overflow-hidden" 
+                 style="min-height: 400px; max-height: 75vh;">
+              <!-- Diisi JavaScript (gambar atau placeholder) -->
+            </div>
+          </div>
+        </div>
+
+        <!-- KOLOM TENGAH: Pertanyaan + Jawaban -->
+        <div class="lg:col-span-7" id="question-panel">
+          <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-3 md:p-4">
+            
+            <!-- Topik Badge -->
+            <div class="mb-3 flex items-center gap-2 flex-wrap">
+              <span id="topik-badge" class="text-xs px-2 py-1 bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 rounded-full font-semibold">
+                Topik
+              </span>
+              <span id="kategori-badge" class="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full font-semibold">
+                Kategori
+              </span>
+            </div>
+
+            <!-- Kasus Klinis -->
+            <div class="mb-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
+              <p class="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1">
+                <i class="fas fa-stethoscope mr-1"></i> Kasus Klinis
+              </p>
+              <p id="kasus-teks" class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+              <button onclick="toggleEnglish()" 
+                      class="mt-2 text-xs text-blue-600 dark:text-blue-400 hover:underline">
+                <i class="fas fa-language mr-1"></i> Tampilkan English
+              </button>
+              <p id="kasus-en" class="hidden mt-2 text-sm text-gray-600 dark:text-gray-400 italic leading-relaxed"></p>
+            </div>
+
+            <!-- Pertanyaan A -->
+            <div class="mb-4">
+              <div class="flex items-start gap-2 mb-2">
+                <span class="flex-shrink-0 w-7 h-7 rounded-full bg-teal-500 text-white flex items-center justify-center font-bold text-sm">A</span>
+                <p id="pertanyaan-a" class="text-sm font-medium leading-relaxed pt-1"></p>
+              </div>
+              <textarea id="jawaban-a" 
+                        rows="2"
+                        placeholder="Tulis jawaban A di sini..."
+                        class="w-full px-3 py-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg focus:border-teal-500 focus:outline-none bg-white dark:bg-gray-900 text-sm resize-none"></textarea>
+            </div>
+
+            <!-- Pertanyaan B -->
+            <div class="mb-4">
+              <div class="flex items-start gap-2 mb-2">
+                <span class="flex-shrink-0 w-7 h-7 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-sm">B</span>
+                <p id="pertanyaan-b" class="text-sm font-medium leading-relaxed pt-1"></p>
+              </div>
+              <textarea id="jawaban-b" 
+                        rows="2"
+                        placeholder="Tulis jawaban B di sini..."
+                        class="w-full px-3 py-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg focus:border-blue-500 focus:outline-none bg-white dark:bg-gray-900 text-sm resize-none"></textarea>
+            </div>
+
+            <!-- Confidence -->
+            <div class="mt-3">
+              <p class="text-xs font-semibold mb-2 text-gray-500 dark:text-gray-400">
+                <i class="fas fa-brain mr-1"></i> Tingkat Keyakinan
+              </p>
+              <div class="grid grid-cols-3 gap-2">
+                <button onclick="setConfidence('yakin')" 
+                        data-confidence="yakin"
+                        class="confidence-btn px-2 py-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-xs font-semibold hover:bg-gray-50 dark:hover:bg-gray-700">
+                  <i class="fas fa-check-circle text-green-500 mr-1"></i> Yakin
+                </button>
+                <button onclick="setConfidence('ragu')" 
+                        data-confidence="ragu"
+                        class="confidence-btn px-2 py-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-xs font-semibold hover:bg-gray-50 dark:hover:bg-gray-700 active">
+                  <i class="fas fa-question-circle text-yellow-500 mr-1"></i> Ragu
+                </button>
+                <button onclick="setConfidence('tebak')" 
+                        data-confidence="tebak"
+                        class="confidence-btn px-2 py-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-xs font-semibold hover:bg-gray-50 dark:hover:bg-gray-700">
+                  <i class="fas fa-dice text-red-500 mr-1"></i> Tebak
+                </button>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="mt-3 grid grid-cols-3 gap-2">
+              <button onclick="toggleBookmark()" 
+                      id="btn-bookmark"
+                      class="px-2 py-2 bg-yellow-50 dark:bg-yellow-900/20 hover:bg-yellow-100 dark:hover:bg-yellow-900/40 rounded-lg text-xs font-semibold text-yellow-700 dark:text-yellow-400">
+                <i class="fas fa-bookmark mr-1"></i> Bookmark
+              </button>
+              <button onclick="showHint()" 
+                      id="btn-hint"
+                      class="px-2 py-2 bg-purple-50 dark:bg-purple-900/20 hover:bg-purple-100 dark:hover:bg-purple-900/40 rounded-lg text-xs font-semibold text-purple-700 dark:text-purple-400">
+                <i class="fas fa-lightbulb mr-1"></i> Hint
+              </button>
+              <button onclick="clearAnswer()" 
+                      class="px-2 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg text-xs font-semibold text-gray-700 dark:text-gray-300">
+                <i class="fas fa-eraser mr-1"></i> Hapus
+              </button>
+            </div>
+
+            <!-- Submit -->
+            <button onclick="submitAnswer()" 
+                    id="btn-submit"
+                    class="w-full mt-3 py-3 bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all">
+              <i class="fas fa-paper-plane mr-2"></i> Submit Jawaban
+            </button>
+          </div>
+        </div>
+
+        <!-- KOLOM KANAN: Navigasi -->
+        <div class="lg:col-span-3 hidden lg:block">
+          <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-3 md:p-4 lg:sticky lg:top-20">
+            <div class="flex items-center gap-2 mb-3">
+              <button onclick="prevQuestion()" 
+                      id="btn-prev"
+                      class="flex-1 px-3 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg font-semibold text-xs">
+                <i class="fas fa-arrow-left"></i> Prev
+              </button>
+              <button onclick="nextQuestion()" 
+                      id="btn-next"
+                      class="flex-1 px-3 py-2 bg-teal-500 hover:bg-teal-600 text-white rounded-lg font-semibold text-xs">
+                Next <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+
+            <div class="mb-3">
+              <div class="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mb-1">
+                <span>Progress</span>
+                <span id="progress-text" class="font-semibold">0 / 100 (0%)</span>
+              </div>
+              <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
+                <div id="progress-bar" class="h-full bg-gradient-to-r from-teal-400 to-cyan-500 transition-all duration-300" style="width: 0%"></div>
+              </div>
+            </div>
+
+            <div>
+              <p class="text-xs font-semibold mb-2 text-gray-500 dark:text-gray-400">
+                <i class="fas fa-th mr-1"></i> Navigasi Soal
+              </p>
+              <div id="palet-container" class="grid grid-cols-5 gap-1 max-h-72 overflow-y-auto p-1">
+                <!-- Diisi JS -->
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-1 mt-3 text-xs text-gray-500 dark:text-gray-400">
+              <div class="flex items-center gap-1">
+                <span class="w-3 h-3 bg-gray-200 dark:bg-gray-700 rounded"></span> Belum
+              </div>
+              <div class="flex items-center gap-1">
+                <span class="w-3 h-3 bg-green-500 rounded"></span> Benar
+              </div>
+              <div class="flex items-center gap-1">
+                <span class="w-3 h-3 bg-yellow-500 rounded"></span> Sebagian
+              </div>
+              <div class="flex items-center gap-1">
+                <span class="w-3 h-3 bg-red-500 rounded"></span> Salah
+              </div>
+              <div class="flex items-center gap-1">
+                <span class="w-3 h-3 border-2 border-yellow-500 rounded"></span> Bookmark
+              </div>
+              <div class="flex items-center gap-1">
+                <span class="w-3 h-3 border-2 border-teal-500 rounded"></span> Aktif
+              </div>
+            </div>
+
+            <button onclick="confirmFinish()" 
+                    id="btn-finish"
+                    class="w-full mt-3 py-2 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold rounded-lg shadow text-xs">
+              <i class="fas fa-flag-checkered mr-1"></i> Selesai
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feedback Area -->
+      <div id="feedback-area" class="hidden bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-4 mt-4">
+        <div id="feedback-content"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- HALAMAN HASIL -->
+  <!-- ============================================ -->
+  <section id="page-result" class="page min-h-screen py-6 px-3 md:px-4">
+    <div class="max-w-4xl mx-auto space-y-4">
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 text-center">
+        <div class="relative w-48 h-48 mx-auto mb-4">
+          <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="42" stroke="#e5e7eb" stroke-width="8" fill="none" class="dark:stroke-gray-700"></circle>
+            <circle id="result-circle" cx="50" cy="50" r="42" stroke="#14b8a6" stroke-width="8" fill="none"
+                    stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="264"
+                    style="transition: stroke-dashoffset 1s ease-out;"></circle>
+          </svg>
+          <div class="absolute inset-0 flex flex-col items-center justify-center">
+            <span id="result-score" class="text-5xl font-bold text-teal-600 dark:text-teal-400">0%</span>
+            <span class="text-xs text-gray-500 dark:text-gray-400 mt-1">Skor Akhir</span>
+          </div>
+        </div>
+        <div id="result-status" class="mb-4"></div>
+        <div class="grid grid-cols-3 gap-3 mb-4">
+          <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-3">
+            <p class="text-xs text-green-600 dark:text-green-400 font-semibold">Benar</p>
+            <p id="stat-correct" class="text-2xl font-bold text-green-700 dark:text-green-300">0</p>
+          </div>
+          <div class="bg-red-50 dark:bg-red-900/20 rounded-lg p-3">
+            <p class="text-xs text-red-600 dark:text-red-400 font-semibold">Salah</p>
+            <p id="stat-wrong" class="text-2xl font-bold text-red-700 dark:text-red-300">0</p>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-900/20 rounded-lg p-3">
+            <p class="text-xs text-gray-600 dark:text-gray-400 font-semibold">Kosong</p>
+            <p id="stat-empty" class="text-2xl font-bold text-gray-700 dark:text-gray-300">0</p>
+          </div>
+        </div>
+        <p id="result-message" class="text-sm text-gray-600 dark:text-gray-400 italic"></p>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-4">
+        <h3 class="font-bold mb-3 flex items-center gap-2">
+          <i class="fas fa-chart-bar text-teal-500"></i> Analisis per Topik
+        </h3>
+        <div id="performance-breakdown" class="space-y-2"></div>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-4">
+        <h3 class="font-bold mb-3 flex items-center gap-2">
+          <i class="fas fa-tools text-teal-500"></i> Aksi Lanjutan
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <button onclick="restartQuiz()" 
+                  class="py-3 bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white font-semibold rounded-lg shadow">
+            <i class="fas fa-redo mr-2"></i> Ulangi Latihan
+          </button>
+          <button onclick="retryIncorrect()" 
+                  id="btn-retry-incorrect"
+                  class="py-3 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold rounded-lg shadow">
+            <i class="fas fa-target mr-2"></i> Ulangi Soal Salah
+          </button>
+          <button onclick="downloadPDF()" 
+                  class="py-3 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-semibold rounded-lg shadow">
+            <i class="fas fa-file-pdf mr-2"></i> Download PDF
+          </button>
+          <button onclick="exportIncorrect()" 
+                  class="py-3 bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-semibold rounded-lg shadow">
+            <i class="fas fa-clipboard mr-2"></i> Ekspor Soal Salah
+          </button>
+        </div>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-4">
+        <h3 class="font-bold mb-3 flex items-center gap-2">
+          <i class="fas fa-book-open text-teal-500"></i> Pembahasan Lengkap
+        </h3>
+        <div id="pembahasan-list" class="space-y-3 max-h-96 overflow-y-auto"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- MODAL: KEYBOARD SHORTCUTS -->
+  <!-- ============================================ -->
+  <div id="modal-shortcuts" class="modal hidden fixed inset-0 z-50 bg-black bg-opacity-60 flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full">
+      <div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+        <h2 class="text-xl font-bold flex items-center gap-2">
+          <i class="fas fa-keyboard text-teal-500"></i> Keyboard Shortcuts
+        </h2>
+        <button onclick="closeModal('modal-shortcuts')" class="w-8 h-8 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="p-4 space-y-3 text-sm">
+        <div class="flex justify-between items-center">
+          <span>Submit jawaban</span>
+          <kbd class="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs font-mono">Enter</kbd>
+        </div>
+        <div class="flex justify-between items-center">
+          <span>Submit + lanjut</span>
+          <kbd class="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs font-mono">Ctrl+Enter</kbd>
+        </div>
+        <div class="flex justify-between items-center">
+          <span>Soal sebelumnya</span>
+          <kbd class="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs font-mono">←</kbd>
+        </div>
+        <div class="flex justify-between items-center">
+          <span>Soal berikutnya</span>
+          <kbd class="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs font-mono">→</kbd>
+        </div>
+        <div class="flex justify-between items-center">
+          <span>Bookmark</span>
+          <kbd class="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs font-mono">B</kbd>
+        </div>
+        <div class="flex justify-between items-center">
+          <span>Hint</span>
+          <kbd class="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs font-mono">H</kbd>
+        </div>
+        <div class="flex justify-between items-center">
+          <span>Tutup modal</span>
+          <kbd class="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded text-xs font-mono">Esc</kbd>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: KONFIRMASI -->
+  <div id="modal-confirm" class="modal hidden fixed inset-0 z-50 bg-black bg-opacity-60 flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-6">
+      <div class="text-center mb-4">
+        <div class="inline-flex items-center justify-center w-14 h-14 bg-yellow-100 dark:bg-yellow-900/30 rounded-full mb-3">
+          <i class="fas fa-exclamation-triangle text-yellow-500 text-2xl"></i>
+        </div>
+        <h2 id="confirm-title" class="text-xl font-bold mb-2">Konfirmasi</h2>
+        <p id="confirm-message" class="text-gray-600 dark:text-gray-400">Apakah Anda yakin?</p>
+      </div>
+      <div class="flex gap-3">
+        <button onclick="closeModal('modal-confirm')" 
+                class="flex-1 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg font-semibold hover:bg-gray-200 dark:hover:bg-gray-600">
+          Batal
+        </button>
+        <button id="confirm-yes-btn" 
+                class="flex-1 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg font-semibold">
+          Ya, Lanjutkan
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: ZOOM GAMBAR -->
+  <div id="modal-zoom" class="modal hidden fixed inset-0 z-50 bg-black bg-opacity-95 flex items-center justify-center cursor-zoom-out" onclick="closeModal('modal-zoom')">
+    <img id="zoom-image" src="" alt="Zoom" class="max-w-full max-h-full object-contain">
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast-container" class="fixed top-20 right-4 z-50 space-y-2"></div>
+
+  <!-- ============================================ -->
+  <!-- SCRIPT: LOAD DATA -->
+  <!-- ============================================ -->
+  <script src="kamus.js"></script>
+  <script src="questions.js"></script>
+
+  <!-- ============================================ -->
+  <!-- SCRIPT UTAMA -->
+  <!-- ============================================ -->
+  <script>
+    // ============================================
+    // KONFIGURASI GLOBAL
+    // ============================================
+    const CONFIG = {
+      ENERGI_AWAL: 100,
+      ENERGI_SALAH: -10,
+      ENERGI_HINT: -5,
+      TIMER_PER_SOAL_DETIK: 60,
+      IMAGE_BASE_PATH: "images/",  // ← Ubah di sini jika gambar pindah folder
+      IMAGE_EXT: ".jpg",           // ← Ubah di sini jika format berbeda
+      SHOW_IMAGE_DEFAULT: true
+    };
+
+    // ============================================
+    // STATE
+    // ============================================
+    let STATE = {
+      sessionId: null,
+      startTime: null,
+      mode: 'instant',
+      shuffle: false,
+      selectedTopik: [],
+      timerEnabled: false,
+      currentIndex: 0,
+      questions: [],
+      answers: {},
+      bookmarks: [],
+      timerRemaining: 0,
+      timerInterval: null,
+      showImage: true
+    };
+
+    // ============================================
+    // UTILITAS
+    // ============================================
+    function uuid() {
+      return 'xxxx-xxxx-xxxx'.replace(/x/g, () => Math.floor(Math.random() * 16).toString(16));
+    }
+
+    function normalize(text) {
+      if (!text) return '';
+      return text.toLowerCase()
+        .replace(/[.,;:!?()\[\]{}"'`]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    function levenshtein(a, b) {
+      const m = a.length, n = b.length;
+      if (!m) return n;
+      if (!n) return m;
+      const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
+      for (let i = 0; i <= m; i++) dp[i][0] = i;
+      for (let j = 0; j <= n; j++) dp[0][j] = j;
+      for (let i = 1; i <= m; i++) {
+        for (let j = 1; j <= n; j++) {
+          dp[i][j] = a[i-1] === b[j-1]
+            ? dp[i-1][j-1]
+            : 1 + Math.min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]);
+        }
+      }
+      return dp[m][n];
+    }
+
+    function similarity(a, b) {
+      const dist = levenshtein(a, b);
+      return 1 - dist / Math.max(a.length, b.length);
+    }
+
+    function fuzzyMatch(userText, targetText, threshold = 0.75) {
+      const u = normalize(userText);
+      const t = normalize(targetText);
+      if (!u || !t) return false;
+      if (u.includes(t) || t.includes(u)) return true;
+      
+      const uWords = u.split(' ');
+      const tWords = t.split(' ');
+      const windowSize = tWords.length;
+      
+      for (let i = 0; i <= uWords.length - windowSize; i++) {
+        const chunk = uWords.slice(i, i + windowSize).join(' ');
+        if (similarity(chunk, t) >= threshold) return true;
+      }
+      return false;
+    }
+
+    // Cek apakah jawaban cocok dengan minimal 1 di array variasi
+    function matchesAny(userText, variasiArray) {
+      if (!userText || !variasiArray || variasiArray.length === 0) return false;
+      return variasiArray.some(v => fuzzyMatch(userText, v));
+    }
+
+    // ============================================
+    // PENILAIAN
+    // ============================================
+    function gradeAnswer(question, jawabanA, jawabanB) {
+      const entry = KAMUS.kamus[`soal_${question.id}`];
+      if (!entry) {
+        return {
+          A: false, B: false, score: 0,
+          totalBox: 2, correctBox: 0,
+          isFullyCorrect: false, isPartiallyCorrect: false
+        };
+      }
+
+      const pA = entry.pertanyaan[0];
+      const pB = entry.pertanyaan[1];
+
+      const A_correct = matchesAny(jawabanA, pA.variasi_id) || matchesAny(jawabanA, pA.variasi_en);
+      const B_correct = matchesAny(jawabanB, pB.variasi_id) || matchesAny(jawabanB, pB.variasi_en);
+
+      const correctBox = (A_correct ? 1 : 0) + (B_correct ? 1 : 0);
+      const score = Math.round((correctBox / 2) * 100);
+
+      return {
+        A: A_correct,
+        B: B_correct,
+        score,
+        totalBox: 2,
+        correctBox,
+        isFullyCorrect: correctBox === 2,
+        isPartiallyCorrect: correctBox === 1
+      };
+    }
+
+    // ============================================
+    // IMAGE HANDLING
+    // ============================================
+    function getImagePath(question) {
+      // Jika question sudah punya gambar custom, pakai itu
+      if (question.gambar) return question.gambar;
+      // Fallback: images/mikro{id}.jpg
+      return `${CONFIG.IMAGE_BASE_PATH}mikro${question.id}${CONFIG.IMAGE_EXT}`;
+    }
+
+    function renderImagePanel(question) {
+      const container = document.getElementById('image-container');
+      const imgPath = getImagePath(question);
+
+      // Buat img element
+      const img = new Image();
+      img.src = imgPath;
+      img.alt = `Gambar soal ${question.id}`;
+      img.className = 'preparat-img max-w-full max-h-full';
+      img.onclick = () => zoomImage();
+
+      // Handle error → tampilkan placeholder
+      img.onerror = () => {
+        container.innerHTML = `
+          <div class="image-placeholder">
+            <i class="fas fa-image text-5xl mb-3 opacity-40"></i>
+            <p class="font-semibold text-sm">Gambar belum tersedia</p>
+            <p class="text-xs mt-1 opacity-75">Soal #${question.id}</p>
+            <p class="text-xs mt-1 opacity-60">Topik: ${question.topik || '-'}</p>
+            <p class="text-xs mt-2 font-mono opacity-50">${imgPath}</p>
+          </div>
+        `;
+      };
+
+      // Handle success
+      img.onload = () => {
+        container.innerHTML = '';
+        container.appendChild(img);
+      };
+
+      // Tampilkan loading state dulu
+      container.innerHTML = `
+        <div class="image-placeholder">
+          <i class="fas fa-spinner fa-spin text-3xl mb-2"></i>
+          <p class="text-xs">Memuat gambar...</p>
+        </div>
+      `;
+    }
+
+    // ============================================
+    // DARK MODE
+    // ============================================
+    function toggleDarkMode() {
+      const html = document.documentElement;
+      const isDark = html.classList.toggle('dark');
+      localStorage.setItem('darkMode', isDark ? '1' : '0');
+      
+      const icon = document.getElementById('dark-mode-icon');
+      if (icon) {
+        icon.className = isDark ? 'fas fa-sun text-yellow-400' : 'fas fa-moon text-gray-700';
+      }
+    }
+
+    function initDarkMode() {
+      const saved = localStorage.getItem('darkMode');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = saved === '1' || (saved === null && prefersDark);
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        const icon = document.getElementById('dark-mode-icon');
+        if (icon) icon.className = 'fas fa-sun text-yellow-400';
+      }
+    }
+
+    // ============================================
+    // TOGGLE IMAGE PANEL
+    // ============================================
+    function toggleImagePanel() {
+      STATE.showImage = !STATE.showImage;
+      const panel = document.getElementById('image-panel');
+      const questionPanel = document.getElementById('question-panel');
+      const icon = document.getElementById('toggle-image-icon');
+
+      if (STATE.showImage) {
+        panel.classList.remove('lg:col-span-12');
+        panel.classList.add('lg:col-span-5');
+        panel.style.display = '';
+        questionPanel.className = 'lg:col-span-7';
+        icon.className = 'fas fa-image text-gray-700 dark:text-gray-300';
+        showToast('Panel gambar ditampilkan', 'info');
+      } else {
+        panel.style.display = 'none';
+        questionPanel.className = 'lg:col-span-12';
+        icon.className = 'fas fa-image text-gray-400 dark:text-gray-600';
+        showToast('Panel gambar disembunyikan', 'info');
+      }
+      localStorage.setItem('showImage', STATE.showImage ? '1' : '0');
+    }
+
+    function initImageToggle() {
+      const saved = localStorage.getItem('showImage');
+      STATE.showImage = saved === null ? CONFIG.SHOW_IMAGE_DEFAULT : saved === '1';
+      if (!STATE.showImage) {
+        setTimeout(() => toggleImagePanel(), 100);
+      }
+    }
+
+    // ============================================
+    // TOAST
+    // ============================================
+    function showToast(message, type = 'info') {
+      const container = document.getElementById('toast-container');
+      const colors = { info: 'bg-blue-500', success: 'bg-green-500', error: 'bg-red-500', warning: 'bg-yellow-500' };
+      const icons = { info: 'fa-info-circle', success: 'fa-check-circle', error: 'fa-times-circle', warning: 'fa-exclamation-triangle' };
+      const toast = document.createElement('div');
+      toast.className = `${colors[type]} text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-2 transform translate-x-full transition-transform`;
+      toast.innerHTML = `<i class="fas ${icons[type]}"></i><span>${message}</span>`;
+      container.appendChild(toast);
+      setTimeout(() => toast.classList.remove('translate-x-full'), 10);
+      setTimeout(() => {
+        toast.classList.add('translate-x-full');
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
+
+    // ============================================
+    // MODAL
+    // ============================================
+    function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+    function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+
+    // ============================================
+    // START QUIZ
+    // ============================================
+    function startQuiz() {
+      STATE.mode = document.querySelector('input[name="mode"]:checked').value;
+      STATE.shuffle = document.querySelector('input[name="shuffle"]:checked').value === 'true';
+      
+      const checkedTopik = Array.from(document.querySelectorAll('input[name="topik"]:checked')).map(el => el.value);
+      if (checkedTopik.length === 0) {
+        showToast('Pilih minimal 1 topik', 'warning');
+        return;
+      }
+      STATE.selectedTopik = checkedTopik;
+
+      const timerEl = document.getElementById('timer-enabled');
+      STATE.timerEnabled = STATE.mode === 'exam' && timerEl && timerEl.checked;
+
+      let filtered = ALL_QUESTIONS.filter(q => STATE.selectedTopik.includes(q.topik));
+      if (filtered.length === 0) {
+        showToast('Tidak ada soal untuk topik yang dipilih', 'error');
+        return;
+      }
+
+      if (STATE.shuffle) filtered = shuffleArray(filtered);
+
+      STATE.sessionId = uuid();
+      STATE.startTime = Date.now();
+      STATE.questions = filtered;
+      STATE.currentIndex = 0;
+      STATE.answers = {};
+      STATE.bookmarks = [];
+      STATE.timerRemaining = STATE.timerEnabled ? filtered.length * CONFIG.TIMER_PER_SOAL_DETIK : 0;
+
+      showPage('page-quiz');
+      document.getElementById('app-header').classList.remove('hidden');
+      document.getElementById('header-timer').classList.toggle('hidden', !STATE.timerEnabled);
+
+      if (STATE.timerEnabled) startTimer();
+      renderQuestion();
+      renderPalet();
+      updateProgress();
+      showToast(`Latihan dimulai! ${filtered.length} soal`, 'success');
+    }
+
+    function shuffleArray(arr) {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    function startTimer() {
+      if (STATE.timerInterval) clearInterval(STATE.timerInterval);
+      updateTimerDisplay();
+      STATE.timerInterval = setInterval(() => {
+        STATE.timerRemaining--;
+        updateTimerDisplay();
+        if (STATE.timerRemaining <= 0) {
+          clearInterval(STATE.timerInterval);
+          finishQuiz();
+        }
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      const el = document.getElementById('timer-display');
+      if (!el) return;
+      const m = Math.floor(STATE.timerRemaining / 60).toString().padStart(2, '0');
+      const s = (STATE.timerRemaining % 60).toString().padStart(2, '0');
+      el.textContent = `${m}:${s}`;
+    }
+
+    function showPage(id) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      window.scrollTo(0, 0);
+    }
+
+    // ============================================
+    // RENDER QUESTION
+    // ============================================
+    function renderQuestion() {
+      const q = STATE.questions[STATE.currentIndex];
+      if (!q) return;
+
+      const entry = KAMUS.kamus[`soal_${q.id}`];
+      if (!entry) {
+        showToast(`Kamus untuk soal ${q.id} tidak ditemukan`, 'error');
+        return;
+      }
+
+      // Render image
+      renderImagePanel(q);
+
+      // Badge
+      document.getElementById('topik-badge').textContent = q.topik;
+      document.getElementById('kategori-badge').textContent = q.kategori || entry.kategori || '-';
+
+      // Kasus
+      document.getElementById('kasus-teks').textContent = q.kasus_id || entry.kasus_id || '-';
+      document.getElementById('kasus-en').textContent = q.kasus_en || entry.kasus_en || '-';
+      document.getElementById('kasus-en').classList.add('hidden');
+
+      // Pertanyaan A & B
+      const pA = entry.pertanyaan[0];
+      const pB = entry.pertanyaan[1];
+      document.getElementById('pertanyaan-a').textContent = pA.teks_id;
+      document.getElementById('pertanyaan-b').textContent = pB.teks_id;
+
+      // Restore answer jika sudah ada
+      const existing = STATE.answers[q.id];
+      if (existing) {
+        document.getElementById('jawaban-a').value = existing.jawabanA || '';
+        document.getElementById('jawaban-b').value = existing.jawabanB || '';
+        if (existing.confidence) setConfidence(existing.confidence);
+        if (STATE.mode === 'instant' && existing.graded) {
+          showFeedback(existing);
+        } else {
+          document.getElementById('feedback-area').classList.add('hidden');
+        }
+      } else {
+        document.getElementById('jawaban-a').value = '';
+        document.getElementById('jawaban-b').value = '';
+        document.getElementById('feedback-area').classList.add('hidden');
+        setConfidence('ragu');
+      }
+
+      updateBookmarkButton();
+      document.getElementById('header-progress').textContent = 
+        `Soal ${STATE.currentIndex + 1} / ${STATE.questions.length}`;
+      document.getElementById('btn-prev').disabled = STATE.currentIndex === 0;
+      document.getElementById('btn-next').disabled = STATE.currentIndex === STATE.questions.length - 1;
+      renderPalet();
+    }
+
+    function toggleEnglish() {
+      const el = document.getElementById('kasus-en');
+      el.classList.toggle('hidden');
+    }
+
+    function renderPalet() {
+      const container = document.getElementById('palet-container');
+      if (!container) return;
+      container.innerHTML = STATE.questions.map((q, i) => {
+        const answer = STATE.answers[q.id];
+        const isBookmarked = STATE.bookmarks.includes(q.id);
+        const isActive = i === STATE.currentIndex;
+        let bgClass = 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300';
+        if (answer && answer.graded && answer.grade) {
+          if (answer.grade.isFullyCorrect) bgClass = 'bg-green-500 text-white';
+          else if (answer.grade.correctBox > 0) bgClass = 'bg-yellow-500 text-white';
+          else bgClass = 'bg-red-500 text-white';
+        }
+        const bookmarkClass = isBookmarked ? 'ring-2 ring-yellow-500 ring-offset-1' : '';
+        const activeClass = isActive ? 'ring-2 ring-teal-500 ring-offset-1' : '';
+        return `<button onclick="goToQuestion(${i})" class="palet-btn ${bgClass} ${bookmarkClass} ${activeClass}">${i + 1}</button>`;
+      }).join('');
+    }
+
+    function goToQuestion(i) {
+      if (i < 0 || i >= STATE.questions.length) return;
+      STATE.currentIndex = i;
+      renderQuestion();
+    }
+
+    function prevQuestion() { if (STATE.currentIndex > 0) goToQuestion(STATE.currentIndex - 1); }
+    function nextQuestion() { if (STATE.currentIndex < STATE.questions.length - 1) goToQuestion(STATE.currentIndex + 1); }
+
+    function setConfidence(level) {
+      document.querySelectorAll('.confidence-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.confidence === level);
+      });
+    }
+
+    function getConfidence() {
+      const active = document.querySelector('.confidence-btn.active');
+      return active ? active.dataset.confidence : 'ragu';
+    }
+
+    function toggleBookmark() {
+      const q = STATE.questions[STATE.currentIndex];
+      if (!q) return;
+      const idx = STATE.bookmarks.indexOf(q.id);
+      if (idx === -1) {
+        STATE.bookmarks.push(q.id);
+        showToast('Soal ditandai', 'info');
+      } else {
+        STATE.bookmarks.splice(idx, 1);
+        showToast('Bookmark dihapus', 'info');
+      }
+      updateBookmarkButton();
+      renderPalet();
+    }
+
+    function updateBookmarkButton() {
+      const q = STATE.questions[STATE.currentIndex];
+      if (!q) return;
+      const btn = document.getElementById('btn-bookmark');
+      const isBookmarked = STATE.bookmarks.includes(q.id);
+      btn.classList.toggle('bg-yellow-200', isBookmarked);
+      btn.classList.toggle('dark:bg-yellow-900/60', isBookmarked);
+    }
+
+    function showHint() {
+      const q = STATE.questions[STATE.currentIndex];
+      const entry = KAMUS.kamus[`soal_${q.id}`];
+      if (!entry) return;
+      const pA = entry.pertanyaan[0];
+      const pB = entry.pertanyaan[1];
+      const hintText = `Keyword A: ${pA.keywords.slice(0, 3).join(', ')} | Keyword B: ${pB.keywords.slice(0, 3).join(', ')}`;
+      showToast(hintText, 'info');
+    }
+
+    function clearAnswer() {
+      document.getElementById('jawaban-a').value = '';
+      document.getElementById('jawaban-b').value = '';
+      document.getElementById('feedback-area').classList.add('hidden');
+      showToast('Jawaban dihapus', 'info');
+    }
+
+    // ============================================
+    // SUBMIT
+    // ============================================
+    function submitAnswer() {
+      const q = STATE.questions[STATE.currentIndex];
+      if (!q) return;
+
+      const jawabanA = document.getElementById('jawaban-a').value.trim();
+      const jawabanB = document.getElementById('jawaban-b').value.trim();
+      const confidence = getConfidence();
+
+      if (!jawabanA && !jawabanB) {
+        showToast('Isi minimal 1 jawaban', 'warning');
+        return;
+      }
+
+      const grade = gradeAnswer(q, jawabanA, jawabanB);
+
+      STATE.answers[q.id] = {
+        jawabanA, jawabanB, confidence,
+        grade, graded: true, timestamp: Date.now()
+      };
+
+      if (STATE.mode === 'instant') {
+        showFeedback(STATE.answers[q.id]);
+      } else {
+        if (STATE.currentIndex < STATE.questions.length - 1) {
+          setTimeout(() => nextQuestion(), 300);
+        } else {
+          showToast('Semua soal sudah dijawab', 'info');
+        }
+      }
+
+      renderPalet();
+      updateProgress();
+    }
+
+    function showFeedback(answer) {
+      const area = document.getElementById('feedback-area');
+      const content = document.getElementById('feedback-content');
+      const grade = answer.grade;
+      const q = STATE.questions[STATE.currentIndex];
+      const entry = KAMUS.kamus[`soal_${q.id}`];
+      const pA = entry.pertanyaan[0];
+      const pB = entry.pertanyaan[1];
+
+      let headerClass, headerIcon, headerText;
+      if (grade.isFullyCorrect) {
+        headerClass = 'bg-green-50 dark:bg-green-900/20 border-green-500';
+        headerIcon = 'fa-check-circle text-green-500';
+        headerText = 'Benar Semua!';
+      } else if (grade.correctBox > 0) {
+        headerClass = 'bg-yellow-50 dark:bg-yellow-900/20 border-yellow-500';
+        headerIcon = 'fa-exclamation-circle text-yellow-500';
+        headerText = 'Sebagian Benar';
+      } else {
+        headerClass = 'bg-red-50 dark:bg-red-900/20 border-red-500';
+        headerIcon = 'fa-times-circle text-red-500';
+        headerText = 'Jawaban Salah';
+      }
+
+      let html = `
+        <div class="${headerClass} border-l-4 rounded-lg p-3 mb-3">
+          <div class="flex items-center gap-2">
+            <i class="fas ${headerIcon} text-2xl"></i>
+            <div>
+              <p class="font-bold">${headerText}</p>
+              <p class="text-xs">Skor: ${grade.score}% (${grade.correctBox}/${grade.totalBox})</p>
+            </div>
+          </div>
+        </div>
+        <div class="space-y-3 text-sm">
+          <div class="flex items-start gap-2">
+            <i class="fas ${grade.A ? 'fa-check-circle text-green-500' : 'fa-times-circle text-red-500'} mt-1"></i>
+            <div class="flex-1">
+              <p class="font-semibold">A. ${pA.teks_id}</p>
+              <p class="text-gray-600 dark:text-gray-400 mt-1">Jawaban Anda: <em>${answer.jawabanA || '-'}</em></p>
+              <p class="text-gray-600 dark:text-gray-400 mt-1">Contoh kunci: <strong>${pA.variasi_id[0]}</strong></p>
+            </div>
+          </div>
+          <div class="flex items-start gap-2">
+            <i class="fas ${grade.B ? 'fa-check-circle text-green-500' : 'fa-times-circle text-red-500'} mt-1"></i>
+            <div class="flex-1">
+              <p class="font-semibold">B. ${pB.teks_id}</p>
+              <p class="text-gray-600 dark:text-gray-400 mt-1">Jawaban Anda: <em>${answer.jawabanB || '-'}</em></p>
+              <p class="text-gray-600 dark:text-gray-400 mt-1">Contoh kunci: <strong>${pB.variasi_id[0]}</strong></p>
+            </div>
+          </div>
+        </div>
+        <details class="mt-3 text-xs">
+          <summary class="cursor-pointer text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+            <i class="fas fa-list mr-1"></i> Lihat semua variasi jawaban yang diterima
+          </summary>
+          <div class="mt-2 space-y-2 pl-4">
+            <div>
+              <p class="font-semibold">A:</p>
+              <ul class="list-disc list-inside text-gray-600 dark:text-gray-400">
+                ${pA.variasi_id.map(v => `<li>${v}</li>`).join('')}
+              </ul>
+            </div>
+            <div>
+              <p class="font-semibold">B:</p>
+              <ul class="list-disc list-inside text-gray-600 dark:text-gray-400">
+                ${pB.variasi_id.map(v => `<li>${v}</li>`).join('')}
+              </ul>
+            </div>
+          </div>
+        </details>
+      `;
+
+      content.innerHTML = html;
+      area.classList.remove('hidden');
+    }
+
+    function updateProgress() {
+      const total = STATE.questions.length;
+      const done = Object.keys(STATE.answers).length;
+      const percent = Math.round((done / total) * 100);
+      document.getElementById('progress-text').textContent = `${done} / ${total} (${percent}%)`;
+      document.getElementById('progress-bar').style.width = percent + '%';
+    }
+
+    // ============================================
+    // FINISH QUIZ
+    // ============================================
+    function finishQuiz() {
+      if (STATE.timerInterval) {
+        clearInterval(STATE.timerInterval);
+        STATE.timerInterval = null;
+      }
+      showPage('page-result');
+      renderResult();
+    }
+
+    function renderResult() {
+      const total = STATE.questions.length;
+      const answers = Object.values(STATE.answers);
+      const graded = answers.filter(a => a.graded);
+      const correct = graded.filter(a => a.grade.isFullyCorrect).length;
+      const partial = graded.filter(a => a.grade.correctBox > 0 && !a.grade.isFullyCorrect).length;
+      const wrong = graded.length - correct - partial;
+      const empty = total - graded.length;
+
+      let totalScore = 0;
+      STATE.questions.forEach(q => {
+        const ans = STATE.answers[q.id];
+        if (ans && ans.grade) totalScore += ans.grade.score;
+      });
+      const finalScore = Math.round(totalScore / total);
+
+      const circle = document.getElementById('result-circle');
+      const circumference = 2 * Math.PI * 42;
+      const offset = circumference - (finalScore / 100) * circumference;
+      setTimeout(() => {
+        circle.style.strokeDashoffset = offset;
+        if (finalScore >= 75) circle.style.stroke = '#14b8a6';
+        else if (finalScore >= 50) circle.style.stroke = '#f59e0b';
+        else circle.style.stroke = '#ef4444';
+      }, 100);
+
+      document.getElementById('result-score').textContent = finalScore + '%';
+
+      const status = document.getElementById('result-status');
+      let statusClass, statusIcon, statusText;
+      if (finalScore >= 90) { statusClass = 'bg-green-100 dark:bg-green-900/30'; statusIcon = 'fa-star text-yellow-500'; statusText = 'Luar Biasa!'; }
+      else if (finalScore >= 75) { statusClass = 'bg-teal-100 dark:bg-teal-900/30'; statusIcon = 'fa-thumbs-up text-teal-600'; statusText = 'Bagus!'; }
+      else if (finalScore >= 60) { statusClass = 'bg-yellow-100 dark:bg-yellow-900/30'; statusIcon = 'fa-lightbulb text-yellow-600'; statusText = 'Cukup Baik'; }
+      else { statusClass = 'bg-orange-100 dark:bg-orange-900/30'; statusIcon = 'fa-book text-orange-600'; statusText = 'Perlu Belajar Lagi'; }
+
+      status.innerHTML = `
+        <div class="inline-flex items-center gap-2 px-4 py-2 ${statusClass} rounded-full">
+          <i class="fas ${statusIcon} text-xl"></i>
+          <span class="font-bold">${statusText}</span>
+        </div>
+      `;
+
+      document.getElementById('stat-correct').textContent = correct;
+      document.getElementById('stat-wrong').textContent = wrong + partial;
+      document.getElementById('stat-empty').textContent = empty;
+
+      const messages = [
+        'Terus semangat! Latihan membuat sempurna. 💪',
+        'Sedikit lagi! Fokus pada topik terlemah. 🎯',
+        'Bagus! Kamu sudah di jalur yang benar. ✨',
+        'Luar biasa! Pertahankan! 🏆'
+      ];
+      const msgIdx = Math.min(3, Math.floor(finalScore / 25));
+      document.getElementById('result-message').textContent = messages[msgIdx];
+
+      renderPerformanceBreakdown();
+      renderPembahasanList();
+    }
+
+    function renderPerformanceBreakdown() {
+      const container = document.getElementById('performance-breakdown');
+      const perTopik = {};
+      STATE.questions.forEach(q => {
+        const t = q.topik || 'Lainnya';
+        if (!perTopik[t]) perTopik[t] = { total: 0, correct: 0, score: 0 };
+        perTopik[t].total++;
+        const ans = STATE.answers[q.id];
+        if (ans && ans.grade) {
+          perTopik[t].score += ans.grade.score;
+          if (ans.grade.isFullyCorrect) perTopik[t].correct++;
+        }
+      });
+
+      let html = '';
+      Object.entries(perTopik).forEach(([topik, data]) => {
+        const avgScore = Math.round(data.score / data.total);
+        const statusColor = avgScore >= 78 ? 'text-green-600' : avgScore >= 60 ? 'text-yellow-600' : 'text-red-600';
+        html += `
+          <div class="flex items-center gap-2 p-2 bg-gray-50 dark:bg-gray-900/30 rounded">
+            <div class="flex-1">
+              <p class="text-sm font-semibold">${topik}</p>
+              <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mt-1">
+                <div class="h-full bg-teal-500 rounded-full" style="width: ${avgScore}%"></div>
+              </div>
+            </div>
+            <div class="text-right">
+              <p class="text-sm font-bold ${statusColor}">${avgScore}%</p>
+              <p class="text-xs text-gray-500">${data.correct}/${data.total}</p>
+            </div>
+          </div>`;
+      });
+      container.innerHTML = html;
+    }
+
+    function renderPembahasanList() {
+      const container = document.getElementById('pembahasan-list');
+      let html = '';
+      STATE.questions.forEach((q, i) => {
+        const ans = STATE.answers[q.id];
+        const entry = KAMUS.kamus[`soal_${q.id}`];
+        const isAnswered = ans && ans.graded;
+        const statusIcon = !isAnswered
+          ? '<i class="fas fa-minus-circle text-gray-400"></i>'
+          : ans.grade.isFullyCorrect
+            ? '<i class="fas fa-check-circle text-green-500"></i>'
+            : ans.grade.correctBox > 0
+              ? '<i class="fas fa-exclamation-circle text-yellow-500"></i>'
+              : '<i class="fas fa-times-circle text-red-500"></i>';
+
+        html += `
+          <details class="bg-gray-50 dark:bg-gray-900/30 rounded-lg">
+            <summary class="cursor-pointer p-3 flex items-center gap-2 text-sm">
+              ${statusIcon}
+              <span class="font-semibold">Soal ${i + 1}:</span>
+              <span class="text-gray-600 dark:text-gray-400">${q.topik}</span>
+            </summary>
+            <div class="p-3 border-t border-gray-200 dark:border-gray-700 text-sm space-y-3">
+              <div>
+                <p class="font-semibold mb-1">A. ${entry.pertanyaan[0].teks_id}</p>
+                <p class="text-gray-600 dark:text-gray-400">Jawaban Anda: <em>${ans?.jawabanA || '-'}</em></p>
+                <p class="text-gray-600 dark:text-gray-400">Kunci: ${entry.pertanyaan[0].variasi_id[0]}</p>
+              </div>
+              <div>
+                <p class="font-semibold mb-1">B. ${entry.pertanyaan[1].teks_id}</p>
+                <p class="text-gray-600 dark:text-gray-400">Jawaban Anda: <em>${ans?.jawabanB || '-'}</em></p>
+                <p class="text-gray-600 dark:text-gray-400">Kunci: ${entry.pertanyaan[1].variasi_id[0]}</p>
+              </div>
+            </div>
+          </details>
+        `;
+      });
+      container.innerHTML = html;
+    }
+
+    // ============================================
+    // ACTIONS
+    // ============================================
+    function restartQuiz() { location.reload(); }
+
+    function retryIncorrect() {
+      const incorrectIds = Object.entries(STATE.answers)
+        .filter(([_, a]) => a.graded && !a.grade.isFullyCorrect)
+        .map(([id]) => parseInt(id));
+      if (incorrectIds.length === 0) {
+        showToast('Tidak ada soal salah', 'info');
+        return;
+      }
+      const newQuestions = STATE.questions.filter(q => incorrectIds.includes(q.id));
+      const oldMode = STATE.mode;
+      const oldTimer = STATE.timerEnabled;
+      STATE = {
+        ...STATE,
+        sessionId: uuid(),
+        startTime: Date.now(),
+        questions: newQuestions,
+        currentIndex: 0,
+        answers: {},
+        bookmarks: [],
+        timerRemaining: oldTimer ? newQuestions.length * CONFIG.TIMER_PER_SOAL_DETIK : 0
+      };
+      showPage('page-quiz');
+      document.getElementById('app-header').classList.remove('hidden');
+      document.getElementById('header-timer').classList.toggle('hidden', !oldTimer);
+      if (oldTimer) startTimer();
+      renderQuestion();
+      renderPalet();
+      updateProgress();
+      showToast(`Ulang ${newQuestions.length} soal yang salah`, 'info');
+    }
+
+    function downloadPDF() {
+      const printWindow = window.open('', '_blank');
+      let html = `
+        <html><head><title>Latihan Mikrobiologi</title>
+        <style>
+          body { font-family: Arial; max-width: 800px; margin: 20px auto; padding: 20px; }
+          h1 { color: #0d9488; border-bottom: 3px solid #0d9488; padding-bottom: 10px; }
+          .soal { margin-bottom: 30px; page-break-inside: avoid; }
+          .kunci { margin-top: 40px; border-top: 3px solid #0d9488; padding-top: 20px; page-break-before: always; }
+        </style></head><body>
+        <h1>Latihan Praktikum Mikrobiologi</h1>
+        <p><em>Total: ${STATE.questions.length} soal</em></p><hr>
+      `;
+      STATE.questions.forEach((q, i) => {
+        const entry = KAMUS.kamus[`soal_${q.id}`];
+        html += `<div class="soal"><h3>Soal ${i + 1} (${q.topik})</h3>
+          <p><strong>Kasus:</strong> ${q.kasus_id}</p>
+          <p><strong>A.</strong> ${entry.pertanyaan[0].teks_id}</p>
+          <p><strong>B.</strong> ${entry.pertanyaan[1].teks_id}</p></div>`;
+      });
+      html += `<div class="kunci"><h1>KUNCI JAWABAN</h1>`;
+      STATE.questions.forEach((q, i) => {
+        const entry = KAMUS.kamus[`soal_${q.id}`];
+        html += `<div class="soal"><h3>Soal ${i + 1}</h3>
+          <p><strong>A.</strong> ${entry.pertanyaan[0].variasi_id.join(' / ')}</p>
+          <p><strong>B.</strong> ${entry.pertanyaan[1].variasi_id.join(' / ')}</p></div>`;
+      });
+      html += `</div></body></html>`;
+      printWindow.document.write(html);
+      printWindow.document.close();
+      setTimeout(() => printWindow.print(), 500);
+    }
+
+    function exportIncorrect() {
+      const incorrect = STATE.questions
+        .map((q, i) => ({ q, i, ans: STATE.answers[q.id] }))
+        .filter(({ ans }) => ans && ans.graded && !ans.grade.isFullyCorrect);
+      if (incorrect.length === 0) { showToast('Tidak ada soal salah', 'info'); return; }
+      let text = `RINGKASAN SOAL SALAH - Mikrobiologi\nTanggal: ${new Date().toLocaleString('id-ID')}\nTotal: ${incorrect.length} soal\n${'='.repeat(50)}\n\n`;
+      incorrect.forEach(({ q, i, ans }) => {
+        const entry = KAMUS.kamus[`soal_${q.id}`];
+        text += `Soal ${i + 1} (${q.topik})\n`;
+        text += `A. ${entry.pertanyaan[0].teks_id}\n   Jawaban: ${ans.jawabanA || '-'}\n   Kunci: ${entry.pertanyaan[0].variasi_id[0]}\n`;
+        text += `B. ${entry.pertanyaan[1].teks_id}\n   Jawaban: ${ans.jawabanB || '-'}\n   Kunci: ${entry.pertanyaan[1].variasi_id[0]}\n`;
+        text += `\n---\n\n`;
+      });
+      navigator.clipboard.writeText(text).then(() => showToast('Ringkasan disalin ke clipboard', 'success'))
+        .catch(() => {
+          const blob = new Blob([text], { type: 'text/plain' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url; a.download = `soal_salah_${Date.now()}.txt`; a.click();
+          showToast('File diunduh', 'success');
+        });
+    }
+
+    function zoomImage() {
+      const img = document.querySelector('#image-container img');
+      if (!img) { showToast('Tidak ada gambar untuk di-zoom', 'info'); return; }
+      document.getElementById('zoom-image').src = img.src;
+      openModal('modal-zoom');
+    }
+
+    function confirmExit() {
+      document.getElementById('confirm-title').textContent = 'Keluar Latihan?';
+      document.getElementById('confirm-message').textContent = 'Progress akan hilang. Yakin?';
+      const yesBtn = document.getElementById('confirm-yes-btn');
+      yesBtn.textContent = 'Ya, Keluar';
+      yesBtn.onclick = () => { closeModal('modal-confirm'); location.reload(); };
+      openModal('modal-confirm');
+    }
+
+    function confirmFinish() {
+      const total = STATE.questions.length;
+      const done = Object.keys(STATE.answers).length;
+      const belum = total - done;
+      let message = belum === 0
+        ? `Semua ${total} soal sudah dijawab.\n\nYakin ingin menyelesaikan?`
+        : `Masih ada ${belum} soal yang belum dijawab.\n\nYakin ingin menyelesaikan sekarang?`;
+      document.getElementById('confirm-title').textContent = 'Selesaikan Latihan?';
+      document.getElementById('confirm-message').innerHTML = message.replace(/\n/g, '<br>');
+      const yesBtn = document.getElementById('confirm-yes-btn');
+      yesBtn.textContent = 'Ya, Selesai';
+      yesBtn.className = 'flex-1 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-semibold';
+      yesBtn.onclick = () => { closeModal('modal-confirm'); finishQuiz(); };
+      openModal('modal-confirm');
+    }
+
+    // ============================================
+    // KEYBOARD SHORTCUTS
+    // ============================================
+    document.addEventListener('keydown', (e) => {
+      if (!document.getElementById('page-quiz').classList.contains('active')) return;
+      const tag = e.target.tagName;
+      const isInput = tag === 'INPUT' || tag === 'TEXTAREA';
+
+      if (e.key === 'Enter' && e.ctrlKey) {
+        e.preventDefault();
+        submitAnswer();
+        setTimeout(() => nextQuestion(), 300);
+      }
+      if (!isInput) {
+        if (e.key === 'ArrowLeft') prevQuestion();
+        if (e.key === 'ArrowRight') nextQuestion();
+        if (e.key === 'b' || e.key === 'B') toggleBookmark();
+        if (e.key === 'h' || e.key === 'H') showHint();
+      }
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal:not(.hidden)').forEach(m => m.classList.add('hidden'));
+      }
+    });
+
+    // ============================================
+    // INIT
+    // ============================================
+    window.addEventListener('DOMContentLoaded', () => {
+      initDarkMode();
+      initImageToggle();
+
+      const totalEl = document.getElementById('cover-total-soal');
+      if (totalEl && typeof ALL_QUESTIONS !== 'undefined') {
+        totalEl.textContent = ALL_QUESTIONS.length;
+      }
+
+      document.querySelectorAll('input[name="mode"]').forEach(el => {
+        el.addEventListener('change', () => {
+          const mode = document.querySelector('input[name="mode"]:checked').value;
+          document.getElementById('timer-option').classList.toggle('hidden', mode !== 'exam');
+        });
+      });
+
+      console.log('✅ App loaded. Soal:', ALL_QUESTIONS?.length, '| Kamus:', Object.keys(KAMUS.kamus).length);
+    });
+  </script>
+
+</body>
+</html>
