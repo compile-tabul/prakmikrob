@@ -3,118 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Latihan Praktikum Mikrobiologi</title>
+  <title>Latihan UPRAK Mikrobiologi Klinik</title>
   
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
   
-  <!-- Tailwind Config -->
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            'inter': ['Inter', 'sans-serif'],
-            'poppins': ['Poppins', 'sans-serif']
-          },
-          colors: {
-            'medis': {
-              50: '#f0fdfa', 100: '#ccfbf1', 500: '#14b8a6',
-              600: '#0d9488', 700: '#0f766e', 800: '#115e59'
-            }
-          }
-        }
-      }
-    }
-  </script>
-  
-  <!-- Custom CSS -->
-  <style>
-    body { font-family: 'Inter', sans-serif; }
-    h1, h2, h3 { font-family: 'Poppins', sans-serif; }
-    * { transition: background-color 0.2s, color 0.2s, border-color 0.2s; }
-    
-    ::-webkit-scrollbar { width: 8px; height: 8px; }
-    ::-webkit-scrollbar-track { background: #f1f5f9; }
-    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-    .dark ::-webkit-scrollbar-track { background: #1e293b; }
-    .dark ::-webkit-scrollbar-thumb { background: #475569; }
-    
-    .page { display: none !important; }
-    .page.active { display: block !important; animation: fadeIn 0.3s ease; }
-    #page-cover.active { display: flex !important; align-items: center; justify-content: center; }
-    
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    
-    .palet-btn {
-      aspect-ratio: 1;
-      font-size: 0.75rem;
-      font-weight: 600;
-      border-radius: 0.5rem;
-      transition: transform 0.15s;
-    }
-    .palet-btn:hover { transform: scale(1.1); }
-    
-    .preparat-img { max-height: 70vh; object-fit: contain; cursor: zoom-in; border-radius: 0.5rem; }
-    
-    .confidence-btn.active { background-color: #14b8a6; color: white; border-color: #0d9488; }
-    
-    .image-placeholder {
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      width: 100%; min-height: 300px;
-      background: repeating-linear-gradient(45deg, #f1f5f9, #f1f5f9 10px, #e2e8f0 10px, #e2e8f0 20px);
-      border: 2px dashed #94a3b8; border-radius: 0.5rem; color: #64748b; text-align: center; padding: 1rem;
-    }
-    .dark .image-placeholder {
-      background: repeating-linear-gradient(45deg, #1e293b, #1e293b 10px, #334155 10px, #334155 20px);
-      border-color: #475569; color: #94a3b8;
-    }
-  </style>
-
-  <!-- ============================================ -->
-  <!-- FIREBASE SDK v13 (App + Auth + Firestore) -->
-  <!-- ============================================ -->
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
-    import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } 
-      from "https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js";
-    import { getFirestore, doc, setDoc, getDoc } 
-      from "https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyC-2_51C0vGvsKyfEj9SZ1NTXi0-V9MK2g",
       authDomain: "semestertiga-iris.firebaseapp.com",
-      databaseURL: "https://semestertiga-iris-default-rtdb.asia-southeast1.firebasedatabase.app",
       projectId: "semestertiga-iris",
       storageBucket: "semestertiga-iris.firebasestorage.app",
       messagingSenderId: "596732396311",
-      appId: "1:596732396311:web:8199e6baf07c6b1ec6ed52",
-      measurementId: "G-J5D98C44HE"
+      appId: "1:596732396311:web:739d52061bb30a8fc6ed52"
     };
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getFirestore(app);
     const provider = new GoogleAuthProvider();
-    provider.setCustomParameters({ prompt: 'select_account' });
 
     window.firebaseApp = app;
     window.firebaseAuth = auth;
     window.firebaseDB = db;
     window.firebaseProvider = provider;
     window.fb = { signInWithPopup, signOut, onAuthStateChanged, doc, setDoc, getDoc };
-
-    console.log('✅ Firebase initialized');
   </script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { 'inter': ['Inter', 'sans-serif'], 'poppins': ['Poppins', 'sans-serif'] },
+          colors: { 'medis': { 50: '#f0fdfa', 100: '#ccfbf1', 500: '#14b8a6', 600: '#0d9488', 700: '#0f766e', 800: '#115e59' } }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3 { font-family: 'Poppins', sans-serif; }
+    * { transition: background-color 0.2s, color 0.2s, border-color 0.2s; }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    .dark ::-webkit-scrollbar-track { background: #1e293b; }
+    .dark ::-webkit-scrollbar-thumb { background: #475569; }
+    @keyframes pulse-energy { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+    .energy-low { animation: pulse-energy 1s infinite; }
+    @keyframes pulse-timer { 0%, 100% { color: #ef4444; } 50% { color: #991b1b; } }
+    .timer-low { animation: pulse-timer 1s infinite; }
+    .page { display: none !important; }
+    .page.active { display: block !important; animation: fadeIn 0.3s ease; }
+    #page-cover.active { display: flex !important; align-items: center; justify-content: center; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .palet-btn { aspect-ratio: 1; font-size: 0.75rem; font-weight: 600; border-radius: 0.5rem; transition: transform 0.15s; }
+    .palet-btn:hover { transform: scale(1.1); }
+    .preparat-img { max-height: 70vh; object-fit: contain; cursor: zoom-in; border-radius: 0.5rem; }
+    .confidence-btn.active { background-color: #14b8a6; color: white; border-color: #0d9488; }
+  </style>
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
@@ -124,27 +80,33 @@
     <div class="container mx-auto px-4 py-3">
       <div class="flex items-center justify-between gap-3">
         <div class="flex items-center gap-3">
-          <div class="text-sm font-semibold">
-            <span id="header-progress">Soal 1 / 100</span>
-          </div>
-          <div id="header-timer" class="hidden text-sm font-bold text-teal-600 dark:text-teal-400">
-            <i class="fas fa-clock"></i> <span id="timer-display">00:00</span>
-          </div>
+          <div class="text-sm font-semibold"><span id="header-progress">Soal 1 / 110</span></div>
+          <div id="header-timer" class="hidden text-sm font-bold text-teal-600 dark:text-teal-400"><i class="fas fa-clock"></i> <span id="timer-display">00:00</span></div>
         </div>
-        
         <div class="flex items-center gap-2">
-          <button onclick="toggleImagePanel()" id="btn-toggle-image"
-                  class="w-9 h-9 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 flex items-center justify-center" title="Toggle Gambar">
-            <i id="toggle-image-icon" class="fas fa-image text-gray-700 dark:text-gray-300"></i>
+          <!-- Tombol Toggle Bahasa -->
+          <button onclick="toggleLanguage()" class="px-3 h-9 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 flex items-center justify-center text-xs font-bold" title="Ganti Bahasa">
+            <span id="lang-label">ID</span>
           </button>
-          <button onclick="toggleDarkMode()" 
-                  class="w-9 h-9 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 flex items-center justify-center" title="Dark Mode">
+          
+          <button onclick="toggleDarkMode()" class="w-9 h-9 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 flex items-center justify-center" title="Toggle Dark Mode">
             <i id="dark-mode-icon" class="fas fa-moon text-gray-700 dark:text-yellow-400"></i>
           </button>
-          <button onclick="confirmExit()" 
-                  class="w-9 h-9 rounded-lg bg-red-100 dark:bg-red-900/30 hover:bg-red-200 dark:hover:bg-red-900/50 flex items-center justify-center" title="Keluar">
+          <button onclick="openModal('modal-cheatsheet')" class="w-9 h-9 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 flex items-center justify-center" title="Cheat Sheet">
+            <i class="fas fa-book-medical text-gray-700 dark:text-gray-300"></i>
+          </button>
+          <button onclick="confirmExit()" class="w-9 h-9 rounded-lg bg-red-100 dark:bg-red-900/30 hover:bg-red-200 dark:hover:bg-red-900/50 flex items-center justify-center" title="Keluar">
             <i class="fas fa-sign-out-alt text-red-600 dark:text-red-400"></i>
           </button>
+        </div>
+      </div>
+      <div id="energy-container" class="hidden mt-2">
+        <div class="flex items-center gap-2">
+          <i class="fas fa-bolt text-yellow-500 text-xs"></i>
+          <div class="flex-1 bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
+            <div id="energy-bar" class="h-full bg-gradient-to-r from-green-400 to-teal-500 transition-all duration-500" style="width: 100%"></div>
+          </div>
+          <span id="energy-value" class="text-xs font-bold w-8 text-right">100</span>
         </div>
       </div>
     </div>
@@ -155,32 +117,25 @@
     <div class="max-w-2xl w-full mx-auto">
       <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-6 md:p-10">
         
-        <!-- AUTH SECTION -->
         <div id="auth-section" class="mb-6">
           <div id="auth-loading" class="text-center py-4">
             <i class="fas fa-spinner fa-spin text-teal-500 text-2xl"></i>
             <p class="text-xs text-gray-500 mt-2">Memuat status login...</p>
           </div>
-          
           <div id="auth-not-logged-in" class="hidden">
             <div class="bg-gradient-to-br from-teal-50 to-cyan-50 dark:from-teal-900/20 dark:to-cyan-900/20 rounded-xl p-4 border border-teal-200 dark:border-teal-800">
-              <p class="text-xs text-gray-600 dark:text-gray-400 mb-3 text-center">
-                <i class="fas fa-info-circle text-teal-500 mr-1"></i> Login untuk sync progres di semua device
-              </p>
+              <p class="text-xs text-gray-600 dark:text-gray-400 mb-3 text-center"><i class="fas fa-info-circle text-teal-500 mr-1"></i> Login untuk sync progres di semua device</p>
               <div class="grid grid-cols-2 gap-2">
-                <button onclick="loginWithGoogle()" 
-                        class="py-2.5 bg-white dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 hover:border-teal-500 rounded-lg font-semibold text-xs flex items-center justify-center gap-2 transition-all">
+                <button onclick="loginWithGoogle()" class="py-2.5 bg-white dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 hover:border-teal-500 dark:hover:border-teal-500 rounded-lg font-semibold text-xs flex items-center justify-center gap-2 transition-all">
                   <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" class="w-4 h-4" alt="Google"> Login Google
                 </button>
-                <button onclick="loginAsGuest()" 
-                        class="py-2.5 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg font-semibold text-xs flex items-center justify-center gap-2 transition-all">
+                <button onclick="loginAsGuest()" class="py-2.5 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg font-semibold text-xs flex items-center justify-center gap-2 transition-all">
                   <i class="fas fa-user-secret text-gray-600 dark:text-gray-400"></i> Guest Mode
                 </button>
               </div>
-              <p class="text-xs text-gray-500 mt-2 text-center">Guest: progres hanya tersimpan di device ini</p>
+              <p class="text-xs text-gray-500 dark:text-gray-500 mt-2 text-center">Guest: progres hanya tersimpan di device ini</p>
             </div>
           </div>
-          
           <div id="auth-logged-in" class="hidden">
             <div class="bg-gradient-to-br from-teal-50 to-cyan-50 dark:from-teal-900/20 dark:to-cyan-900/20 rounded-xl p-3 border border-teal-200 dark:border-teal-800 flex items-center gap-3">
               <img id="user-photo" src="" alt="User" class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-700 shadow">
@@ -188,40 +143,33 @@
                 <p id="user-name" class="font-semibold text-sm truncate">User</p>
                 <p id="user-status" class="text-xs text-gray-500 dark:text-gray-400 truncate">Tersinkron</p>
               </div>
-              <button onclick="logout()" 
-                      class="w-8 h-8 rounded-lg bg-red-100 dark:bg-red-900/30 hover:bg-red-200 flex items-center justify-center text-red-600 dark:text-red-400" title="Logout">
+              <button onclick="logout()" class="w-8 h-8 rounded-lg bg-red-100 dark:bg-red-900/30 hover:bg-red-200 dark:hover:bg-red-900/50 flex items-center justify-center text-red-600 dark:text-red-400" title="Logout">
                 <i class="fas fa-sign-out-alt text-xs"></i>
               </button>
             </div>
           </div>
         </div>
-
-        <!-- Ikon + Judul -->
+  
         <div class="text-center mb-8">
           <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-teal-400 to-teal-600 rounded-full mb-4 shadow-lg">
-            <i class="fas fa-bacteria text-white text-3xl"></i>
+            <i class="fas fa-flask text-white text-3xl"></i>
           </div>
-          <h1 class="text-3xl md:text-4xl font-bold mb-2 bg-gradient-to-r from-teal-500 to-cyan-600 bg-clip-text text-transparent">
-            Latihan Praktikum Mikrobiologi
-          </h1>
-          <p class="text-gray-600 dark:text-gray-400 text-sm md:text-base">Simulasi Uprak — 100 Soal Esai (A & B)</p>
+          <h1 class="text-3xl md:text-4xl font-bold mb-2 bg-gradient-to-r from-teal-500 to-cyan-600 bg-clip-text text-transparent">Latihan UPRAK Mikrobiologi Klinik</h1>
+          <p class="text-gray-600 dark:text-gray-400 text-sm md:text-base">Image Interpretation (Vignette + Gambar Komposit)</p>
         </div>
         
-        <!-- Petunjuk -->
         <details class="mb-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
-          <summary class="cursor-pointer font-semibold text-blue-700 dark:text-blue-300 flex items-center gap-2">
-            <i class="fas fa-info-circle"></i> Petunjuk Pengerjaan
-          </summary>
+          <summary class="cursor-pointer font-semibold text-blue-700 dark:text-blue-300 flex items-center gap-2"><i class="fas fa-info-circle"></i> Petunjuk Pengerjaan</summary>
           <div class="mt-3 text-sm text-gray-700 dark:text-gray-300 space-y-2 pl-6">
-            <p>1. Setiap soal memiliki <strong>kasus klinis</strong> dan <strong>2 sub-soal (A & B)</strong>.</p>
-            <p>2. Jawab dengan <strong>Bahasa Indonesia</strong> atau <strong>English</strong> — keduanya diterima.</p>
-            <p>3. Penilaian menggunakan <strong>fuzzy matching</strong> — tidak harus sama persis.</p>
-            <p>4. Gambar dapat <strong>disembunyikan</strong> jika belum tersedia.</p>
-            <p>5. Pelajari <strong>pembahasan</strong> setelah submit.</p>
+            <p>1. Setiap soal menampilkan <strong>vignette klinis</strong> dan <strong>gambar komposit</strong> (hasil lab).</p>
+            <p>2. Isi <strong>2 kotak jawaban</strong>: Pertanyaan A dan Pertanyaan B.</p>
+            <p>3. Jawaban dinilai dengan <strong>keyword matching</strong> — sebutkan salah satu keyword alternatif yang relevan.</p>
+            <p>4. Pilih <strong>tingkat keyakinan</strong> sebelum submit.</p>
+            <p>5. Anda bisa <strong>bookmark</strong> soal yang diragukan.</p>
+            <p>6. Pelajari <strong>pembahasan</strong> setelah submit (mode Instant).</p>
           </div>
         </details>
         
-        <!-- Pengaturan -->
         <div class="space-y-5">
           <div>
             <label class="block text-sm font-semibold mb-2"><i class="fas fa-comment-dots text-teal-500 mr-1"></i> Mode Pembahasan</label>
@@ -229,13 +177,15 @@
               <label class="cursor-pointer">
                 <input type="radio" name="mode" value="instant" class="peer sr-only" checked>
                 <div class="p-3 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-sm peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">
-                  <i class="fas fa-bolt text-teal-500"></i><br><span class="text-xs">Instant</span><p class="text-xs text-gray-500 mt-1">Langsung</p>
+                  <i class="fas fa-bolt text-teal-500"></i><br><span class="text-xs">Instant</span>
+                  <p class="text-xs text-gray-500 mt-1">Pembahasan langsung</p>
                 </div>
               </label>
               <label class="cursor-pointer">
                 <input type="radio" name="mode" value="exam" class="peer sr-only">
                 <div class="p-3 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-sm peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">
-                  <i class="fas fa-graduation-cap text-teal-500"></i><br><span class="text-xs">Exam</span><p class="text-xs text-gray-500 mt-1">Di akhir</p>
+                  <i class="fas fa-graduation-cap text-teal-500"></i><br><span class="text-xs">Exam</span>
+                  <p class="text-xs text-gray-500 mt-1">Pembahasan di akhir</p>
                 </div>
               </label>
             </div>
@@ -262,36 +212,39 @@
           <div>
             <label class="block text-sm font-semibold mb-2"><i class="fas fa-filter text-teal-500 mr-1"></i> Filter Topik</label>
             <div class="grid grid-cols-2 gap-2">
-              <label class="cursor-pointer"><input type="checkbox" name="topik" value="Biosafety dan Pengenalan Alat" class="peer sr-only" checked><div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">Biosafety</div></label>
-              <label class="cursor-pointer"><input type="checkbox" name="topik" value="Mikroskop dan Pewarnaan" class="peer sr-only" checked><div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">Mikroskop & Pewarnaan</div></label>
-              <label class="cursor-pointer"><input type="checkbox" name="topik" value="Sterilisasi, Desinfeksi dan Perbenihan Bakteri" class="peer sr-only" checked><div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">Sterilisasi & Media</div></label>
-              <label class="cursor-pointer"><input type="checkbox" name="topik" value="Vibrio, Pseudomonas, Acinetobacter" class="peer sr-only" checked><div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">Vibrio & Non-Fermenter</div></label>
-              <label class="cursor-pointer"><input type="checkbox" name="topik" value="Uji Kepekaan Antimikroba Difusi, Dilusi" class="peer sr-only" checked><div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">Uji Kepekaan</div></label>
-              <label class="cursor-pointer"><input type="checkbox" name="topik" value="Staphylococcus, Streptococcus, MRSA, M. leprae" class="peer sr-only" checked><div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">Staph & Strep</div></label>
-              <label class="cursor-pointer"><input type="checkbox" name="topik" value="Neisseria, Bacterial Vaginosis, Anaerob" class="peer sr-only" checked><div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">Neisseria & Anaerob</div></label>
-              <label class="cursor-pointer"><input type="checkbox" name="topik" value="Enterobacterales (LF dan NLF)" class="peer sr-only" checked><div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">Enterobacterales</div></label>
-              <label class="cursor-pointer"><input type="checkbox" name="topik" value="Mycobacterium tuberculosis, C. diphtheriae" class="peer sr-only" checked><div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">TB & Difteri</div></label>
-              <label class="cursor-pointer"><input type="checkbox" name="topik" value="Mycologi Kedokteran" class="peer sr-only" checked><div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">Mikologi</div></label>
-              <label class="cursor-pointer"><input type="checkbox" name="topik" value="Virologi Kedokteran" class="peer sr-only" checked><div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">Virologi</div></label>
-              <label class="cursor-pointer"><input type="checkbox" name="topik" value="Bakteriologi Sepsis & Imunologi" class="peer sr-only" checked><div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">Sepsis & Imunologi</div></label>
-              <label class="cursor-pointer"><input type="checkbox" name="topik" value="ISK dan Infeksi Genitalia" class="peer sr-only" checked><div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">ISK & Genitalia</div></label>
+              <label class="cursor-pointer"><input type="checkbox" name="kategori" value="Topik 1" class="peer sr-only" checked><div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">Biosafety & Alat</div></label>
+              <label class="cursor-pointer"><input type="checkbox" name="kategori" value="Topik 2" class="peer sr-only" checked><div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">Mikroskop & Pewarnaan</div></label>
+              <label class="cursor-pointer"><input type="checkbox" name="kategori" value="Topik 3" class="peer sr-only" checked><div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">Sterilisasi & Media</div></label>
+              <label class="cursor-pointer"><input type="checkbox" name="kategori" value="Topik 4" class="peer sr-only" checked><div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">Vibrio, Pseudomonas, Acinetobacter</div></label>
+              <label class="cursor-pointer"><input type="checkbox" name="kategori" value="Topik 5" class="peer sr-only" checked><div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">Uji Kepekaan Antimikroba</div></label>
+              <label class="cursor-pointer"><input type="checkbox" name="kategori" value="Topik 6" class="peer sr-only" checked><div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">Staph, Strep, MRSA, Leprae</div></label>
+              <label class="cursor-pointer"><input type="checkbox" name="kategori" value="Topik 7" class="peer sr-only" checked><div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">Neisseria, BV, Anaerob</div></label>
+              <label class="cursor-pointer"><input type="checkbox" name="kategori" value="Topik 8" class="peer sr-only" checked><div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">Enterobacteriales</div></label>
+              <label class="cursor-pointer"><input type="checkbox" name="kategori" value="Topik 9" class="peer sr-only" checked><div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">Mycobacterium, Diphtheriae</div></label>
+              <label class="cursor-pointer"><input type="checkbox" name="kategori" value="Topik 10" class="peer sr-only" checked><div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">Mikologi</div></label>
+              <label class="cursor-pointer"><input type="checkbox" name="kategori" value="Topik 11" class="peer sr-only" checked><div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">Virologi 1</div></label>
+              <label class="cursor-pointer"><input type="checkbox" name="kategori" value="Topik 12" class="peer sr-only" checked><div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">Virologi 2</div></label>
+              <label class="cursor-pointer"><input type="checkbox" name="kategori" value="Topik 13" class="peer sr-only" checked><div class="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg text-center text-xs peer-checked:border-teal-500 peer-checked:bg-teal-50 dark:peer-checked:bg-teal-900/20 peer-checked:font-semibold">Sepsis & Imunologi</div></label>
             </div>
           </div>
           
           <div id="timer-option" class="hidden">
             <label class="flex items-center gap-2 cursor-pointer">
               <input type="checkbox" id="timer-enabled" class="w-4 h-4 accent-teal-500">
-              <span class="text-sm font-semibold"><i class="fas fa-clock text-teal-500 mr-1"></i> Aktifkan Timer (1 soal = 1 menit)</span>
+              <span class="text-sm font-semibold"><i class="fas fa-clock text-teal-500 mr-1"></i> Aktifkan Timer (1 soal = 1.5 menit)</span>
+            </label>
+          </div>
+          
+          <div id="gamifikasi-option">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" id="gamifikasi-enabled" class="w-4 h-4 accent-teal-500">
+              <span class="text-sm font-semibold"><i class="fas fa-bolt text-yellow-500 mr-1"></i> Aktifkan Mode Gamifikasi (energi)</span>
             </label>
           </div>
         </div>
         
-        <button onclick="startQuiz()" 
-                class="w-full mt-8 py-4 bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white font-bold text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all">
-          <i class="fas fa-play mr-2"></i> Mulai Latihan
-        </button>
-        
-        <p class="text-center text-xs text-gray-500 dark:text-gray-400 mt-4">Total: <span id="cover-total-soal">100</span> soal</p>
+        <button onclick="startQuiz()" class="w-full mt-8 py-4 bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white font-bold text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all"><i class="fas fa-play mr-2"></i> Mulai Latihan</button>
+        <p class="text-center text-xs text-gray-500 dark:text-gray-400 mt-4">Total: <span id="cover-total-soal">110</span> soal</p>
       </div>
     </div>
   </section>
@@ -299,65 +252,44 @@
   <!-- HALAMAN SOAL -->
   <section id="page-quiz" class="page min-h-screen py-4 px-3 md:px-4">
     <div class="max-w-7xl mx-auto">
-      
-      <!-- LAYOUT OPSI B: Gambar + Soal -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
         
-        <!-- Gambar (span 5) -->
-        <div class="lg:col-span-5" id="image-panel">
+        <!-- Kolom Kiri: Gambar -->
+        <div class="lg:col-span-5">
           <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-3 md:p-4 lg:sticky lg:top-20">
             <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-semibold text-gray-500 dark:text-gray-400"><i class="fas fa-image mr-1"></i> Gambar / Ilustrasi</span>
-              <button onclick="zoomImage()" class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 flex items-center justify-center text-xs" title="Zoom">
-                <i class="fas fa-search-plus"></i>
-              </button>
+              <span class="text-xs font-semibold text-gray-500 dark:text-gray-400"><i class="fas fa-image mr-1"></i> Gambar Komposit</span>
+              <button onclick="zoomImage()" class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 flex items-center justify-center text-xs" title="Zoom"><i class="fas fa-search-plus"></i></button>
             </div>
-            <div id="image-container" class="bg-gray-100 dark:bg-gray-900 rounded-lg flex items-center justify-center overflow-hidden" style="min-height: 400px; max-height: 75vh;">
-              <!-- Diisi JS -->
+            <div class="bg-gray-100 dark:bg-gray-900 rounded-lg flex items-center justify-center overflow-hidden" style="min-height: 400px; max-height: 75vh;">
+              <img id="preparat-img" src="" alt="Gambar Komposit" class="preparat-img max-w-full max-h-full" onclick="zoomImage()">
             </div>
           </div>
         </div>
 
-        <!-- Soal (span 7) -->
-        <div class="lg:col-span-7" id="question-panel">
+        <!-- Kolom Tengah: Vignette & Jawaban -->
+        <div class="lg:col-span-4">
           <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-3 md:p-4">
-            
-            <div class="mb-3 flex items-center gap-2 flex-wrap">
-              <span id="topik-badge" class="text-xs px-2 py-1 bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 rounded-full font-semibold">Topik</span>
-              <span id="kategori-badge" class="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full font-semibold">Kategori</span>
+            <div class="mb-3">
+              <p class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-1"><i class="fas fa-stethoscope mr-1"></i> Vignette Klinis</p>
+              <p id="vignette-text" class="text-sm leading-relaxed mb-2 font-medium"></p>
             </div>
 
-            <div class="mb-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
-              <p class="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1"><i class="fas fa-stethoscope mr-1"></i> Kasus Klinis</p>
-              <p id="kasus-teks" class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed"></p>
-              <button onclick="toggleEnglish()" class="mt-2 text-xs text-blue-600 dark:text-blue-400 hover:underline"><i class="fas fa-language mr-1"></i> Tampilkan English</button>
-              <p id="kasus-en" class="hidden mt-2 text-sm text-gray-600 dark:text-gray-400 italic leading-relaxed"></p>
-            </div>
-
-                        <!-- Pertanyaan A -->
-            <div class="mb-4">
-              <div class="flex items-start gap-2 mb-2">
-                <span class="flex-shrink-0 w-7 h-7 rounded-full bg-teal-500 text-white flex items-center justify-center font-bold text-sm">A</span>
-                <p id="pertanyaan-a" class="text-sm font-medium leading-relaxed pt-1"></p>
+            <!-- 2 Kotak Jawaban -->
+            <div class="space-y-3">
+              <div id="boxA-container">
+                <label class="block text-sm font-semibold mb-1 text-teal-600 dark:text-teal-400"><i class="fas fa-question-circle mr-1"></i> Pertanyaan A</label>
+                <p id="question-A-text" class="text-sm mb-2 text-gray-800 dark:text-gray-200"></p>
+                <textarea id="boxA-input" rows="2" placeholder="Ketik jawaban A di sini..." class="w-full px-3 py-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg focus:border-teal-500 focus:outline-none bg-white dark:bg-gray-900 text-sm resize-none"></textarea>
               </div>
-              <textarea id="jawaban-a" 
-                        rows="2"
-                        placeholder="Tulis jawaban A di sini..."
-                        class="w-full px-3 py-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg focus:border-teal-500 focus:outline-none bg-white dark:bg-gray-900 text-sm resize-none"></textarea>
-            </div>
-
-            <!-- Pertanyaan B -->
-            <div class="mb-4">
-              <div class="flex items-start gap-2 mb-2">
-                <span class="flex-shrink-0 w-7 h-7 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-sm">B</span>
-                <p id="pertanyaan-b" class="text-sm font-medium leading-relaxed pt-1"></p>
+              <div id="boxB-container">
+                <label class="block text-sm font-semibold mb-1 text-blue-600 dark:text-blue-400"><i class="fas fa-question-circle mr-1"></i> Pertanyaan B</label>
+                <p id="question-B-text" class="text-sm mb-2 text-gray-800 dark:text-gray-200"></p>
+                <textarea id="boxB-input" rows="2" placeholder="Ketik jawaban B di sini..." class="w-full px-3 py-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg focus:border-blue-500 focus:outline-none bg-white dark:bg-gray-900 text-sm resize-none"></textarea>
               </div>
-              <textarea id="jawaban-b" 
-                        rows="2"
-                        placeholder="Tulis jawaban B di sini..."
-                        class="w-full px-3 py-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg focus:border-blue-500 focus:outline-none bg-white dark:bg-gray-900 text-sm resize-none"></textarea>
             </div>
 
+            <!-- Confidence -->
             <div class="mt-3">
               <p class="text-xs font-semibold mb-2 text-gray-500 dark:text-gray-400"><i class="fas fa-brain mr-1"></i> Tingkat Keyakinan</p>
               <div class="grid grid-cols-3 gap-2">
@@ -367,54 +299,53 @@
               </div>
             </div>
 
+            <!-- Tombol Aksi -->
             <div class="mt-3 grid grid-cols-3 gap-2">
               <button onclick="toggleBookmark()" id="btn-bookmark" class="px-2 py-2 bg-yellow-50 dark:bg-yellow-900/20 hover:bg-yellow-100 dark:hover:bg-yellow-900/40 rounded-lg text-xs font-semibold text-yellow-700 dark:text-yellow-400"><i class="fas fa-bookmark mr-1"></i> Bookmark</button>
-              <button onclick="showHint()" class="px-2 py-2 bg-purple-50 dark:bg-purple-900/20 hover:bg-purple-100 dark:hover:bg-purple-900/40 rounded-lg text-xs font-semibold text-purple-700 dark:text-purple-400"><i class="fas fa-lightbulb mr-1"></i> Hint</button>
+              <button onclick="showHint()" id="btn-hint" class="px-2 py-2 bg-purple-50 dark:bg-purple-900/20 hover:bg-purple-100 dark:hover:bg-purple-900/40 rounded-lg text-xs font-semibold text-purple-700 dark:text-purple-400"><i class="fas fa-lightbulb mr-1"></i> Hint</button>
               <button onclick="clearAnswer()" class="px-2 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg text-xs font-semibold text-gray-700 dark:text-gray-300"><i class="fas fa-eraser mr-1"></i> Hapus</button>
             </div>
 
-            <button onclick="submitAnswer()" id="btn-submit" class="w-full mt-3 py-3 bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all">
-              <i class="fas fa-paper-plane mr-2"></i> Submit Jawaban
-            </button>
+            <button onclick="submitAnswer()" id="btn-submit" class="w-full mt-3 py-3 bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all"><i class="fas fa-paper-plane mr-2"></i> Submit Jawaban</button>
+          </div>
+        </div>
 
-            <!-- FEEDBACK AREA -->
-            <div id="feedback-area" class="hidden mt-4 pt-4 border-t-2 border-gray-200 dark:border-gray-700">
-              <div id="feedback-content"></div>
+        <!-- Kolom Kanan: Navigasi -->
+        <div class="lg:col-span-3">
+          <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-3 md:p-4 lg:sticky lg:top-20">
+            <div class="flex items-center gap-2 mb-3">
+              <button onclick="prevQuestion()" id="btn-prev" class="flex-1 px-3 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg font-semibold text-xs"><i class="fas fa-arrow-left"></i> Prev</button>
+              <button onclick="nextQuestion()" id="btn-next" class="flex-1 px-3 py-2 bg-teal-500 hover:bg-teal-600 text-white rounded-lg font-semibold text-xs">Next <i class="fas fa-arrow-right"></i></button>
             </div>
+            <div class="mb-3">
+              <div class="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mb-1">
+                <span>Progress</span>
+                <span id="progress-text" class="font-semibold">0 / 110 (0%)</span>
+              </div>
+              <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
+                <div id="progress-bar" class="h-full bg-gradient-to-r from-teal-400 to-cyan-500 transition-all duration-300" style="width: 0%"></div>
+              </div>
+            </div>
+            <div>
+              <p class="text-xs font-semibold mb-2 text-gray-500 dark:text-gray-400"><i class="fas fa-th mr-1"></i> Navigasi Soal</p>
+              <div id="palet-container" class="grid grid-cols-5 gap-1 max-h-72 overflow-y-auto p-1"></div>
+            </div>
+            <div class="grid grid-cols-2 gap-1 mt-3 text-xs text-gray-500 dark:text-gray-400">
+              <div class="flex items-center gap-1"><span class="w-3 h-3 bg-gray-200 dark:bg-gray-700 rounded"></span> Belum</div>
+              <div class="flex items-center gap-1"><span class="w-3 h-3 bg-green-500 rounded"></span> Benar</div>
+              <div class="flex items-center gap-1"><span class="w-3 h-3 bg-yellow-500 rounded"></span> Sebagian</div>
+              <div class="flex items-center gap-1"><span class="w-3 h-3 bg-red-500 rounded"></span> Salah</div>
+              <div class="flex items-center gap-1"><span class="w-3 h-3 border-2 border-yellow-500 rounded"></span> Bookmark</div>
+              <div class="flex items-center gap-1"><span class="w-3 h-3 border-2 border-teal-500 rounded"></span> Aktif</div>
+            </div>
+            <button onclick="confirmFinish()" id="btn-finish" class="w-full mt-3 py-2 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold rounded-lg shadow text-xs"><i class="fas fa-flag-checkered mr-1"></i> Selesai</button>
           </div>
         </div>
       </div>
 
-      <!-- PALET NAVIGASI (OPSI B: Grid 10) -->
-      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-4 mt-4">
-        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-4">
-          <button onclick="prevQuestion()" id="btn-prev" class="px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg font-semibold text-sm whitespace-nowrap"><i class="fas fa-arrow-left"></i> Prev</button>
-          
-          <div class="flex-1 min-w-0">
-            <div class="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mb-1">
-              <span>Progress</span>
-              <span id="progress-text" class="font-semibold">0 / 100 (0%)</span>
-            </div>
-            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
-              <div id="progress-bar" class="h-full bg-gradient-to-r from-teal-400 to-cyan-500 transition-all duration-300" style="width: 0%"></div>
-            </div>
-          </div>
-          
-          <button onclick="nextQuestion()" id="btn-next" class="px-4 py-2 bg-teal-500 hover:bg-teal-600 text-white rounded-lg font-semibold text-sm whitespace-nowrap">Next <i class="fas fa-arrow-right"></i></button>
-          <button onclick="confirmFinish()" id="btn-finish" class="px-4 py-2 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold rounded-lg shadow text-sm whitespace-nowrap"><i class="fas fa-flag-checkered mr-1"></i> Selesai</button>
-        </div>
-
-        <p class="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-2"><i class="fas fa-th mr-1"></i> Navigasi Soal</p>
-        <div id="palet-container" class="grid grid-cols-10 gap-1.5 max-h-64 overflow-y-auto p-1"><!-- Diisi JS --></div>
-
-        <div class="grid grid-cols-3 sm:grid-cols-6 gap-2 mt-3 text-xs text-gray-500 dark:text-gray-400">
-          <div class="flex items-center gap-1"><span class="w-3 h-3 bg-gray-200 dark:bg-gray-700 rounded"></span> Belum</div>
-          <div class="flex items-center gap-1"><span class="w-3 h-3 bg-green-500 rounded"></span> Benar</div>
-          <div class="flex items-center gap-1"><span class="w-3 h-3 bg-yellow-500 rounded"></span> Sebagian</div>
-          <div class="flex items-center gap-1"><span class="w-3 h-3 bg-red-500 rounded"></span> Salah</div>
-          <div class="flex items-center gap-1"><span class="w-3 h-3 border-2 border-yellow-500 rounded"></span> Bookmark</div>
-          <div class="flex items-center gap-1"><span class="w-3 h-3 border-2 border-teal-500 rounded"></span> Aktif</div>
-        </div>
+      <!-- Feedback Area -->
+      <div id="feedback-area" class="hidden bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-4 mt-4">
+        <div id="feedback-content"></div>
       </div>
     </div>
   </section>
@@ -441,10 +372,25 @@
         </div>
         <p id="result-message" class="text-sm text-gray-600 dark:text-gray-400 italic"></p>
       </div>
-
+      
       <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-4">
         <h3 class="font-bold mb-3 flex items-center gap-2"><i class="fas fa-chart-bar text-teal-500"></i> Analisis per Topik</h3>
         <div id="performance-breakdown" class="space-y-2"></div>
+        <div id="weakest-category" class="mt-3 p-3 bg-orange-50 dark:bg-orange-900/20 rounded-lg border border-orange-200 dark:border-orange-800"></div>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-4">
+        <h3 class="font-bold mb-3 flex items-center gap-2"><i class="fas fa-brain text-purple-500"></i> Analitik Metakognitif</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div class="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-3">
+            <p class="text-xs font-semibold text-yellow-700 dark:text-yellow-400 mb-1"><i class="fas fa-exclamation-triangle mr-1"></i> Overconfidence Bias</p>
+            <p id="meta-overconfidence" class="text-sm text-gray-700 dark:text-gray-300">-</p>
+          </div>
+          <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
+            <p class="text-xs font-semibold text-blue-700 dark:text-blue-400 mb-1"><i class="fas fa-dice mr-1"></i> Lucky Guess</p>
+            <p id="meta-luckyguess" class="text-sm text-gray-700 dark:text-gray-300">-</p>
+          </div>
+        </div>
       </div>
 
       <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-4">
@@ -464,7 +410,25 @@
     </div>
   </section>
 
-  <!-- MODALS -->
+  <!-- MODAL: CHEAT SHEET -->
+  <div id="modal-cheatsheet" class="modal hidden fixed inset-0 z-50 bg-black bg-opacity-60 flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+      <div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+        <h2 class="text-xl font-bold flex items-center gap-2"><i class="fas fa-book-medical text-teal-500"></i> Cheat Sheet (Keyword)</h2>
+        <button onclick="closeModal('modal-cheatsheet')" class="w-8 h-8 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="p-3 border-b border-gray-200 dark:border-gray-700">
+        <div class="relative">
+          <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+          <input type="text" id="cheatsheet-search" oninput="renderCheatsheet()" placeholder="Cari topik atau keyword..." class="w-full pl-9 pr-3 py-2 border-2 border-gray-200 dark:border-gray-700 rounded-lg focus:border-teal-500 focus:outline-none bg-white dark:bg-gray-900 text-sm">
+        </div>
+      </div>
+      <div id="cheatsheet-content" class="p-4 overflow-y-auto flex-1"></div>
+      <div class="p-3 border-t border-gray-200 dark:border-gray-700 text-xs text-gray-500 dark:text-gray-400 text-center"><span id="cheatsheet-count">-</span> entri</div>
+    </div>
+  </div>
+
+  <!-- MODAL: KONFIRMASI -->
   <div id="modal-confirm" class="modal hidden fixed inset-0 z-50 bg-black bg-opacity-60 flex items-center justify-center p-4">
     <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-6">
       <div class="text-center mb-4">
@@ -479,42 +443,47 @@
     </div>
   </div>
 
+  <!-- MODAL: ZOOM -->
   <div id="modal-zoom" class="modal hidden fixed inset-0 z-50 bg-black bg-opacity-95 flex items-center justify-center cursor-zoom-out" onclick="closeModal('modal-zoom')">
     <img id="zoom-image" src="" alt="Zoom" class="max-w-full max-h-full object-contain">
   </div>
 
+  <!-- TOAST -->
   <div id="toast-container" class="fixed top-20 right-4 z-50 space-y-2"></div>
 
-  <!-- ============================================ -->
   <!-- SCRIPTS -->
-  <!-- ============================================ -->
   <script src="kamus.js"></script>
   <script src="questions.js"></script>
-
-  <!-- AUTH LOGIC -->
+  
   <script>
+    // ============================================
+    // AUTH & UTILITY
+    // ============================================
     let currentUser = null;
     let authMode = 'guest';
-    let mergeGuestProgress = undefined;
-    const FIRESTORE_DOC = 'mikrobiologi';
-    const STORAGE_KEY = 'mikro_progress';
+    const STORAGE_KEY = 'mikrob_progress';
+    let currentLang = 'id'; // 'id' atau 'en'
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'id' ? 'en' : 'id';
+      document.getElementById('lang-label').textContent = currentLang.toUpperCase();
+      renderQuestion();
+    }
 
     function showAuthLoading() {
-      document.getElementById('auth-loading')?.classList.remove('hidden');
-      document.getElementById('auth-not-logged-in')?.classList.add('hidden');
-      document.getElementById('auth-logged-in')?.classList.add('hidden');
+      document.getElementById('auth-loading').classList.remove('hidden');
+      document.getElementById('auth-not-logged-in').classList.add('hidden');
+      document.getElementById('auth-logged-in').classList.add('hidden');
     }
-
     function showAuthLogin() {
-      document.getElementById('auth-loading')?.classList.add('hidden');
-      document.getElementById('auth-not-logged-in')?.classList.remove('hidden');
-      document.getElementById('auth-logged-in')?.classList.add('hidden');
+      document.getElementById('auth-loading').classList.add('hidden');
+      document.getElementById('auth-not-logged-in').classList.remove('hidden');
+      document.getElementById('auth-logged-in').classList.add('hidden');
     }
-
     function showAuthUser(user) {
-      document.getElementById('auth-loading')?.classList.add('hidden');
-      document.getElementById('auth-not-logged-in')?.classList.add('hidden');
-      document.getElementById('auth-logged-in')?.classList.remove('hidden');
+      document.getElementById('auth-loading').classList.add('hidden');
+      document.getElementById('auth-not-logged-in').classList.add('hidden');
+      document.getElementById('auth-logged-in').classList.remove('hidden');
       const photo = document.getElementById('user-photo');
       const name = document.getElementById('user-name');
       const status = document.getElementById('user-status');
@@ -530,60 +499,39 @@
     }
 
     async function loginWithGoogle() {
-      if (!window.fb) { showToast('Firebase belum siap', 'error'); return; }
+      if (!window.fb) { showToast('Firebase belum siap.', 'error'); return; }
       try {
         const result = await window.fb.signInWithPopup(window.firebaseAuth, window.firebaseProvider);
-        console.log('✅ Login:', result.user.email);
-      } catch (error) {
-        console.error('❌ Login error:', error);
-        let msg = 'Gagal login';
-        if (error.code === 'auth/popup-closed-by-user') msg = 'Login dibatalkan';
-        else if (error.code === 'auth/popup-blocked') msg = 'Popup diblokir';
-        else if (error.code === 'auth/unauthorized-domain') msg = 'Domain belum diizinkan di Firebase';
-        showToast(msg, 'error');
-      }
+      } catch (error) { showToast('Gagal login: ' + error.message, 'error'); }
     }
-
     function loginAsGuest() {
-      localStorage.setItem('mikro_auth_mode', 'guest');
-      authMode = 'guest';
-      currentUser = null;
+      localStorage.setItem('mikrob_auth_mode', 'guest');
+      authMode = 'guest'; currentUser = null;
       showAuthUser({ isAnonymous: true });
       showToast('Mode Guest aktif', 'info');
     }
-
     async function logout() {
-      if (!confirm('Logout? Progres tetap tersimpan di lokal.')) return;
+      if (!confirm('Logout?')) return;
       try {
         if (currentUser && !currentUser.isAnonymous) await window.fb.signOut(window.firebaseAuth);
-        localStorage.removeItem('mikro_auth_mode');
-        currentUser = null;
-        authMode = 'guest';
-        showAuthLogin();
-        showToast('Berhasil logout', 'success');
-      } catch (error) {
-        console.error('❌ Logout error:', error);
-        showToast('Gagal logout', 'error');
-      }
+        localStorage.removeItem('mikrob_auth_mode');
+        currentUser = null; authMode = 'guest';
+        showAuthLogin(); showToast('Berhasil logout', 'success');
+      } catch (error) { showToast('Gagal logout', 'error'); }
     }
 
     function initAuthListener() {
       if (!window.fb) { setTimeout(initAuthListener, 500); return; }
       window.fb.onAuthStateChanged(window.firebaseAuth, (user) => {
         if (user) {
-          currentUser = user;
-          authMode = user.isAnonymous ? 'guest' : 'google';
+          currentUser = user; authMode = user.isAnonymous ? 'guest' : 'google';
           showAuthUser(user);
           if (!user.isAnonymous) loadProgressFromCloud(user.uid);
         } else {
           currentUser = null;
-          const savedMode = localStorage.getItem('mikro_auth_mode');
-          if (savedMode === 'guest') {
-            authMode = 'guest';
-            showAuthUser({ isAnonymous: true });
-          } else {
-            showAuthLogin();
-          }
+          const savedMode = localStorage.getItem('mikrob_auth_mode');
+          if (savedMode === 'guest') { authMode = 'guest'; showAuthUser({ isAnonymous: true }); }
+          else { showAuthLogin(); }
         }
       });
     }
@@ -591,188 +539,180 @@
     async function loadProgressFromCloud(uid) {
       if (!window.fb) return;
       try {
-        const ref = window.fb.doc(window.firebaseDB, 'users', uid, 'progress', FIRESTORE_DOC);
-        const snap = await window.fb.getDoc(ref);
-        if (snap.exists()) {
-          const cloudData = snap.data();
-          const localRaw = localStorage.getItem(STORAGE_KEY);
-          const localData = localRaw ? JSON.parse(localRaw) : null;
-          if (localData && Object.keys(localData.answers || {}).length > 0 && !window.__cloudLoaded) {
-            window.__cloudLoaded = true;
-            const merge = confirm('Ada progres lokal & cloud. Gabung? (Cancel = pakai cloud saja)');
-            if (merge) {
-              const merged = mergeProgress(localData, cloudData);
-              Object.assign(STATE, merged);
-              localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
-              showToast('Progres digabung', 'success');
-            } else {
-              Object.assign(STATE, cloudData);
-              localStorage.setItem(STORAGE_KEY, JSON.stringify(cloudData));
-              showToast('Pakai data cloud', 'success');
-            }
+        const userDocRef = window.fb.doc(window.firebaseDB, 'users', uid, 'progress', 'mikrob');
+        const docSnap = await window.fb.getDoc(userDocRef);
+        if (docSnap.exists()) {
+          const cloudData = docSnap.data();
+          const guestRaw = localStorage.getItem(STORAGE_KEY);
+          const guestData = guestRaw ? JSON.parse(guestRaw) : null;
+          if (guestData && Object.keys(guestData.answers || {}).length > 0) {
+             if (confirm('Gabungkan progres guest dengan cloud?')) {
+                const merged = mergeProgress(guestData, cloudData);
+                STATE = { ...STATE, ...merged }; localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
+             } else {
+                STATE = { ...STATE, ...cloudData }; localStorage.setItem(STORAGE_KEY, JSON.stringify(cloudData));
+             }
           } else {
-            Object.assign(STATE, cloudData);
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(cloudData));
-            showToast('Progres dari cloud dimuat', 'success');
+            STATE = { ...STATE, ...cloudData }; localStorage.setItem(STORAGE_KEY, JSON.stringify(cloudData));
           }
-          if (document.getElementById('page-quiz')?.classList.contains('active')) {
-            renderQuestion(); renderPalet(); updateProgress();
+          if (document.getElementById('page-quiz').classList.contains('active')) {
+            renderQuestion(); renderPalet(); updateProgress(); updateEnergyBar();
           }
         }
-      } catch (error) { console.error('❌ Load cloud error:', error); }
+      } catch (error) { console.error('Gagal load cloud:', error); }
     }
 
-    function mergeProgress(localData, cloudData) {
+    function mergeProgress(guestData, cloudData) {
       const mergedAnswers = { ...cloudData.answers };
-      Object.entries(localData.answers || {}).forEach(([id, localAns]) => {
+      Object.entries(guestData.answers || {}).forEach(([id, guestAns]) => {
         const cloudAns = mergedAnswers[id];
-        if (!cloudAns) mergedAnswers[id] = localAns;
-        else if ((localAns.timestamp || 0) > (cloudAns.timestamp || 0)) mergedAnswers[id] = localAns;
+        if (!cloudAns || (guestAns.timestamp || 0) > (cloudAns.timestamp || 0)) mergedAnswers[id] = guestAns;
       });
-      const mergedBookmarks = [...new Set([...(cloudData.bookmarks || []), ...(localData.bookmarks || [])])];
+      const mergedBookmarks = [...new Set([...(cloudData.bookmarks || []), ...(guestData.bookmarks || [])])];
       return { ...cloudData, answers: mergedAnswers, bookmarks: mergedBookmarks, lastUpdated: Date.now() };
     }
 
-    window.addEventListener('DOMContentLoaded', () => {
-      showAuthLoading();
-      setTimeout(initAuthListener, 100);
-    });
-  </script>
+    window.addEventListener('DOMContentLoaded', () => { showAuthLoading(); setTimeout(initAuthListener, 100); });
 
-  <!-- SCRIPT UTAMA -->
-  <script>
+    // ============================================
+    // STATE
+    // ============================================
     const CONFIG = {
       ENERGI_AWAL: 100, ENERGI_SALAH: -10, ENERGI_HINT: -5,
-      TIMER_PER_SOAL_DETIK: 60,
-      IMAGE_BASE_PATH: "images/", IMAGE_EXT: ".jpg", SHOW_IMAGE_DEFAULT: true
+      ENERGI_STREAK_BONUS: 10, STREAK_TARGET: 5,
+      TIMER_PER_SOAL_DETIK: 90 // 1.5 menit
     };
 
     let STATE = {
       sessionId: null, startTime: null, mode: 'instant', shuffle: false,
-      selectedTopik: [], timerEnabled: false, currentIndex: 0,
-      questions: [], answers: {}, bookmarks: [], timerRemaining: 0,
-      timerInterval: null, showImage: true
+      selectedKategori: ['Topik 1','Topik 2','Topik 3','Topik 4','Topik 5','Topik 6','Topik 7','Topik 8','Topik 9','Topik 10','Topik 11','Topik 12','Topik 13'],
+      timerEnabled: false, gamifikasiEnabled: false, energi: CONFIG.ENERGI_AWAL, streak: 0,
+      currentIndex: 0, questions: [], answers: {}, bookmarks: [],
+      timerRemaining: 0, timerInterval: null, soundEnabled: true
     };
 
+    // ============================================
+    // UTILITY
+    // ============================================
     function uuid() { return 'xxxx-xxxx-xxxx'.replace(/x/g, () => Math.floor(Math.random() * 16).toString(16)); }
-
     function normalize(text) {
       if (!text) return '';
-      return text.toLowerCase().replace(/[.,;:!?()\[\]{}"'`]/g, ' ').replace(/\s+/g, ' ').trim();
+      return text.toLowerCase().replace(/[.,;:!?()\[\]{}"'`\/-]/g, ' ').replace(/\s+/g, ' ').trim();
     }
-
     function levenshtein(a, b) {
       const m = a.length, n = b.length;
       if (!m) return n; if (!n) return m;
       const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
       for (let i = 0; i <= m; i++) dp[i][0] = i;
       for (let j = 0; j <= n; j++) dp[0][j] = j;
-      for (let i = 1; i <= m; i++) {
-        for (let j = 1; j <= n; j++) {
-          dp[i][j] = a[i-1] === b[j-1] ? dp[i-1][j-1] : 1 + Math.min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]);
-        }
-      }
+      for (let i = 1; i <= m; i++) for (let j = 1; j <= n; j++) dp[i][j] = a[i-1] === b[j-1] ? dp[i-1][j-1] : 1 + Math.min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]);
       return dp[m][n];
     }
-
     function similarity(a, b) { return 1 - levenshtein(a, b) / Math.max(a.length, b.length); }
+    
+    function checkKeywords(userText, keywordList) {
+      if (!userText || !keywordList || keywordList.length === 0) return false;
+      const normUser = normalize(userText);
+      const userWords = normUser.split(' ');
+      const stopwords = new Set(['yang','dan','atau','di','ke','dari','pada','untuk','dengan','adalah','merupakan','ini','itu','serta','juga','akan','telah','sudah','dapat','bisa','oleh','ada','tidak','bukan','saat','bila','jika','agar','supaya','karena','seperti','secara','a','an','the','of','in','on','at','to','for','with','is','are','was','were','be','been','has','have','had','bentuk','berbentuk','memiliki','mempunyai','terdapat','terlihat','tampak','nampak','berupa','yaitu','yakni']);
 
-    function fuzzyMatch(userText, targetText, threshold = 0.75) {
-      const u = normalize(userText); const t = normalize(targetText);
-      if (!u || !t) return false;
-      if (u.includes(t) || t.includes(u)) return true;
-      const uWords = u.split(' '); const tWords = t.split(' ');
-      const windowSize = tWords.length;
-      for (let i = 0; i <= uWords.length - windowSize; i++) {
-        const chunk = uWords.slice(i, i + windowSize).join(' ');
-        if (similarity(chunk, t) >= threshold) return true;
+      for (let kw of keywordList) {
+        const normKw = normalize(kw);
+        if (!normKw) continue;
+        
+        if (normUser.includes(normKw)) return true;
+        
+        const kwWords = normKw.split(' ');
+        let allKwWordsFound = true;
+        
+        for (let kwWord of kwWords) {
+          if (stopwords.has(kwWord) && kwWords.length > 1) continue;
+          
+          let found = false;
+          for (let uWord of userWords) {
+            if (uWord === kwWord || uWord.includes(kwWord) || kwWord.includes(uWord) || similarity(uWord, kwWord) >= 0.8) {
+              found = true; break;
+            }
+          }
+          if (!found) { allKwWordsFound = false; break; }
+        }
+        if (allKwWordsFound) return true;
       }
       return false;
     }
 
-    function matchesAny(userText, variasiArray) {
-      if (!userText || !variasiArray || variasiArray.length === 0) return false;
-      return variasiArray.some(v => fuzzyMatch(userText, v));
-    }
-
-    function gradeAnswer(question, jawabanA, jawabanB) {
-      const entry = KAMUS.kamus[`soal_${question.id}`];
-      if (!entry) return { A: false, B: false, score: 0, totalBox: 2, correctBox: 0, isFullyCorrect: false, isPartiallyCorrect: false };
-      const pA = entry.pertanyaan[0]; const pB = entry.pertanyaan[1];
-      const A_correct = matchesAny(jawabanA, pA.variasi_id) || matchesAny(jawabanA, pA.variasi_en);
-      const B_correct = matchesAny(jawabanB, pB.variasi_id) || matchesAny(jawabanB, pB.variasi_en);
-      const correctBox = (A_correct ? 1 : 0) + (B_correct ? 1 : 0);
-      const score = Math.round((correctBox / 2) * 100);
-      return { A: A_correct, B: B_correct, score, totalBox: 2, correctBox, isFullyCorrect: correctBox === 2, isPartiallyCorrect: correctBox === 1 };
-    }
-
-    function getImagePath(question) {
-      if (question.gambar) return question.gambar;
-      return `${CONFIG.IMAGE_BASE_PATH}mikro${question.id}${CONFIG.IMAGE_EXT}`;
-    }
-
-    function renderImagePanel(question) {
-      const container = document.getElementById('image-container');
-      const imgPath = getImagePath(question);
-      const img = new Image();
-      img.src = imgPath; img.alt = `Gambar soal ${question.id}`;
-      img.className = 'preparat-img max-w-full max-h-full';
-      img.onclick = () => zoomImage();
-      img.onerror = () => {
-        container.innerHTML = `
-          <div class="image-placeholder">
-            <i class="fas fa-image text-5xl mb-3 opacity-40"></i>
-            <p class="font-semibold text-sm">Gambar belum tersedia</p>
-            <p class="text-xs mt-1 opacity-75">Soal #${question.id}</p>
-            <p class="text-xs mt-1 opacity-60">Topik: ${question.topik || '-'}</p>
-            <p class="text-xs mt-2 font-mono opacity-50">${imgPath}</p>
-          </div>`;
+    // ============================================
+    // PENILAIAN
+    // ============================================
+    function gradeAnswer(question, userA, userB) {
+      const keyA = KAMUS[question.id]?.A || [];
+      const keyB = KAMUS[question.id]?.B || [];
+      
+      const isACorrect = checkKeywords(userA, keyA);
+      const isBCorrect = checkKeywords(userB, keyB);
+      
+      let correctCount = 0;
+      if (isACorrect) correctCount++;
+      if (isBCorrect) correctCount++;
+      
+      const score = Math.round((correctCount / 2) * 100);
+      
+      return {
+        boxA: isACorrect,
+        boxB: isBCorrect,
+        score,
+        totalBox: 2,
+        correctBox: correctCount,
+        isFullyCorrect: correctCount === 2,
+        isPartiallyCorrect: correctCount === 1
       };
-      img.onload = () => { container.innerHTML = ''; container.appendChild(img); };
-      container.innerHTML = `<div class="image-placeholder"><i class="fas fa-spinner fa-spin text-3xl mb-2"></i><p class="text-xs">Memuat gambar...</p></div>`;
     }
 
-    function toggleDarkMode() {
-      const html = document.documentElement;
-      const isDark = html.classList.toggle('dark');
-      localStorage.setItem('darkMode', isDark ? '1' : '0');
-      const icon = document.getElementById('dark-mode-icon');
-      if (icon) icon.className = isDark ? 'fas fa-sun text-yellow-400' : 'fas fa-moon text-gray-700';
+    // ============================================
+    // SAVE / LOAD
+    // ============================================
+    function saveProgress() {
+      try {
+        const toSave = {
+          sessionId: STATE.sessionId, startTime: STATE.startTime, mode: STATE.mode,
+          shuffle: STATE.shuffle, selectedKategori: STATE.selectedKategori,
+          timerEnabled: STATE.timerEnabled, gamifikasiEnabled: STATE.gamifikasiEnabled,
+          energi: STATE.energi, streak: STATE.streak, currentIndex: STATE.currentIndex,
+          questions: STATE.questions, answers: STATE.answers, bookmarks: STATE.bookmarks,
+          timerRemaining: STATE.timerRemaining, lastUpdated: Date.now()
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
+        if (currentUser && !currentUser.isAnonymous && window.fb) {
+          const userDocRef = window.fb.doc(window.firebaseDB, 'users', currentUser.uid, 'progress', 'mikrob');
+          window.fb.setDoc(userDocRef, toSave, { merge: true }).catch(e => console.warn('Cloud save failed', e));
+        }
+      } catch (e) { console.warn('Gagal save progress:', e); }
     }
+    function loadProgress() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? JSON.parse(raw) : null;
+      } catch (e) { return null; }
+    }
+    function clearProgress() { localStorage.removeItem(STORAGE_KEY); }
 
-    function initDarkMode() {
-      const saved = localStorage.getItem('darkMode');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (saved === '1' || (saved === null && prefersDark)) {
-        document.documentElement.classList.add('dark');
-        const icon = document.getElementById('dark-mode-icon');
-        if (icon) icon.className = 'fas fa-sun text-yellow-400';
-      }
+    // ============================================
+    // AUDIO & TOAST
+    // ============================================
+    let audioCtx = null;
+    function initAudio() { if (!audioCtx) try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {} }
+    function playTone(freq, dur = 0.15, type = 'sine') {
+      if (!STATE.soundEnabled || !audioCtx) return;
+      const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
+      osc.type = type; osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + dur);
+      osc.connect(gain); gain.connect(audioCtx.destination);
+      osc.start(); osc.stop(audioCtx.currentTime + dur);
     }
-
-    function toggleImagePanel() {
-      STATE.showImage = !STATE.showImage;
-      const panel = document.getElementById('image-panel');
-      const questionPanel = document.getElementById('question-panel');
-      const icon = document.getElementById('toggle-image-icon');
-      if (STATE.showImage) {
-        panel.classList.remove('lg:col-span-12'); panel.classList.add('lg:col-span-5');
-        panel.style.display = ''; questionPanel.className = 'lg:col-span-7';
-        icon.className = 'fas fa-image text-gray-700 dark:text-gray-300';
-        showToast('Panel gambar ditampilkan', 'info');
-      } else {
-        panel.style.display = 'none'; questionPanel.className = 'lg:col-span-12';
-        icon.className = 'fas fa-image text-gray-400 dark:text-gray-600';
-        showToast('Panel gambar disembunyikan', 'info');
-      }
-      localStorage.setItem('showImage', STATE.showImage ? '1' : '0');
-    }
-
-    function initImageToggle() {
-      const saved = localStorage.getItem('showImage');
-      STATE.showImage = saved === null ? CONFIG.SHOW_IMAGE_DEFAULT : saved === '1';
-      if (!STATE.showImage) setTimeout(() => toggleImagePanel(), 100);
-    }
+    function playCorrectSound() { setTimeout(() => playTone(523, 0.1), 0); setTimeout(() => playTone(659, 0.1), 100); setTimeout(() => playTone(784, 0.2), 200); }
+    function playWrongSound() { setTimeout(() => playTone(330, 0.2), 0); setTimeout(() => playTone(262, 0.3), 200); }
+    function playEnergySound() { playTone(880, 0.1, 'sawtooth'); }
 
     function showToast(message, type = 'info') {
       const container = document.getElementById('toast-container');
@@ -786,41 +726,68 @@
       setTimeout(() => { toast.classList.add('translate-x-full'); setTimeout(() => toast.remove(), 300); }, 3000);
     }
 
-    function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+    // ============================================
+    // MODAL & DARK MODE
+    // ============================================
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+      if (id === 'modal-cheatsheet') renderCheatsheet();
+    }
     function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+    function toggleDarkMode() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('darkMode', isDark ? '1' : '0');
+      const icon = document.getElementById('dark-mode-icon');
+      if (icon) icon.className = isDark ? 'fas fa-sun text-yellow-400' : 'fas fa-moon text-gray-700';
+    }
+    function initDarkMode() {
+      const saved = localStorage.getItem('darkMode');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (saved === '1' || (saved === null && prefersDark)) {
+        document.documentElement.classList.add('dark');
+        const icon = document.getElementById('dark-mode-icon');
+        if (icon) icon.className = 'fas fa-sun text-yellow-400';
+      }
+    }
 
+    // ============================================
+    // QUIZ LOGIC
+    // ============================================
     function startQuiz() {
+      initAudio();
       STATE.mode = document.querySelector('input[name="mode"]:checked').value;
       STATE.shuffle = document.querySelector('input[name="shuffle"]:checked').value === 'true';
-      const checkedTopik = Array.from(document.querySelectorAll('input[name="topik"]:checked')).map(el => el.value);
-      if (checkedTopik.length === 0) { showToast('Pilih minimal 1 topik', 'warning'); return; }
-      STATE.selectedTopik = checkedTopik;
-      const timerEl = document.getElementById('timer-enabled');
-      STATE.timerEnabled = STATE.mode === 'exam' && timerEl && timerEl.checked;
+      
+      const checked = Array.from(document.querySelectorAll('input[name="kategori"]:checked')).map(el => el.value);
+      if (checked.length === 0) { showToast('Pilih minimal 1 topik', 'warning'); return; }
+      STATE.selectedKategori = checked;
 
-      let filtered = ALL_QUESTIONS.filter(q => STATE.selectedTopik.includes(q.topik));
-      if (filtered.length === 0) { showToast('Tidak ada soal', 'error'); return; }
+      STATE.timerEnabled = STATE.mode === 'exam' && document.getElementById('timer-enabled').checked;
+      STATE.gamifikasiEnabled = STATE.mode === 'instant' && document.getElementById('gamifikasi-enabled').checked;
+
+      let filtered = ALL_QUESTIONS.filter(q => STATE.selectedKategori.includes(q.kategori));
+      if (filtered.length === 0) { showToast('Tidak ada soal untuk topik ini', 'error'); return; }
       if (STATE.shuffle) filtered = shuffleArray(filtered);
 
       STATE.sessionId = uuid(); STATE.startTime = Date.now();
       STATE.questions = filtered; STATE.currentIndex = 0;
       STATE.answers = {}; STATE.bookmarks = [];
+      STATE.energi = CONFIG.ENERGI_AWAL; STATE.streak = 0;
       STATE.timerRemaining = STATE.timerEnabled ? filtered.length * CONFIG.TIMER_PER_SOAL_DETIK : 0;
 
       showPage('page-quiz');
       document.getElementById('app-header').classList.remove('hidden');
+      document.getElementById('energy-container').classList.toggle('hidden', !STATE.gamifikasiEnabled);
       document.getElementById('header-timer').classList.toggle('hidden', !STATE.timerEnabled);
+
       if (STATE.timerEnabled) startTimer();
-      renderQuestion(); renderPalet(); updateProgress();
+      renderQuestion(); renderPalet(); updateProgress(); updateEnergyBar(); saveProgress();
       showToast(`Latihan dimulai! ${filtered.length} soal`, 'success');
-      saveProgress();
     }
 
     function shuffleArray(arr) {
       const a = [...arr];
-      for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]];
-      }
+      for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
       return a;
     }
 
@@ -828,47 +795,55 @@
       if (STATE.timerInterval) clearInterval(STATE.timerInterval);
       updateTimerDisplay();
       STATE.timerInterval = setInterval(() => {
-        STATE.timerRemaining--; updateTimerDisplay();
+        STATE.timerRemaining--;
+        updateTimerDisplay();
         if (STATE.timerRemaining <= 0) { clearInterval(STATE.timerInterval); finishQuiz(); }
+        if (STATE.timerRemaining % 10 === 0) saveProgress();
       }, 1000);
     }
-
     function updateTimerDisplay() {
       const el = document.getElementById('timer-display'); if (!el) return;
       const m = Math.floor(STATE.timerRemaining / 60).toString().padStart(2, '0');
       const s = (STATE.timerRemaining % 60).toString().padStart(2, '0');
       el.textContent = `${m}:${s}`;
+      const container = document.getElementById('header-timer');
+      if (STATE.timerRemaining < 60) container.classList.add('timer-low');
+      else container.classList.remove('timer-low');
     }
-
     function showPage(id) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById(id).classList.add('active'); window.scrollTo(0, 0);
+      document.getElementById(id).classList.add('active');
+      window.scrollTo(0, 0);
     }
 
     function renderQuestion() {
-      const q = STATE.questions[STATE.currentIndex]; if (!q) return;
-      const entry = KAMUS.kamus[`soal_${q.id}`];
-      if (!entry) { showToast(`Kamus soal ${q.id} tidak ditemukan`, 'error'); return; }
-      renderImagePanel(q);
-      document.getElementById('topik-badge').textContent = q.topik;
-      document.getElementById('kategori-badge').textContent = q.kategori || entry.kategori || '-';
-      document.getElementById('kasus-teks').textContent = q.kasus_id || entry.kasus_id || '-';
-      document.getElementById('kasus-en').textContent = q.kasus_en || entry.kasus_en || '-';
-      document.getElementById('kasus-en').classList.add('hidden');
-      const pA = entry.pertanyaan[0]; const pB = entry.pertanyaan[1];
-      document.getElementById('pertanyaan-a').textContent = pA.teks_id || 'Pertanyaan A tidak ditemukan';
-document.getElementById('pertanyaan-b').textContent = pB.teks_id || 'Pertanyaan B tidak ditemukan';
-
+      const q = STATE.questions[STATE.currentIndex];
+      if (!q) return;
+      
+      // Set Gambar
+      document.getElementById('preparat-img').src = q.gambar;
+      
+      // Set Teks berdasarkan bahasa
+      if (currentLang === 'id') {
+        document.getElementById('vignette-text').textContent = q.vignette;
+        document.getElementById('question-A-text').textContent = q.pertanyaan_A;
+        document.getElementById('question-B-text').textContent = q.pertanyaan_B;
+      } else {
+        document.getElementById('vignette-text').textContent = q.vignette_en;
+        document.getElementById('question-A-text').textContent = q.pertanyaan_A_en;
+        document.getElementById('question-B-text').textContent = q.pertanyaan_B_en;
+      }
+      
       const existing = STATE.answers[q.id];
       if (existing) {
-        document.getElementById('jawaban-a').value = existing.jawabanA || '';
-        document.getElementById('jawaban-b').value = existing.jawabanB || '';
+        document.getElementById('boxA-input').value = existing.boxA || '';
+        document.getElementById('boxB-input').value = existing.boxB || '';
         if (existing.confidence) setConfidence(existing.confidence);
         if (STATE.mode === 'instant' && existing.graded) showFeedback(existing);
         else document.getElementById('feedback-area').classList.add('hidden');
       } else {
-        document.getElementById('jawaban-a').value = '';
-        document.getElementById('jawaban-b').value = '';
+        document.getElementById('boxA-input').value = '';
+        document.getElementById('boxB-input').value = '';
         document.getElementById('feedback-area').classList.add('hidden');
         setConfidence('ragu');
       }
@@ -879,12 +854,12 @@ document.getElementById('pertanyaan-b').textContent = pB.teks_id || 'Pertanyaan 
       renderPalet();
     }
 
-    function toggleEnglish() { document.getElementById('kasus-en').classList.toggle('hidden'); }
-
     function renderPalet() {
       const container = document.getElementById('palet-container'); if (!container) return;
       container.innerHTML = STATE.questions.map((q, i) => {
-        const answer = STATE.answers[q.id]; const isBookmarked = STATE.bookmarks.includes(q.id); const isActive = i === STATE.currentIndex;
+        const answer = STATE.answers[q.id];
+        const isBookmarked = STATE.bookmarks.includes(q.id);
+        const isActive = i === STATE.currentIndex;
         let bgClass = 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300';
         if (answer && answer.graded && answer.grade) {
           if (answer.grade.isFullyCorrect) bgClass = 'bg-green-500 text-white';
@@ -901,17 +876,10 @@ document.getElementById('pertanyaan-b').textContent = pB.teks_id || 'Pertanyaan 
       if (i < 0 || i >= STATE.questions.length) return;
       STATE.currentIndex = i; renderQuestion(); saveProgress();
     }
-
     function prevQuestion() { if (STATE.currentIndex > 0) goToQuestion(STATE.currentIndex - 1); }
     function nextQuestion() { if (STATE.currentIndex < STATE.questions.length - 1) goToQuestion(STATE.currentIndex + 1); }
-
-    function setConfidence(level) {
-      document.querySelectorAll('.confidence-btn').forEach(btn => { btn.classList.toggle('active', btn.dataset.confidence === level); });
-    }
-
-    function getConfidence() {
-      const active = document.querySelector('.confidence-btn.active'); return active ? active.dataset.confidence : 'ragu';
-    }
+    function setConfidence(level) { document.querySelectorAll('.confidence-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.confidence === level)); }
+    function getConfidence() { const active = document.querySelector('.confidence-btn.active'); return active ? active.dataset.confidence : 'ragu'; }
 
     function toggleBookmark() {
       const q = STATE.questions[STATE.currentIndex]; if (!q) return;
@@ -920,42 +888,71 @@ document.getElementById('pertanyaan-b').textContent = pB.teks_id || 'Pertanyaan 
       else { STATE.bookmarks.splice(idx, 1); showToast('Bookmark dihapus', 'info'); }
       updateBookmarkButton(); renderPalet(); saveProgress();
     }
-
     function updateBookmarkButton() {
       const q = STATE.questions[STATE.currentIndex]; if (!q) return;
-      const btn = document.getElementById('btn-bookmark'); const isBookmarked = STATE.bookmarks.includes(q.id);
+      const btn = document.getElementById('btn-bookmark');
+      const isBookmarked = STATE.bookmarks.includes(q.id);
       btn.classList.toggle('bg-yellow-200', isBookmarked);
       btn.classList.toggle('dark:bg-yellow-900/60', isBookmarked);
     }
 
     function showHint() {
-      const q = STATE.questions[STATE.currentIndex]; const entry = KAMUS.kamus[`soal_${q.id}`]; if (!entry) return;
-      const pA = entry.pertanyaan[0]; const pB = entry.pertanyaan[1];
-      showToast(`Keyword A: ${pA.keywords.slice(0, 3).join(', ')} | Keyword B: ${pB.keywords.slice(0, 3).join(', ')}`, 'info');
+      const q = STATE.questions[STATE.currentIndex];
+      if (!q) return;
+      const hintText = `Topik: ${q.kategori}. Coba ingat kembali konsep dasar terkait topik ini.`;
+      if (STATE.gamifikasiEnabled) changeEnergy(CONFIG.ENERGI_HINT);
+      showToast(hintText, 'info');
     }
 
     function clearAnswer() {
-      document.getElementById('jawaban-a').value = ''; document.getElementById('jawaban-b').value = '';
-      document.getElementById('feedback-area').classList.add('hidden'); showToast('Jawaban dihapus', 'info');
+      document.getElementById('boxA-input').value = '';
+      document.getElementById('boxB-input').value = '';
+      document.getElementById('feedback-area').classList.add('hidden');
+      showToast('Jawaban dihapus', 'info');
     }
 
     function submitAnswer() {
       const q = STATE.questions[STATE.currentIndex]; if (!q) return;
-      const jawabanA = document.getElementById('jawaban-a').value.trim();
-      const jawabanB = document.getElementById('jawaban-b').value.trim();
+      const boxA = document.getElementById('boxA-input').value.trim();
+      const boxB = document.getElementById('boxB-input').value.trim();
       const confidence = getConfidence();
-      if (!jawabanA && !jawabanB) { showToast('Isi minimal 1 jawaban', 'warning'); return; }
-      const grade = gradeAnswer(q, jawabanA, jawabanB);
-      STATE.answers[q.id] = { jawabanA, jawabanB, confidence, grade, graded: true, timestamp: Date.now() };
+
+      if (!boxA && !boxB) { showToast('Isi minimal 1 kotak jawaban', 'warning'); return; }
+
+      const grade = gradeAnswer(q, boxA, boxB);
+      STATE.answers[q.id] = { boxA, boxB, confidence, grade, graded: true, timestamp: Date.now() };
+
+      if (grade.isFullyCorrect) playCorrectSound();
+      else if (grade.correctBox > 0) playTone(500, 0.15);
+      else playWrongSound();
+
+      if (STATE.gamifikasiEnabled) {
+        if (grade.correctBox === 0) { changeEnergy(CONFIG.ENERGI_SALAH); STATE.streak = 0; }
+        else if (grade.isFullyCorrect) {
+          STATE.streak++;
+          if (STATE.streak >= CONFIG.STREAK_TARGET) { changeEnergy(CONFIG.ENERGI_STREAK_BONUS); playStreakSound(); showToast(`🎉 Streak! +Energi`, 'success'); STATE.streak = 0; }
+        } else { STATE.streak = 0; }
+      }
+
       if (STATE.mode === 'instant') showFeedback(STATE.answers[q.id]);
-      else { if (STATE.currentIndex < STATE.questions.length - 1) setTimeout(() => nextQuestion(), 300); else showToast('Semua soal sudah dijawab', 'info'); }
+      else {
+        if (STATE.currentIndex < STATE.questions.length - 1) setTimeout(() => nextQuestion(), 300);
+        else showToast('Semua soal sudah dijawab', 'info');
+      }
+
       renderPalet(); updateProgress(); saveProgress();
+      if (STATE.gamifikasiEnabled && STATE.energi <= 0) {
+        setTimeout(() => { showToast('Energi habis! Latihan selesai.', 'error'); finishQuiz(); }, 1500);
+      }
     }
 
     function showFeedback(answer) {
-      const area = document.getElementById('feedback-area'); const content = document.getElementById('feedback-content');
-      const grade = answer.grade; const q = STATE.questions[STATE.currentIndex];
-      const entry = KAMUS.kamus[`soal_${q.id}`]; const pA = entry.pertanyaan[0]; const pB = entry.pertanyaan[1];
+      const area = document.getElementById('feedback-area');
+      const content = document.getElementById('feedback-content');
+      const grade = answer.grade;
+      const q = STATE.questions[STATE.currentIndex];
+      const kunci = KAMUS[q.id] || { A: [], B: [] };
+
       let headerClass, headerIcon, headerText;
       if (grade.isFullyCorrect) { headerClass = 'bg-green-50 dark:bg-green-900/20 border-green-500'; headerIcon = 'fa-check-circle text-green-500'; headerText = 'Benar Semua!'; }
       else if (grade.correctBox > 0) { headerClass = 'bg-yellow-50 dark:bg-yellow-900/20 border-yellow-500'; headerIcon = 'fa-exclamation-circle text-yellow-500'; headerText = 'Sebagian Benar'; }
@@ -963,61 +960,37 @@ document.getElementById('pertanyaan-b').textContent = pB.teks_id || 'Pertanyaan 
 
       let html = `
         <div class="${headerClass} border-l-4 rounded-lg p-3 mb-3">
-          <div class="flex items-center gap-2">
-            <i class="fas ${headerIcon} text-2xl"></i>
-            <div><p class="font-bold">${headerText}</p><p class="text-xs">Skor: ${grade.score}% (${grade.correctBox}/${grade.totalBox})</p></div>
-          </div>
+          <div class="flex items-center gap-2"><i class="fas ${headerIcon} text-2xl"></i><div><p class="font-bold">${headerText}</p><p class="text-xs">Skor: ${grade.score}% (${grade.correctBox}/${grade.totalBox} box)</p></div></div>
         </div>
-        <div class="space-y-3 text-sm">
+        <div class="space-y-2 text-sm">
           <div class="flex items-start gap-2">
-            <i class="fas ${grade.A ? 'fa-check-circle text-green-500' : 'fa-times-circle text-red-500'} mt-1"></i>
-            <div class="flex-1">
-              <p class="font-semibold">A. ${pA.teks_id}</p>
-              <p class="text-gray-600 dark:text-gray-400 mt-1">Jawaban Anda: <em>${answer.jawabanA || '-'}</em></p>
-              <p class="text-gray-600 dark:text-gray-400 mt-1">Contoh kunci: <strong>${pA.variasi_id[0]}</strong></p>
-            </div>
+            <i class="fas ${grade.boxA ? 'fa-check-circle text-green-500' : 'fa-times-circle text-red-500'} mt-1"></i>
+            <div><p class="font-semibold">Pertanyaan A:</p><p class="text-gray-600 dark:text-gray-400">Kunci: <strong>${kunci.A.join(', ')}</strong></p></div>
           </div>
           <div class="flex items-start gap-2">
-            <i class="fas ${grade.B ? 'fa-check-circle text-green-500' : 'fa-times-circle text-red-500'} mt-1"></i>
-            <div class="flex-1">
-              <p class="font-semibold">B. ${pB.teks_id}</p>
-              <p class="text-gray-600 dark:text-gray-400 mt-1">Jawaban Anda: <em>${answer.jawabanB || '-'}</em></p>
-              <p class="text-gray-600 dark:text-gray-400 mt-1">Contoh kunci: <strong>${pB.variasi_id[0]}</strong></p>
-            </div>
+            <i class="fas ${grade.boxB ? 'fa-check-circle text-green-500' : 'fa-times-circle text-red-500'} mt-1"></i>
+            <div><p class="font-semibold">Pertanyaan B:</p><p class="text-gray-600 dark:text-gray-400">Kunci: <strong>${kunci.B.join(', ')}</strong></p></div>
           </div>
-        </div>
-        <details class="mt-3 text-xs">
-          <summary class="cursor-pointer text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"><i class="fas fa-list mr-1"></i> Lihat semua variasi jawaban yang diterima</summary>
-          <div class="mt-2 space-y-2 pl-4">
-            <div><p class="font-semibold">A:</p><ul class="list-disc list-inside text-gray-600 dark:text-gray-400">${pA.variasi_id.map(v => `<li>${v}</li>`).join('')}</ul></div>
-            <div><p class="font-semibold">B:</p><ul class="list-disc list-inside text-gray-600 dark:text-gray-400">${pB.variasi_id.map(v => `<li>${v}</li>`).join('')}</ul></div>
-          </div>
-        </details>`;
-      content.innerHTML = html; area.classList.remove('hidden');
+        </div>`;
+      content.innerHTML = html;
+      area.classList.remove('hidden');
     }
 
+    function changeEnergy(delta) { STATE.energi = Math.max(0, Math.min(100, STATE.energi + delta)); updateEnergyBar(); playEnergySound(); }
+    function updateEnergyBar() {
+      const bar = document.getElementById('energy-bar'); const val = document.getElementById('energy-value');
+      if (!bar || !val) return;
+      bar.style.width = STATE.energi + '%'; val.textContent = STATE.energi;
+      bar.className = 'h-full transition-all duration-500 ';
+      if (STATE.energi > 50) bar.className += 'bg-gradient-to-r from-green-400 to-teal-500';
+      else if (STATE.energi > 20) bar.className += 'bg-gradient-to-r from-yellow-400 to-orange-500';
+      else bar.className += 'bg-gradient-to-r from-red-500 to-red-700 energy-low';
+    }
     function updateProgress() {
       const total = STATE.questions.length; const done = Object.keys(STATE.answers).length;
       const percent = Math.round((done / total) * 100);
       document.getElementById('progress-text').textContent = `${done} / ${total} (${percent}%)`;
       document.getElementById('progress-bar').style.width = percent + '%';
-    }
-
-    function saveProgress() {
-      try {
-        const toSave = { sessionId: STATE.sessionId, startTime: STATE.startTime, mode: STATE.mode, currentIndex: STATE.currentIndex, questions: STATE.questions.map(q => q.id), answers: STATE.answers, bookmarks: STATE.bookmarks, lastUpdated: Date.now() };
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
-        if (typeof currentUser !== 'undefined' && currentUser && !currentUser.isAnonymous && window.fb) saveToCloud(currentUser.uid, toSave);
-      } catch (e) { console.warn('Gagal save:', e); }
-    }
-
-    async function saveToCloud(uid, data) {
-      if (!window.fb) return;
-      try {
-        const ref = window.fb.doc(window.firebaseDB, 'users', uid, 'progress', FIRESTORE_DOC);
-        await window.fb.setDoc(ref, data, { merge: true });
-        console.log('☁️ Saved to cloud');
-      } catch (error) { console.error('❌ Save cloud error:', error); }
     }
 
     function finishQuiz() {
@@ -1026,101 +999,256 @@ document.getElementById('pertanyaan-b').textContent = pB.teks_id || 'Pertanyaan 
     }
 
     function renderResult() {
-      const total = STATE.questions.length; const answers = Object.values(STATE.answers); const graded = answers.filter(a => a.graded);
-      const correct = graded.filter(a => a.grade.isFullyCorrect).length; const partial = graded.filter(a => a.grade.correctBox > 0 && !a.grade.isFullyCorrect).length;
-      const wrong = graded.length - correct - partial; const empty = total - graded.length;
-      let totalScore = 0; STATE.questions.forEach(q => { const ans = STATE.answers[q.id]; if (ans && ans.grade) totalScore += ans.grade.score; });
+      const total = STATE.questions.length;
+      const answers = Object.values(STATE.answers);
+      const graded = answers.filter(a => a.graded);
+      const correct = graded.filter(a => a.grade.isFullyCorrect).length;
+      const partial = graded.filter(a => a.grade.correctBox > 0 && !a.grade.isFullyCorrect).length;
+      const wrong = graded.length - correct - partial;
+      const empty = total - graded.length;
+
+      let totalScore = 0;
+      STATE.questions.forEach(q => { const ans = STATE.answers[q.id]; if (ans && ans.grade) totalScore += ans.grade.score; });
       const finalScore = Math.round(totalScore / total);
-      const circle = document.getElementById('result-circle'); const circumference = 2 * Math.PI * 42; const offset = circumference - (finalScore / 100) * circumference;
+
+      const circle = document.getElementById('result-circle');
+      const circumference = 2 * Math.PI * 42;
+      const offset = circumference - (finalScore / 100) * circumference;
       setTimeout(() => {
         circle.style.strokeDashoffset = offset;
-        if (finalScore >= 75) circle.style.stroke = '#14b8a6'; else if (finalScore >= 50) circle.style.stroke = '#f59e0b'; else circle.style.stroke = '#ef4444';
+        circle.style.stroke = finalScore >= 75 ? '#14b8a6' : (finalScore >= 50 ? '#f59e0b' : '#ef4444');
       }, 100);
       document.getElementById('result-score').textContent = finalScore + '%';
+
       const status = document.getElementById('result-status');
       let statusClass, statusIcon, statusText;
       if (finalScore >= 90) { statusClass = 'bg-green-100 dark:bg-green-900/30'; statusIcon = 'fa-star text-yellow-500'; statusText = 'Luar Biasa!'; }
-      else if (finalScore >= 75) { statusClass = 'bg-teal-100 dark:bg-teal-900/30'; statusIcon = 'fa-thumbs-up text-teal-600'; statusText = 'Bagus!'; }
-      else if (finalScore >= 60) { statusClass = 'bg-yellow-100 dark:bg-yellow-900/30'; statusIcon = 'fa-lightbulb text-yellow-600'; statusText = 'Cukup Baik'; }
-      else { statusClass = 'bg-orange-100 dark:bg-orange-900/30'; statusIcon = 'fa-book text-orange-600'; statusText = 'Perlu Belajar Lagi'; }
+      else if (finalScore >= 75) { statusClass = 'bg-teal-100 dark:bg-teal-900/30'; statusIcon = 'fa-thumbs-up text-teal-600 dark:text-teal-400'; statusText = 'Bagus!'; }
+      else if (finalScore >= 60) { statusClass = 'bg-yellow-100 dark:bg-yellow-900/30'; statusIcon = 'fa-lightbulb text-yellow-600 dark:text-yellow-400'; statusText = 'Cukup Baik'; }
+      else { statusClass = 'bg-orange-100 dark:bg-orange-900/30'; statusIcon = 'fa-book text-orange-600 dark:text-orange-400'; statusText = 'Perlu Belajar Lagi'; }
       status.innerHTML = `<div class="inline-flex items-center gap-2 px-4 py-2 ${statusClass} rounded-full"><i class="fas ${statusIcon} text-xl"></i><span class="font-bold">${statusText}</span></div>`;
-      document.getElementById('stat-correct').textContent = correct; document.getElementById('stat-wrong').textContent = wrong + partial; document.getElementById('stat-empty').textContent = empty;
+
+      document.getElementById('stat-correct').textContent = correct;
+      document.getElementById('stat-wrong').textContent = wrong + partial;
+      document.getElementById('stat-empty').textContent = empty;
+
       const messages = ['Terus semangat! Latihan membuat sempurna. 💪','Sedikit lagi! Fokus pada topik terlemah. 🎯','Bagus! Kamu sudah di jalur yang benar. ✨','Luar biasa! Pertahankan! 🏆'];
-      const msgIdx = Math.min(3, Math.floor(finalScore / 25)); document.getElementById('result-message').textContent = messages[msgIdx];
-      renderPerformanceBreakdown(); renderPembahasanList();
+      document.getElementById('result-message').textContent = messages[Math.min(3, Math.floor(finalScore / 25))];
+
+      renderPerformanceBreakdown();
+      renderMetaAnalytics();
+      renderPembahasanList();
+
+      const btnRetry = document.getElementById('btn-retry-incorrect');
+      if (btnRetry) {
+        const hasWrong = (wrong + partial) > 0;
+        btnRetry.disabled = !hasWrong;
+        if (btnRetry.disabled) btnRetry.classList.add('opacity-50', 'cursor-not-allowed');
+        else btnRetry.classList.remove('opacity-50', 'cursor-not-allowed');
+      }
     }
 
     function renderPerformanceBreakdown() {
-      const container = document.getElementById('performance-breakdown'); const perTopik = {};
+      const container = document.getElementById('performance-breakdown');
+      const perKat = {};
       STATE.questions.forEach(q => {
-        const t = q.topik || 'Lainnya'; if (!perTopik[t]) perTopik[t] = { total: 0, correct: 0, score: 0 }; perTopik[t].total++;
-        const ans = STATE.answers[q.id]; if (ans && ans.grade) { perTopik[t].score += ans.grade.score; if (ans.grade.isFullyCorrect) perTopik[t].correct++; }
+        if (!perKat[q.kategori]) perKat[q.kategori] = { total: 0, correct: 0, score: 0 };
+        perKat[q.kategori].total++;
+        const ans = STATE.answers[q.id];
+        if (ans && ans.grade) { perKat[q.kategori].score += ans.grade.score; if (ans.grade.isFullyCorrect) perKat[q.kategori].correct++; }
       });
-      let html = '';
-      Object.entries(perTopik).forEach(([topik, data]) => {
-        const avgScore = Math.round(data.score / data.total); const statusColor = avgScore >= 78 ? 'text-green-600' : avgScore >= 60 ? 'text-yellow-600' : 'text-red-600';
-        html += `<div class="flex items-center gap-2 p-2 bg-gray-50 dark:bg-gray-900/30 rounded"><div class="flex-1"><p class="text-sm font-semibold">${topik}</p><div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mt-1"><div class="h-full bg-teal-500 rounded-full" style="width: ${avgScore}%"></div></div></div><div class="text-right"><p class="text-sm font-bold ${statusColor}">${avgScore}%</p><p class="text-xs text-gray-500">${data.correct}/${data.total}</p></div></div>`;
+      let html = ''; let weakest = { name: null, score: 100 };
+      Object.entries(perKat).forEach(([kat, data]) => {
+        const avg = Math.round(data.score / data.total);
+        if (avg < weakest.score) weakest = { name: kat, score: avg };
+        const color = avg >= 78 ? 'text-green-600' : avg >= 60 ? 'text-yellow-600' : 'text-red-600';
+        html += `<div class="flex items-center gap-2 p-2 bg-gray-50 dark:bg-gray-900/30 rounded"><div class="flex-1"><p class="text-sm font-semibold">${kat}</p><div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mt-1"><div class="h-full bg-teal-500 rounded-full" style="width: ${avg}%"></div></div></div><div class="text-right"><p class="text-sm font-bold ${color}">${avg}%</p><p class="text-xs text-gray-500">${data.correct}/${data.total}</p></div></div>`;
       });
       container.innerHTML = html;
+      const weakEl = document.getElementById('weakest-category');
+      if (weakest.name && weakest.score < 78) weakEl.innerHTML = `<p class="text-sm font-semibold text-orange-700 dark:text-orange-400"><i class="fas fa-lightbulb mr-1"></i> Perbanyak belajar: <strong>${weakest.name}</strong> (skor ${weakest.score}%)</p>`;
+      else weakEl.innerHTML = `<p class="text-sm font-semibold text-green-700 dark:text-green-400"><i class="fas fa-check-circle mr-1"></i> Semua topik sudah kuat!</p>`;
+    }
+
+    function renderMetaAnalytics() {
+      const answers = Object.values(STATE.answers).filter(a => a.graded);
+      const yakin = answers.filter(a => a.confidence === 'yakin');
+      const tebak = answers.filter(a => a.confidence === 'tebak');
+      const yakinSalah = yakin.filter(a => !a.grade.isFullyCorrect).length;
+      const tebakBenar = tebak.filter(a => a.grade.isFullyCorrect).length;
+      document.getElementById('meta-overconfidence').innerHTML = yakin.length > 0 ? `<strong>${Math.round((yakinSalah / yakin.length) * 100)}%</strong> — dari ${yakin.length} soal "Yakin", ${yakinSalah} salah.` : 'Belum ada data.';
+      document.getElementById('meta-luckyguess').innerHTML = tebak.length > 0 ? `<strong>${Math.round((tebakBenar / tebak.length) * 100)}%</strong> — dari ${tebak.length} soal "Tebak", ${tebakBenar} benar.` : 'Belum ada data.';
     }
 
     function renderPembahasanList() {
-      const container = document.getElementById('pembahasan-list'); let html = '';
+      const container = document.getElementById('pembahasan-list');
+      let html = '';
       STATE.questions.forEach((q, i) => {
-        const ans = STATE.answers[q.id]; const entry = KAMUS.kamus[`soal_${q.id}`]; const isAnswered = ans && ans.graded;
-        const statusIcon = !isAnswered ? '<i class="fas fa-minus-circle text-gray-400"></i>' : ans.grade.isFullyCorrect ? '<i class="fas fa-check-circle text-green-500"></i>' : ans.grade.correctBox > 0 ? '<i class="fas fa-exclamation-circle text-yellow-500"></i>' : '<i class="fas fa-times-circle text-red-500"></i>';
-        html += `<details class="bg-gray-50 dark:bg-gray-900/30 rounded-lg"><summary class="cursor-pointer p-3 flex items-center gap-2 text-sm">${statusIcon}<span class="font-semibold">Soal ${i + 1}:</span><span class="text-gray-600 dark:text-gray-400">${q.topik}</span></summary><div class="p-3 border-t border-gray-200 dark:border-gray-700 text-sm space-y-3"><div><p class="font-semibold mb-1">A. ${entry.pertanyaan[0].teks_id}</p><p class="text-gray-600 dark:text-gray-400">Jawaban Anda: <em>${ans?.jawabanA || '-'}</em></p><p class="text-gray-600 dark:text-gray-400">Kunci: ${entry.pertanyaan[0].variasi_id[0]}</p></div><div><p class="font-semibold mb-1">B. ${entry.pertanyaan[1].teks_id}</p><p class="text-gray-600 dark:text-gray-400">Jawaban Anda: <em>${ans?.jawabanB || '-'}</em></p><p class="text-gray-600 dark:text-gray-400">Kunci: ${entry.pertanyaan[1].variasi_id[0]}</p></div></div></details>`;
+        const ans = STATE.answers[q.id];
+        const kunci = KAMUS[q.id] || { A: [], B: [] };
+        const isAns = ans && ans.graded;
+        const statusIcon = !isAns ? '<i class="fas fa-minus-circle text-gray-400"></i>' : (ans.grade.isFullyCorrect ? '<i class="fas fa-check-circle text-green-500"></i>' : (ans.grade.correctBox > 0 ? '<i class="fas fa-exclamation-circle text-yellow-500"></i>' : '<i class="fas fa-times-circle text-red-500"></i>'));
+        html += `
+          <details class="bg-gray-50 dark:bg-gray-900/30 rounded-lg">
+            <summary class="cursor-pointer p-3 flex items-center gap-2 text-sm">
+              ${statusIcon}
+              <span class="font-semibold">Soal ${i + 1}:</span>
+              <span class="text-gray-600 dark:text-gray-400">${q.kategori} - ${q.vignette.substring(0, 30)}...</span>
+            </summary>
+            <div class="p-3 border-t border-gray-200 dark:border-gray-700 text-sm space-y-2">
+              <p><strong>Jawaban A:</strong> ${ans?.boxA || '-'} <br><span class="text-xs text-green-600">Kunci: ${kunci.A.join(', ')}</span></p>
+              <p><strong>Jawaban B:</strong> ${ans?.boxB || '-'} <br><span class="text-xs text-green-600">Kunci: ${kunci.B.join(', ')}</span></p>
+            </div>
+          </details>`;
       });
       container.innerHTML = html;
     }
 
-    function restartQuiz() { location.reload(); }
+    function restartQuiz() { clearProgress(); location.reload(); }
     function retryIncorrect() {
       const incorrectIds = Object.entries(STATE.answers).filter(([_, a]) => a.graded && !a.grade.isFullyCorrect).map(([id]) => parseInt(id));
       if (incorrectIds.length === 0) { showToast('Tidak ada soal salah', 'info'); return; }
-      const newQuestions = STATE.questions.filter(q => incorrectIds.includes(q.id)); const oldMode = STATE.mode; const oldTimer = STATE.timerEnabled;
-      STATE = { ...STATE, sessionId: uuid(), startTime: Date.now(), questions: newQuestions, currentIndex: 0, answers: {}, bookmarks: [], timerRemaining: oldTimer ? newQuestions.length * CONFIG.TIMER_PER_SOAL_DETIK : 0 };
-      showPage('page-quiz'); document.getElementById('app-header').classList.remove('hidden'); document.getElementById('header-timer').classList.toggle('hidden', !oldTimer);
-      if (oldTimer) startTimer(); renderQuestion(); renderPalet(); updateProgress(); showToast(`Ulang ${newQuestions.length} soal yang salah`, 'info');
+      const newQuestions = STATE.questions.filter(q => incorrectIds.includes(q.id));
+      const oldMode = STATE.mode; const oldGamif = STATE.gamifikasiEnabled; const oldTimer = STATE.timerEnabled;
+      clearProgress();
+      STATE = { ...STATE, sessionId: uuid(), startTime: Date.now(), questions: newQuestions, currentIndex: 0, answers: {}, bookmarks: [], energi: CONFIG.ENERGI_AWAL, streak: 0, timerRemaining: oldTimer ? newQuestions.length * CONFIG.TIMER_PER_SOAL_DETIK : 0 };
+      showPage('page-quiz'); document.getElementById('app-header').classList.remove('hidden');
+      document.getElementById('energy-container').classList.toggle('hidden', !oldGamif);
+      document.getElementById('header-timer').classList.toggle('hidden', !oldTimer);
+      if (oldTimer) startTimer();
+      renderQuestion(); renderPalet(); updateProgress(); saveProgress();
+      showToast(`Ulang ${newQuestions.length} soal yang salah`, 'info');
     }
 
     function downloadPDF() {
-      const printWindow = window.open('', '_blank');
-      let html = `<html><head><title>Latihan Mikrobiologi</title><style>body { font-family: Arial; max-width: 800px; margin: 20px auto; padding: 20px; } h1 { color: #0d9488; border-bottom: 3px solid #0d9488; padding-bottom: 10px; } .soal { margin-bottom: 30px; page-break-inside: avoid; } .kunci { margin-top: 40px; border-top: 3px solid #0d9488; padding-top: 20px; page-break-before: always; }</style></head><body><h1>Latihan Praktikum Mikrobiologi</h1><p><em>Total: ${STATE.questions.length} soal</em></p><hr>`;
-      STATE.questions.forEach((q, i) => { const entry = KAMUS.kamus[`soal_${q.id}`]; html += `<div class="soal"><h3>Soal ${i + 1} (${q.topik})</h3><p><strong>Kasus:</strong> ${q.kasus_id}</p><p><strong>A.</strong> ${entry.pertanyaan[0].teks_id}</p><p><strong>B.</strong> ${entry.pertanyaan[1].teks_id}</p></div>`; });
+      const win = window.open('', '_blank');
+      let html = `<html><head><title>Latihan Mikrobiologi</title><style>body{font-family:Arial;max-width:800px;margin:20px auto;}h1{color:#0d9488;border-bottom:3px solid #0d9488;} .soal{margin-bottom:30px;page-break-inside:avoid;} .kunci{margin-top:40px;border-top:3px solid #0d9488;page-break-before:always;}</style></head><body><h1>Latihan UPRAK Mikrobiologi Klinik</h1><p>Total: ${STATE.questions.length} soal</p><hr>`;
+      STATE.questions.forEach((q, i) => { 
+        html += `<div class="soal"><h3>Soal ${i+1}</h3><p><em>${q.vignette}</em></p><p><strong>A:</strong> ${q.pertanyaan_A}</p><p><strong>B:</strong> ${q.pertanyaan_B}</p><img src="${q.gambar}" style="max-width:400px;margin:10px 0;"></div>`; 
+      });
       html += `<div class="kunci"><h1>KUNCI JAWABAN</h1>`;
-      STATE.questions.forEach((q, i) => { const entry = KAMUS.kamus[`soal_${q.id}`]; html += `<div class="soal"><h3>Soal ${i + 1}</h3><p><strong>A.</strong> ${entry.pertanyaan[0].variasi_id.join(' / ')}</p><p><strong>B.</strong> ${entry.pertanyaan[1].variasi_id.join(' / ')}</p></div>`; });
-      html += `</div></body></html>`; printWindow.document.write(html); printWindow.document.close(); setTimeout(() => printWindow.print(), 500);
+      STATE.questions.forEach((q, i) => { const k = KAMUS[q.id] || {A:[],B:[]}; html += `<div><h3>Soal ${i+1}</h3><p><strong>A:</strong> ${k.A.join(', ')}</p><p><strong>B:</strong> ${k.B.join(', ')}</p></div>`; });
+      html += `</div></body></html>`;
+      win.document.write(html); win.document.close(); setTimeout(() => win.print(), 500);
     }
 
     function exportIncorrect() {
       const incorrect = STATE.questions.map((q, i) => ({ q, i, ans: STATE.answers[q.id] })).filter(({ ans }) => ans && ans.graded && !ans.grade.isFullyCorrect);
       if (incorrect.length === 0) { showToast('Tidak ada soal salah', 'info'); return; }
-      let text = `RINGKASAN SOAL SALAH - Mikrobiologi\nTanggal: ${new Date().toLocaleString('id-ID')}\nTotal: ${incorrect.length} soal\n${'='.repeat(50)}\n\n`;
-      incorrect.forEach(({ q, i, ans }) => { const entry = KAMUS.kamus[`soal_${q.id}`]; text += `Soal ${i + 1} (${q.topik})\n`; text += `A. ${entry.pertanyaan[0].teks_id}\n   Jawaban: ${ans.jawabanA || '-'}\n   Kunci: ${entry.pertanyaan[0].variasi_id[0]}\n`; text += `B. ${entry.pertanyaan[1].teks_id}\n   Jawaban: ${ans.jawabanB || '-'}\n   Kunci: ${entry.pertanyaan[1].variasi_id[0]}\n`; text += `\n---\n\n`; });
-      navigator.clipboard.writeText(text).then(() => showToast('Ringkasan disalin ke clipboard', 'success')).catch(() => { const blob = new Blob([text], { type: 'text/plain' }); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = `soal_salah_${Date.now()}.txt`; a.click(); showToast('File diunduh', 'success'); });
+      let text = `RINGKASAN SOAL SALAH - Mikrobiologi Klinik\nTanggal: ${new Date().toLocaleString('id-ID')}\nTotal: ${incorrect.length} soal\n==========================================\n\n`;
+      incorrect.forEach(({ q, i, ans }) => {
+        const k = KAMUS[q.id] || {A:[],B:[]};
+        text += `Soal ${i+1} (${q.kategori})\n${q.vignette}\nJawaban A: ${ans.boxA || '-'} (Kunci: ${k.A.join(', ')})\nJawaban B: ${ans.boxB || '-'} (Kunci: ${k.B.join(', ')})\n\n---\n\n`;
+      });
+      navigator.clipboard.writeText(text).then(() => showToast('Ringkasan disalin ke clipboard', 'success')).catch(() => {
+        const blob = new Blob([text], { type: 'text/plain' }); const url = URL.createObjectURL(blob);
+        const a = document.createElement('a'); a.href = url; a.download = `soal_salah_${Date.now()}.txt`; a.click(); showToast('File diunduh', 'success');
+      });
     }
 
-    function zoomImage() { const img = document.querySelector('#image-container img'); if (!img) { showToast('Tidak ada gambar untuk di-zoom', 'info'); return; } document.getElementById('zoom-image').src = img.src; openModal('modal-zoom'); }
-    function confirmExit() { document.getElementById('confirm-title').textContent = 'Keluar Latihan?'; document.getElementById('confirm-message').textContent = 'Progress akan hilang. Yakin?'; const yesBtn = document.getElementById('confirm-yes-btn'); yesBtn.textContent = 'Ya, Keluar'; yesBtn.onclick = () => { closeModal('modal-confirm'); location.reload(); }; openModal('modal-confirm'); }
-    function confirmFinish() { const total = STATE.questions.length; const done = Object.keys(STATE.answers).length; const belum = total - done; let message = belum === 0 ? `Semua ${total} soal sudah dijawab.\n\nYakin ingin menyelesaikan?` : `Masih ada ${belum} soal yang belum dijawab.\n\nYakin ingin menyelesaikan sekarang?`; document.getElementById('confirm-title').textContent = 'Selesaikan Latihan?'; document.getElementById('confirm-message').innerHTML = message.replace(/\n/g, '<br>'); const yesBtn = document.getElementById('confirm-yes-btn'); yesBtn.textContent = 'Ya, Selesai'; yesBtn.className = 'flex-1 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-semibold'; yesBtn.onclick = () => { closeModal('modal-confirm'); finishQuiz(); }; openModal('modal-confirm'); }
+    function zoomImage() { const src = document.getElementById('preparat-img').src; document.getElementById('zoom-image').src = src; openModal('modal-zoom'); }
+    function confirmExit() {
+      document.getElementById('confirm-title').textContent = 'Keluar Latihan?';
+      document.getElementById('confirm-message').textContent = 'Progress akan disimpan dan bisa dilanjutkan nanti.';
+      const yesBtn = document.getElementById('confirm-yes-btn');
+      yesBtn.textContent = 'Ya, Keluar';
+      yesBtn.onclick = () => { saveProgress(); closeModal('modal-confirm'); location.reload(); };
+      openModal('modal-confirm');
+    }
+    function confirmFinish() {
+      const total = STATE.questions.length; const done = Object.keys(STATE.answers).length; const belum = total - done;
+      let message = belum === 0 ? `Semua ${total} soal sudah dijawab.\nYakin ingin menyelesaikan?` : `Masih ada ${belum} soal belum dijawab.\nYakin ingin menyelesaikan sekarang?`;
+      document.getElementById('confirm-title').textContent = 'Selesaikan Latihan?';
+      document.getElementById('confirm-message').innerHTML = message.replace(/\n/g, '<br>');
+      const yesBtn = document.getElementById('confirm-yes-btn');
+      yesBtn.textContent = 'Ya, Selesai';
+      yesBtn.className = 'flex-1 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-semibold';
+      yesBtn.onclick = () => { closeModal('modal-confirm'); finishQuiz(); };
+      openModal('modal-confirm');
+    }
+
+    // ============================================
+    // CHEAT SHEET
+    // ============================================
+    let cheatsheetFilter = 'all';
+    let cheatsheetSearch = '';
+    function renderCheatsheet() {
+      const container = document.getElementById('cheatsheet-content'); if (!container) return;
+      cheatsheetSearch = (document.getElementById('cheatsheet-search')?.value || '').toLowerCase().trim();
+      
+      let html = ''; let count = 0;
+      const grouped = {};
+      Object.entries(KAMUS).forEach(([id, data]) => {
+        const q = ALL_QUESTIONS.find(x => x.id == id);
+        const topik = q ? q.kategori : 'Lainnya';
+        if (!grouped[topik]) grouped[topik] = [];
+        grouped[topik].push({ id, ...data });
+      });
+
+      Object.entries(grouped).forEach(([topik, items]) => {
+        const filtered = items.filter(it => {
+          if (!cheatsheetSearch) return true;
+          const text = (it.A.join(' ') + ' ' + it.B.join(' ')).toLowerCase();
+          return text.includes(cheatsheetSearch);
+        });
+        if (filtered.length === 0) return;
+        count += filtered.length;
+        html += `<div class="mb-4"><h3 class="text-sm font-bold mb-2 text-teal-700 dark:text-teal-400">${topik} (${filtered.length})</h3><div class="space-y-2">`;
+        filtered.forEach(it => {
+          html += `<details class="bg-gray-50 dark:bg-gray-900/30 rounded-lg"><summary class="cursor-pointer p-2 text-sm font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">Soal ${it.id}</summary><div class="p-3 pt-0 text-xs border-t border-gray-200 dark:border-gray-700 mt-2"><p class="mb-1"><strong>A:</strong> ${it.A.join(', ')}</p><p><strong>B:</strong> ${it.B.join(', ')}</p></div></details>`;
+        });
+        html += `</div></div>`;
+      });
+      if (count === 0) html = `<div class="text-center py-8 text-gray-500">Tidak ada hasil untuk "${cheatsheetSearch}"</div>`;
+      container.innerHTML = html;
+      document.getElementById('cheatsheet-count').textContent = count;
+    }
+
+    // ============================================
+    // INIT
+    // ============================================
+    window.addEventListener('DOMContentLoaded', () => {
+      initDarkMode();
+      const totalEl = document.getElementById('cover-total-soal');
+      if (totalEl) totalEl.textContent = ALL_QUESTIONS.length;
+      document.querySelectorAll('input[name="mode"]').forEach(el => {
+        el.addEventListener('change', () => {
+          const mode = document.querySelector('input[name="mode"]:checked').value;
+          document.getElementById('timer-option').classList.toggle('hidden', mode !== 'exam');
+          document.getElementById('gamifikasi-option').classList.toggle('hidden', mode !== 'instant');
+        });
+      });
+      const saved = loadProgress();
+      if (saved && saved.questions && saved.questions.length > 0) {
+        setTimeout(() => {
+          if (confirm('Ada sesi latihan yang belum selesai. Lanjutkan?')) {
+            STATE = { ...STATE, ...saved }; showPage('page-quiz');
+            document.getElementById('app-header').classList.remove('hidden');
+            document.getElementById('energy-container').classList.toggle('hidden', !STATE.gamifikasiEnabled);
+            document.getElementById('header-timer').classList.toggle('hidden', !STATE.timerEnabled);
+            if (STATE.timerEnabled) startTimer();
+            renderQuestion(); renderPalet(); updateProgress(); updateEnergyBar();
+          } else { clearProgress(); }
+        }, 500);
+      }
+      console.log('App loaded. Soal:', ALL_QUESTIONS.length, '| Kamus:', Object.keys(KAMUS).length);
+    });
 
     document.addEventListener('keydown', (e) => {
       if (!document.getElementById('page-quiz').classList.contains('active')) return;
       const tag = e.target.tagName; const isInput = tag === 'INPUT' || tag === 'TEXTAREA';
+      if (e.key === 'Enter' && !e.ctrlKey && !isInput) { e.preventDefault(); submitAnswer(); }
       if (e.key === 'Enter' && e.ctrlKey) { e.preventDefault(); submitAnswer(); setTimeout(() => nextQuestion(), 300); }
-      if (!isInput) { if (e.key === 'ArrowLeft') prevQuestion(); if (e.key === 'ArrowRight') nextQuestion(); if (e.key === 'b' || e.key === 'B') toggleBookmark(); if (e.key === 'h' || e.key === 'H') showHint(); }
-      if (e.key === 'Escape') { document.querySelectorAll('.modal:not(.hidden)').forEach(m => m.classList.add('hidden')); }
+      if (!isInput) {
+        if (e.key === 'ArrowLeft') prevQuestion(); if (e.key === 'ArrowRight') nextQuestion();
+        if (e.key === 'b' || e.key === 'B') toggleBookmark(); if (e.key === 'h' || e.key === 'H') showHint();
+        if (e.key === '1') setConfidence('yakin'); if (e.key === '2') setConfidence('ragu'); if (e.key === '3') setConfidence('tebak');
+      }
+      if (e.key === 'Escape') document.querySelectorAll('.modal:not(.hidden)').forEach(m => m.classList.add('hidden'));
+      if (e.key === '?' && !isInput) openModal('modal-shortcuts');
     });
 
-    window.addEventListener('DOMContentLoaded', () => {
-      initDarkMode(); initImageToggle();
-      const totalEl = document.getElementById('cover-total-soal');
-      if (totalEl && typeof ALL_QUESTIONS !== 'undefined') totalEl.textContent = ALL_QUESTIONS.length;
-      document.querySelectorAll('input[name="mode"]').forEach(el => { el.addEventListener('change', () => { const mode = document.querySelector('input[name="mode"]:checked').value; document.getElementById('timer-option').classList.toggle('hidden', mode !== 'exam'); }); });
-      console.log('✅ App loaded. Soal:', ALL_QUESTIONS?.length, '| Kamus:', Object.keys(KAMUS.kamus).length);
-    });
+    setInterval(() => { if (STATE.questions.length > 0) saveProgress(); }, 30000);
   </script>
-
 </body>
 </html>
