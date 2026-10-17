@@ -11,32 +11,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
   
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-    import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyC-2_51C0vGvsKyfEj9SZ1NTXi0-V9MK2g",
-      authDomain: "semestertiga-iris.firebaseapp.com",
-      projectId: "semestertiga-iris",
-      storageBucket: "semestertiga-iris.firebasestorage.app",
-      messagingSenderId: "596732396311",
-      appId: "1:596732396311:web:739d52061bb30a8fc6ed52"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
-    const provider = new GoogleAuthProvider();
-
-    window.firebaseApp = app;
-    window.firebaseAuth = auth;
-    window.firebaseDB = db;
-    window.firebaseProvider = provider;
-    window.fb = { signInWithPopup, signOut, onAuthStateChanged, doc, setDoc, getDoc };
-  </script>
-
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -117,37 +91,11 @@
     <div class="max-w-2xl w-full mx-auto">
       <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-6 md:p-10">
         
-        <div id="auth-section" class="mb-6">
-          <div id="auth-loading" class="text-center py-4">
-            <i class="fas fa-spinner fa-spin text-teal-500 text-2xl"></i>
-            <p class="text-xs text-gray-500 mt-2">Memuat status login...</p>
-          </div>
-          <div id="auth-not-logged-in" class="hidden">
-            <div class="bg-gradient-to-br from-teal-50 to-cyan-50 dark:from-teal-900/20 dark:to-cyan-900/20 rounded-xl p-4 border border-teal-200 dark:border-teal-800">
-              <p class="text-xs text-gray-600 dark:text-gray-400 mb-3 text-center"><i class="fas fa-info-circle text-teal-500 mr-1"></i> Login untuk sync progres di semua device</p>
-              <div class="grid grid-cols-2 gap-2">
-                <button onclick="loginWithGoogle()" class="py-2.5 bg-white dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 hover:border-teal-500 dark:hover:border-teal-500 rounded-lg font-semibold text-xs flex items-center justify-center gap-2 transition-all">
-                  <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" class="w-4 h-4" alt="Google"> Login Google
-                </button>
-                <button onclick="loginAsGuest()" class="py-2.5 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg font-semibold text-xs flex items-center justify-center gap-2 transition-all">
-                  <i class="fas fa-user-secret text-gray-600 dark:text-gray-400"></i> Guest Mode
-                </button>
-              </div>
-              <p class="text-xs text-gray-500 dark:text-gray-500 mt-2 text-center">Guest: progres hanya tersimpan di device ini</p>
-            </div>
-          </div>
-          <div id="auth-logged-in" class="hidden">
-            <div class="bg-gradient-to-br from-teal-50 to-cyan-50 dark:from-teal-900/20 dark:to-cyan-900/20 rounded-xl p-3 border border-teal-200 dark:border-teal-800 flex items-center gap-3">
-              <img id="user-photo" src="" alt="User" class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-700 shadow">
-              <div class="flex-1 min-w-0">
-                <p id="user-name" class="font-semibold text-sm truncate">User</p>
-                <p id="user-status" class="text-xs text-gray-500 dark:text-gray-400 truncate">Tersinkron</p>
-              </div>
-              <button onclick="logout()" class="w-8 h-8 rounded-lg bg-red-100 dark:bg-red-900/30 hover:bg-red-200 dark:hover:bg-red-900/50 flex items-center justify-center text-red-600 dark:text-red-400" title="Logout">
-                <i class="fas fa-sign-out-alt text-xs"></i>
-              </button>
-            </div>
-          </div>
+        <!-- Info Guest -->
+        <div class="mb-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3 border border-blue-200 dark:border-blue-800 text-center">
+          <p class="text-xs text-blue-700 dark:text-blue-300 font-semibold">
+            <i class="fas fa-user-secret mr-1"></i> Mode Guest Aktif - Progres tersimpan otomatis di browser ini.
+          </p>
         </div>
   
         <div class="text-center mb-8">
@@ -457,9 +405,9 @@
   
   <script>
     // ============================================
-    // AUTH & UTILITY
+    // STATE & UTILITY
     // ============================================
-    let currentUser = null;
+    let currentUser = null; // Dummy, tetap ada agar tidak error
     let authMode = 'guest';
     const STORAGE_KEY = 'mikrob_progress';
     let currentLang = 'id'; // 'id' atau 'en'
@@ -470,113 +418,6 @@
       renderQuestion();
     }
 
-    function showAuthLoading() {
-      document.getElementById('auth-loading').classList.remove('hidden');
-      document.getElementById('auth-not-logged-in').classList.add('hidden');
-      document.getElementById('auth-logged-in').classList.add('hidden');
-    }
-    function showAuthLogin() {
-      document.getElementById('auth-loading').classList.add('hidden');
-      document.getElementById('auth-not-logged-in').classList.remove('hidden');
-      document.getElementById('auth-logged-in').classList.add('hidden');
-    }
-    function showAuthUser(user) {
-      document.getElementById('auth-loading').classList.add('hidden');
-      document.getElementById('auth-not-logged-in').classList.add('hidden');
-      document.getElementById('auth-logged-in').classList.remove('hidden');
-      const photo = document.getElementById('user-photo');
-      const name = document.getElementById('user-name');
-      const status = document.getElementById('user-status');
-      if (user.isAnonymous) {
-        photo.src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjY2IiBzdHJva2Utd2lkdGg9IjIiPjxwYXRoIGQ9Ik0yMCAyMXYtMmE0IDQgMCAwIDAtNC00SDhhNCA0IDAgMCAwLTQgNHYyIi8+PGNpcmNsZSBjeD0iMTIiIGN5PSI3IiByPSI0Ii8+PC9zdmc+';
-        name.textContent = 'Guest';
-        status.textContent = 'Progres lokal';
-      } else {
-        photo.src = user.photoURL || 'https://via.placeholder.com/40';
-        name.textContent = user.displayName || 'User';
-        status.textContent = user.email || 'Tersinkron';
-      }
-    }
-
-    async function loginWithGoogle() {
-      if (!window.fb) { showToast('Firebase belum siap.', 'error'); return; }
-      try {
-        const result = await window.fb.signInWithPopup(window.firebaseAuth, window.firebaseProvider);
-      } catch (error) { showToast('Gagal login: ' + error.message, 'error'); }
-    }
-    function loginAsGuest() {
-      localStorage.setItem('mikrob_auth_mode', 'guest');
-      authMode = 'guest'; currentUser = null;
-      showAuthUser({ isAnonymous: true });
-      showToast('Mode Guest aktif', 'info');
-    }
-    async function logout() {
-      if (!confirm('Logout?')) return;
-      try {
-        if (currentUser && !currentUser.isAnonymous) await window.fb.signOut(window.firebaseAuth);
-        localStorage.removeItem('mikrob_auth_mode');
-        currentUser = null; authMode = 'guest';
-        showAuthLogin(); showToast('Berhasil logout', 'success');
-      } catch (error) { showToast('Gagal logout', 'error'); }
-    }
-
-    function initAuthListener() {
-      if (!window.fb) { setTimeout(initAuthListener, 500); return; }
-      window.fb.onAuthStateChanged(window.firebaseAuth, (user) => {
-        if (user) {
-          currentUser = user; authMode = user.isAnonymous ? 'guest' : 'google';
-          showAuthUser(user);
-          if (!user.isAnonymous) loadProgressFromCloud(user.uid);
-        } else {
-          currentUser = null;
-          const savedMode = localStorage.getItem('mikrob_auth_mode');
-          if (savedMode === 'guest') { authMode = 'guest'; showAuthUser({ isAnonymous: true }); }
-          else { showAuthLogin(); }
-        }
-      });
-    }
-
-    async function loadProgressFromCloud(uid) {
-      if (!window.fb) return;
-      try {
-        const userDocRef = window.fb.doc(window.firebaseDB, 'users', uid, 'progress', 'mikrob');
-        const docSnap = await window.fb.getDoc(userDocRef);
-        if (docSnap.exists()) {
-          const cloudData = docSnap.data();
-          const guestRaw = localStorage.getItem(STORAGE_KEY);
-          const guestData = guestRaw ? JSON.parse(guestRaw) : null;
-          if (guestData && Object.keys(guestData.answers || {}).length > 0) {
-             if (confirm('Gabungkan progres guest dengan cloud?')) {
-                const merged = mergeProgress(guestData, cloudData);
-                STATE = { ...STATE, ...merged }; localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
-             } else {
-                STATE = { ...STATE, ...cloudData }; localStorage.setItem(STORAGE_KEY, JSON.stringify(cloudData));
-             }
-          } else {
-            STATE = { ...STATE, ...cloudData }; localStorage.setItem(STORAGE_KEY, JSON.stringify(cloudData));
-          }
-          if (document.getElementById('page-quiz').classList.contains('active')) {
-            renderQuestion(); renderPalet(); updateProgress(); updateEnergyBar();
-          }
-        }
-      } catch (error) { console.error('Gagal load cloud:', error); }
-    }
-
-    function mergeProgress(guestData, cloudData) {
-      const mergedAnswers = { ...cloudData.answers };
-      Object.entries(guestData.answers || {}).forEach(([id, guestAns]) => {
-        const cloudAns = mergedAnswers[id];
-        if (!cloudAns || (guestAns.timestamp || 0) > (cloudAns.timestamp || 0)) mergedAnswers[id] = guestAns;
-      });
-      const mergedBookmarks = [...new Set([...(cloudData.bookmarks || []), ...(guestData.bookmarks || [])])];
-      return { ...cloudData, answers: mergedAnswers, bookmarks: mergedBookmarks, lastUpdated: Date.now() };
-    }
-
-    window.addEventListener('DOMContentLoaded', () => { showAuthLoading(); setTimeout(initAuthListener, 100); });
-
-    // ============================================
-    // STATE
-    // ============================================
     const CONFIG = {
       ENERGI_AWAL: 100, ENERGI_SALAH: -10, ENERGI_HINT: -5,
       ENERGI_STREAK_BONUS: 10, STREAK_TARGET: 5,
@@ -591,9 +432,6 @@
       timerRemaining: 0, timerInterval: null, soundEnabled: true
     };
 
-    // ============================================
-    // UTILITY
-    // ============================================
     function uuid() { return 'xxxx-xxxx-xxxx'.replace(/x/g, () => Math.floor(Math.random() * 16).toString(16)); }
     function normalize(text) {
       if (!text) return '';
@@ -641,9 +479,6 @@
       return false;
     }
 
-    // ============================================
-    // PENILAIAN
-    // ============================================
     function gradeAnswer(question, userA, userB) {
       const keyA = KAMUS[question.id]?.A || [];
       const keyB = KAMUS[question.id]?.B || [];
@@ -668,9 +503,6 @@
       };
     }
 
-    // ============================================
-    // SAVE / LOAD
-    // ============================================
     function saveProgress() {
       try {
         const toSave = {
@@ -682,10 +514,6 @@
           timerRemaining: STATE.timerRemaining, lastUpdated: Date.now()
         };
         localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
-        if (currentUser && !currentUser.isAnonymous && window.fb) {
-          const userDocRef = window.fb.doc(window.firebaseDB, 'users', currentUser.uid, 'progress', 'mikrob');
-          window.fb.setDoc(userDocRef, toSave, { merge: true }).catch(e => console.warn('Cloud save failed', e));
-        }
       } catch (e) { console.warn('Gagal save progress:', e); }
     }
     function loadProgress() {
@@ -696,9 +524,6 @@
     }
     function clearProgress() { localStorage.removeItem(STORAGE_KEY); }
 
-    // ============================================
-    // AUDIO & TOAST
-    // ============================================
     let audioCtx = null;
     function initAudio() { if (!audioCtx) try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {} }
     function playTone(freq, dur = 0.15, type = 'sine') {
@@ -726,9 +551,6 @@
       setTimeout(() => { toast.classList.add('translate-x-full'); setTimeout(() => toast.remove(), 300); }, 3000);
     }
 
-    // ============================================
-    // MODAL & DARK MODE
-    // ============================================
     function openModal(id) {
       document.getElementById(id).classList.remove('hidden');
       if (id === 'modal-cheatsheet') renderCheatsheet();
@@ -750,9 +572,6 @@
       }
     }
 
-    // ============================================
-    // QUIZ LOGIC
-    // ============================================
     function startQuiz() {
       initAudio();
       STATE.mode = document.querySelector('input[name="mode"]:checked').value;
@@ -819,11 +638,8 @@
     function renderQuestion() {
       const q = STATE.questions[STATE.currentIndex];
       if (!q) return;
-      
-      // Set Gambar
       document.getElementById('preparat-img').src = q.gambar;
       
-      // Set Teks berdasarkan bahasa
       if (currentLang === 'id') {
         document.getElementById('vignette-text').textContent = q.vignette;
         document.getElementById('question-A-text').textContent = q.pertanyaan_A;
@@ -951,7 +767,7 @@
       const content = document.getElementById('feedback-content');
       const grade = answer.grade;
       const q = STATE.questions[STATE.currentIndex];
-      const kunci = KAMUS[q.id] || { A: [], B: [] };
+      const kunci = KAMUS[q.id] || { A: [], B: [], penjelasan: '' };
 
       let headerClass, headerIcon, headerText;
       if (grade.isFullyCorrect) { headerClass = 'bg-green-50 dark:bg-green-900/20 border-green-500'; headerIcon = 'fa-check-circle text-green-500'; headerText = 'Benar Semua!'; }
@@ -972,6 +788,16 @@
             <div><p class="font-semibold">Pertanyaan B:</p><p class="text-gray-600 dark:text-gray-400">Kunci: <strong>${kunci.B.join(', ')}</strong></p></div>
           </div>
         </div>`;
+        
+      if (kunci.penjelasan) {
+        html += `
+          <div class="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
+            <p class="text-xs font-semibold text-gray-500 mb-1"><i class="fas fa-info-circle mr-1"></i> Penjelasan:</p>
+            <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">${currentLang === 'id' ? kunci.penjelasan : kunci.penjelasan_en}</p>
+          </div>
+        `;
+      }
+      
       content.innerHTML = html;
       area.classList.remove('hidden');
     }
@@ -1085,7 +911,7 @@
       let html = '';
       STATE.questions.forEach((q, i) => {
         const ans = STATE.answers[q.id];
-        const kunci = KAMUS[q.id] || { A: [], B: [] };
+        const kunci = KAMUS[q.id] || { A: [], B: [], penjelasan: '' };
         const isAns = ans && ans.graded;
         const statusIcon = !isAns ? '<i class="fas fa-minus-circle text-gray-400"></i>' : (ans.grade.isFullyCorrect ? '<i class="fas fa-check-circle text-green-500"></i>' : (ans.grade.correctBox > 0 ? '<i class="fas fa-exclamation-circle text-yellow-500"></i>' : '<i class="fas fa-times-circle text-red-500"></i>'));
         html += `
@@ -1098,6 +924,7 @@
             <div class="p-3 border-t border-gray-200 dark:border-gray-700 text-sm space-y-2">
               <p><strong>Jawaban A:</strong> ${ans?.boxA || '-'} <br><span class="text-xs text-green-600">Kunci: ${kunci.A.join(', ')}</span></p>
               <p><strong>Jawaban B:</strong> ${ans?.boxB || '-'} <br><span class="text-xs text-green-600">Kunci: ${kunci.B.join(', ')}</span></p>
+              ${kunci.penjelasan ? `<div class="mt-2 p-2 bg-blue-50 dark:bg-blue-900/20 rounded text-xs"><strong>Penjelasan:</strong> ${currentLang === 'id' ? kunci.penjelasan : kunci.penjelasan_en}</div>` : ''}
             </div>
           </details>`;
       });
@@ -1126,8 +953,11 @@
       STATE.questions.forEach((q, i) => { 
         html += `<div class="soal"><h3>Soal ${i+1}</h3><p><em>${q.vignette}</em></p><p><strong>A:</strong> ${q.pertanyaan_A}</p><p><strong>B:</strong> ${q.pertanyaan_B}</p><img src="${q.gambar}" style="max-width:400px;margin:10px 0;"></div>`; 
       });
-      html += `<div class="kunci"><h1>KUNCI JAWABAN</h1>`;
-      STATE.questions.forEach((q, i) => { const k = KAMUS[q.id] || {A:[],B:[]}; html += `<div><h3>Soal ${i+1}</h3><p><strong>A:</strong> ${k.A.join(', ')}</p><p><strong>B:</strong> ${k.B.join(', ')}</p></div>`; });
+      html += `<div class="kunci"><h1>KUNCI JAWABAN & PENJELASAN</h1>`;
+      STATE.questions.forEach((q, i) => { 
+        const k = KAMUS[q.id] || {A:[],B:[],penjelasan:''}; 
+        html += `<div style="margin-bottom:20px; page-break-inside:avoid;"><h3>Soal ${i+1}</h3><p><strong>A:</strong> ${k.A.join(', ')}</p><p><strong>B:</strong> ${k.B.join(', ')}</p><p><strong>Penjelasan:</strong> ${k.penjelasan}</p></div>`; 
+      });
       html += `</div></body></html>`;
       win.document.write(html); win.document.close(); setTimeout(() => win.print(), 500);
     }
@@ -1137,8 +967,8 @@
       if (incorrect.length === 0) { showToast('Tidak ada soal salah', 'info'); return; }
       let text = `RINGKASAN SOAL SALAH - Mikrobiologi Klinik\nTanggal: ${new Date().toLocaleString('id-ID')}\nTotal: ${incorrect.length} soal\n==========================================\n\n`;
       incorrect.forEach(({ q, i, ans }) => {
-        const k = KAMUS[q.id] || {A:[],B:[]};
-        text += `Soal ${i+1} (${q.kategori})\n${q.vignette}\nJawaban A: ${ans.boxA || '-'} (Kunci: ${k.A.join(', ')})\nJawaban B: ${ans.boxB || '-'} (Kunci: ${k.B.join(', ')})\n\n---\n\n`;
+        const k = KAMUS[q.id] || {A:[],B:[],penjelasan:''};
+        text += `Soal ${i+1} (${q.kategori})\n${q.vignette}\nJawaban A: ${ans.boxA || '-'} (Kunci: ${k.A.join(', ')})\nJawaban B: ${ans.boxB || '-'} (Kunci: ${k.B.join(', ')})\nPenjelasan: ${k.penjelasan}\n\n---\n\n`;
       });
       navigator.clipboard.writeText(text).then(() => showToast('Ringkasan disalin ke clipboard', 'success')).catch(() => {
         const blob = new Blob([text], { type: 'text/plain' }); const url = URL.createObjectURL(blob);
@@ -1167,9 +997,6 @@
       openModal('modal-confirm');
     }
 
-    // ============================================
-    // CHEAT SHEET
-    // ============================================
     let cheatsheetFilter = 'all';
     let cheatsheetSearch = '';
     function renderCheatsheet() {
@@ -1204,9 +1031,6 @@
       document.getElementById('cheatsheet-count').textContent = count;
     }
 
-    // ============================================
-    // INIT
-    // ============================================
     window.addEventListener('DOMContentLoaded', () => {
       initDarkMode();
       const totalEl = document.getElementById('cover-total-soal');

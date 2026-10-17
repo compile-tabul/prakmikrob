@@ -1,455 +1,675 @@
 const KAMUS = {
   1: {
-    A: ["inoculation loop", "ose", "loop", "ose bulat", "ose jarum", "jarum inokulasi", "alat pemindah biakan", "loop steril"],
-    B: ["wear gloves", "pakai sarung tangan", "apd", "alat pelindung diri", "ppe", "masker", "jas lab", "work near flame", "bekerja dekat api", "zona aseptis", "aseptic zone", "sterilize before and after", "sterilkan sebelum dan sesudah", "jangan sentuh bagian steril", "hindari kontaminasi", "tidak menyentuh ujung ose"]
+    A: ["Masker N95", "Respirator N95", "Masker bedah", "Surgical mask", "Sarung tangan", "Gloves", "Handscoon", "Jas laboratorium", "Lab coat", "Gown", "Kacamata pelindung", "Goggles", "Safety glasses", "Face shield", "Pelindung wajah", "Apron", "Celemek"],
+    B: ["Airborne", "Udara", "Droplet nuclei", "Aerosol", "Percikan dahak", "Droplet", "Kontak langsung", "Direct contact", "Inhalasi"],
+    penjelasan: "Mycobacterium tuberculosis ditularkan melalui airborne (droplet nuclei yang sangat kecil dan dapat melayang di udara). Di laboratorium, risiko utama adalah inhalasi aerosol saat membuka tutup tabung, menuang spesimen, atau sentrifugasi. Oleh karena itu, APD yang melindungi saluran napas (masker N95) dan kontak (sarung tangan, jas lab) sangat penting.",
+    penjelasan_en: "Mycobacterium tuberculosis is transmitted via airborne route (very small droplet nuclei that can float in the air). In the laboratory, the main risk is inhalation of aerosols when opening tube caps, pouring specimens, or centrifuging. Therefore, PPE protecting the respiratory tract (N95 mask) and contact (gloves, lab coat) is crucial."
   },
   2: {
-    A: ["total magnification", "perbesaran total", "1000x", "seribu kali", "1000 kali", "microscope", "mikroskop", "mikroskop cahaya", "compound microscope", "mikroskop binokuler", "light microscope"],
-    B: ["condenser", "kondensor", "lensa kondensor", "pengatur cahaya", "iris diaphragm", "diafragma", "diafragma iris", "pengatur intensitas cahaya", "pengatur bukaan"]
+    A: ["Autoklaf", "Autoclave", "Sterilizer", "Pressure cooker", "Alat sterilisasi uap panas bertekanan", "Autoclave horizontal", "Autoclave vertikal"],
+    B: ["121°C", "121 derajat Celsius", "15 psi", "15 pon per inci persegi", "15 menit", "1 atm", "1 atmosfer", "121°C selama 15 menit pada 15 psi"],
+    penjelasan: "Autoklaf menggunakan uap air jenuh bertekanan untuk membunuh mikroorganisme, termasuk spora, melalui denaturasi protein. Kombinasi 121°C, 15 psi, dan 15 menit adalah standar untuk sterilisasi alat gelas dan media yang tahan panas.",
+    penjelasan_en: "An autoclave uses pressurized saturated steam to kill microorganisms, including spores, through protein denaturation. The combination of 121°C, 15 psi, and 15 minutes is the standard for sterilizing heat-resistant glassware and media."
   },
   3: {
-    A: ["syringe", "spuit", "needle", "jarum suntik", "alat suntik", "spuit steril", "needle and syringe"],
-    B: ["to maintain sterility", "menjaga sterilitas", "creating an aseptic zone", "zona aseptis", "membunuh kontaminan di udara", "mencegah kontaminasi", "aseptic technique", "teknik aseptis", "sterilisasi udara sekitar"]
+    A: ["100x", "Lensa objektif 100x", "Oil immersion", "Lensa imersi minyak", "Perbesaran 1000x", "Lensa pembesaran tinggi", "High power field"],
+    B: ["Kondensor", "Condenser", "Diafragma", "Iris diaphragm", "Pengatur cahaya", "Pengatur intensitas", "Mirror", "Cermin", "Sumber cahaya", "Light source"],
+    penjelasan: "Lensa objektif 100x dengan minyak imersi memberikan perbesaran optimal (1000x) untuk mengamati morfologi bakteri secara detail. Kondensor mengumpulkan dan mengarahkan cahaya ke spesimen, sedangkan diafragma mengatur jumlah cahaya yang masuk.",
+    penjelasan_en: "The 100x objective lens with immersion oil provides optimal magnification (1000x) to observe bacterial morphology in detail. The condenser collects and directs light onto the specimen, while the diaphragm regulates the amount of light entering."
   },
   4: {
-    A: ["graduated cylinder", "gelas ukur", "measuring cylinder", "silinder ukur", "gelas ukur 10 ml"],
-    B: ["pipette", "pipet", "micropipette", "mikropipet", "beaker glass", "gelas kimia", "gelas beaker", "pipet ukur", "pipet volume", "pipet tetes"]
+    A: ["Gelas ukur", "Graduated cylinder", "Measuring cylinder", "Silinder ukur", "Gelas ukur 10 mL", "Gelas ukur volume"],
+    B: ["Pipet", "Pipet ukur", "Pipet volume", "Mikropipet", "Beaker glass", "Gelas kimia", "Gelas beaker", "Labu ukur", "Erlenmeyer"],
+    penjelasan: "Gelas ukur memiliki akurasi yang lebih tinggi dibandingkan gelas beaker atau Erlenmeyer untuk volume 10 mL. Pipet atau mikropipet juga bisa digunakan, namun jika soal meminta akurasi tinggi untuk volume tersebut, gelas ukur (atau pipet volume) adalah pilihan yang tepat.",
+    penjelasan_en: "A graduated cylinder has higher accuracy compared to a beaker or Erlenmeyer flask for a 10 mL volume. A pipette or micropipette can also be used, but if the question asks for high accuracy for that volume, a graduated cylinder (or volumetric pipette) is the appropriate choice."
   },
   5: {
-    A: ["freezer", "freezer -20°c", "cryovial", "tabung cryo", "tabung penyimpanan", "ultra-low temperature freezer", "freezer suhu rendah"],
-    B: ["glycerol", "gliserol", "dmso", "dimethyl sulfoxide", "cryoprotectant", "zat krioprotektan", "media penyimpanan"]
+    A: ["Freezer", "Freezer -20°C", "Cryovial", "Tabung cryo", "Tabung penyimpanan", "Ultra-low temperature freezer", "Freezer suhu rendah", "Deep freezer"],
+    B: ["Gliserol", "Glycerol", "DMSO", "Dimethyl sulfoxide", "Cryoprotectant", "Zat krioprotektan", "Media penyimpanan", "Stok gliserol"],
+    penjelasan: "Gliserol atau DMSO mencegah pembentukan kristal es yang dapat merusak sel bakteri selama pembekuan. Cryovial adalah wadah yang tahan suhu rendah untuk penyimpanan jangka panjang.",
+    penjelasan_en: "Glycerol or DMSO prevents the formation of ice crystals that can damage bacterial cells during freezing. A cryovial is a low-temperature resistant container for long-term storage."
   },
   6: {
-    A: ["centrifuge", "sentrifugasi", "pemusing", "alat sentrifugasi", "centrifuge machine"],
-    B: ["rpm", "kecepatan putaran", "rotations per minute", "time", "waktu", "durasi", "kecepatan", "waktu sentrifugasi"]
+    A: ["Sentrifugasi", "Centrifuge", "Pemusing", "Alat sentrifugasi", "Centrifuge machine", "Microcentrifuge", "Sentrifugasi dingin"],
+    B: ["RPM", "Kecepatan putaran", "Rotations per minute", "G-force", "RCF", "Relative centrifugal force", "Time", "Waktu", "Durasi", "Kecepatan", "Waktu sentrifugasi", "Suhu"],
+    penjelasan: "Sentrifugasi memisahkan komponen berdasarkan densitas. RPM dan waktu harus diatur sesuai protokol. G-force (RCF) lebih akurat karena memperhitungkan jari-jari rotor.",
+    penjelasan_en: "Centrifugation separates components based on density. RPM and time must be set according to the protocol. G-force (RCF) is more accurate because it takes into account the rotor radius."
   },
   7: {
-    A: ["autoclave", "autoklaf", "sterilizer", "alat sterilisasi", "autoclave horizontal", "autoclave vertikal"],
-    B: ["121°c", "15 psi", "15 menit", "1 atm", "suhu 121 derajat celsius", "tekanan 15 psi", "waktu 15 menit", "121°c, 15 psi, 15 menit"]
+    A: ["Kaca pembesar", "Magnifying glass", "Loupe", "Mikroskop stereo", "Stereomicroscope", "Lensa pembesar", "Magnifier", "Hand lens"],
+    B: ["Ose", "Inoculation loop", "Jarum inokulasi", "Loop", "Swab steril", "Jarum ose", "Ose bulat", "Ose jarum", "Pinset", "Forceps"],
+    penjelasan: "Kaca pembesar atau mikroskop stereo digunakan untuk mengamati morfologi koloni makroskopis (bentuk, warna, tepi, elevasi). Ose digunakan untuk mengambil koloni tunggal secara aseptis.",
+    penjelasan_en: "A magnifying glass or stereomicroscope is used to observe macroscopic colony morphology (shape, color, edge, elevation). An inoculation loop is used to pick a single colony aseptically."
   },
   8: {
-    A: ["magnifying glass", "loupe", "kaca pembesar", "mikroskop stereo", "stereomicroscope", "lensa pembesar", "magnifier"],
-    B: ["inoculation loop", "ose", "swab", "jarum inokulasi", "loop", "ose steril", "swab steril", "jarum ose"]
+    A: ["pH meter", "pH meter digital", "Alat pengukur pH", "pH tester", "pH probe", "pH indikator", "Kertas pH", "pH stick"],
+    B: ["Phenol red", "Merah fenol", "Bromothymol blue", "BTB", "Bromocresol purple", "BCG", "Indikator pH", "Phenolphthalein", "Metil merah", "Methyl red"],
+    penjelasan: "pH meter mengukur pH secara digital dengan elektroda. Indikator pH seperti phenol red berubah warna pada rentang pH tertentu (misalnya, merah pada pH basa, kuning pada pH asam), berguna untuk mendeteksi fermentasi pada media.",
+    penjelasan_en: "A pH meter measures pH digitally with an electrode. pH indicators like phenol red change color within a specific pH range (e.g., red at basic pH, yellow at acidic pH), useful for detecting fermentation in media."
   },
   9: {
-    A: ["ph meter", "ph meter digital", "alat pengukur ph", "ph tester", "ph probe"],
-    B: ["phenol red", "phenol red indicator", "bromothymol blue", "bromocresol purple", "indikator ph", "indikator merah fenol", "btb", "bcg"]
+    A: ["Vacutainer", "Butterfly needle", "Syringe", "Spuit", "Jarum suntik", "Vacutainer set", "Blood collection set", "Winged needle", "Needle holder", "Tourniquet"],
+    B: ["SPS", "Sodium polyanethol sulfonate", "Natrium polianetol sulfonat", "Antikoagulan", "Anticoagulant", "Heparin", "EDTA", "Sitrat"],
+    penjelasan: "SPS adalah antikoagulan pilihan untuk kultur darah karena juga menghambat aktivitas bakterisidal serum (komplemen, lisozim) dan mencegah pembekuan. Vacutainer atau spuit digunakan untuk mengambil darah.",
+    penjelasan_en: "SPS is the anticoagulant of choice for blood cultures because it also inhibits the bactericidal activity of serum (complement, lysozyme) and prevents clotting. A vacutainer or syringe is used to draw blood."
   },
   10: {
-    A: ["vacutainer", "butterfly needle", "syringe", "spuit", "jarum suntik", "vacutainer set", "blood collection set", "winged needle"],
-    B: ["sps", "sodium polyanethol sulfonate", "antikoagulan", "anticoagulant", "sps anticoagulant", "natrium polianetol sulfonat"]
+    A: ["Kristal violet", "Crystal violet", "Gram A", "Iodine", "Lugol", "Gram B", "Safranin", "Gram C", "Alkohol aseton", "Decolorizer", "Alkohol 95%", "Aseton"],
+    B: ["Mordan", "Membentuk kompleks kristal violet-iodine", "Memperkuat ikatan pewarna", "Fiksasi warna", "Membentuk ikatan kompleks yang besar", "Memperbesar molekul pewarna"],
+    penjelasan: "Iodine bertindak sebagai mordan yang membentuk kompleks dengan kristal violet, sehingga warna terperangkap di dinding sel bakteri Gram positif yang memiliki peptidoglikan tebal. Pada Gram negatif, kompleks ini larut oleh alkohol.",
+    penjelasan_en: "Iodine acts as a mordant that forms a complex with crystal violet, trapping the color in the cell wall of Gram-positive bacteria which have thick peptidoglycan. In Gram-negative bacteria, this complex is dissolved by alcohol."
   },
   // Topik 2
   11: {
-    A: ["gram-negative diplococci", "diplokokus gram negatif", "kidney bean shaped", "bakteri berbentuk kacang merah", "pink/red", "merah muda", "kokus berpasangan", "diplokokus", "bakteri gram negatif", "bakteri berwarna merah", "bakteri berbentuk biji kopi", "coffee bean shaped", "intracellular", "intraseluler", "di dalam leukosit"],
-    B: ["gram stain", "pewarnaan gram", "pewarnaan gram negatif", "interpretasi: gram negatif", "pink", "merah", "merah muda", "negatif gram", "tidak menyerap kristal violet"]
+    A: ["Diplokokus Gram negatif", "Kokus berpasangan", "Bakteri berbentuk biji kopi", "Coffee bean shaped", "Kidney bean shaped", "Bakteri berbentuk kacang", "Intraseluler", "Di dalam leukosit", "Pink", "Merah muda", "Merah", "Gram negatif", "Diplococci", "Gonococci"],
+    B: ["Gram stain", "Pewarnaan Gram", "Gram negatif", "Pink", "Merah", "Negatif Gram", "Tidak menyerap kristal violet", "Tidak berwarna ungu"],
+    penjelasan: "Neisseria gonorrhoeae adalah diplokokus Gram negatif yang khas ditemukan intraseluler dalam leukosit PMN (polimorfonuklear). Dinding selnya tipis dengan peptidoglikan sedikit, sehingga kehilangan kristal violet saat dekolorisasi dan menyerap safranin (merah).",
+    penjelasan_en: "Neisseria gonorrhoeae is a Gram-negative diplococcus characteristically found intracellularly within PMN leukocytes (polymorphonuclear). Its cell wall is thin with little peptidoglycan, so it loses crystal violet during decolorization and absorbs safranin (red)."
   },
   12: {
-    A: ["clue cells", "sel clue", "epithelial cells covered with bacteria", "sel epitel yang dikelilingi bakteri", "sel epitel bertabur bakteri", "clue cell", "sel epitel dengan bakteri menempel", "sel epitel yang dipenuhi bakteri", "bakteri menempel pada sel epitel", "sel epitel vagina", "squamous epithelial cells", "epitel skuamosa", "bakteri kecil menempel"],
-    B: ["gram stain", "pewarnaan gram", "interpretasi: bacterial vaginosis", "clue cell", "gram-variable coccobacilli", "kokobasil gram variabel", "bakteri gram variabel", "bv", "vaginosis bakteri", "bakteri batang pendek", "coccobacilli"]
+    A: ["Clue cells", "Sel clue", "Sel epitel bertabur bakteri", "Epithelial cells covered with bacteria", "Sel epitel yang dikelilingi bakteri", "Sel epitel dengan bakteri menempel", "Sel epitel yang dipenuhi bakteri", "Squamous epithelial cells", "Epitel skuamosa"],
+    B: ["Clue cell", "Sel epitel dengan bakteri menempel", "Bacterial vaginosis", "Vaginosis bakteri", "BV", "Gardnerella vaginalis", "Bakteri Gram-variabel", "Kokobasil"],
+    penjelasan: "Clue cells adalah sel epitel skuamosa yang permukaannya dipenuhi bakteri Gram-variabel (Gardnerella vaginalis), sehingga batas sel tampak kabur. Ini adalah penanda kunci bacterial vaginosis.",
+    penjelasan_en: "Clue cells are squamous epithelial cells whose surface is covered with Gram-variable bacteria (Gardnerella vaginalis), making the cell borders appear blurred. This is a key marker of bacterial vaginosis."
   },
   13: {
-    A: ["acid-fast bacilli", "basil tahan asam", "bta", "red rods", "batang merah", "bakteri batang merah", "basil tahan asam", "bakteri tahan asam", "afb", "acid-fast bacilli", "bakteri berwarna merah", "batang merah", "mycobacterium", "bakteri batang", "basil"],
-    B: ["ziehl-neelsen stain", "pewarnaan zn", "pewarnaan ziehl-neelsen", "interpretasi: mycobacterium tuberculosis", "bta positif", "acid-fast", "tahan asam", "basil tahan asam", "bakteri tahan asam", "zn positif", "merah", "tahan asam"]
+    A: ["BTA", "Basil tahan asam", "Acid-fast bacilli", "Batang merah", "Red rods", "Bakteri batang merah", "Basil tahan asam", "Bakteri tahan asam", "AFB", "Mycobacterium", "Bakteri batang", "Basil"],
+    B: ["Ziehl-Neelsen", "ZN", "Pewarnaan Ziehl-Neelsen", "Dinding sel mengandung mikolat", "Mycolic acid", "Lipid tinggi", "Lilin", "Waxy", "Tidak menyerap kristal violet", "Tahan asam", "Acid-fast", "Tidak dapat diwarnai dengan Gram"],
+    penjelasan: "Mycobacterium tuberculosis memiliki dinding sel kaya lipid (mikolat) yang menolak pewarna Gram biasa, tetapi menyerap karbol fuchsin dan tahan terhadap dekolorisasi asam-alkohol, sehingga tetap merah.",
+    penjelasan_en: "Mycobacterium tuberculosis has a lipid-rich cell wall (mycolic acid) that repels regular Gram stains but absorbs carbol fuchsin and resists acid-alcohol decolorization, thus remaining red."
   },
   14: {
-    A: ["gram-positive cocci in chains", "kokus gram positif berantai", "streptococcus", "purple", "ungu", "kokus berantai", "bakteri kokus", "bakteri gram positif", "bakteri berwarna ungu", "streptococcus", "kokus", "bulat", "berantai", "rantai kokus"],
-    B: ["gram stain", "pewarnaan gram", "interpretasi: gram positif", "ungu", "positif gram", "menyerap kristal violet", "streptococcus", "kokus gram positif"]
+    A: ["Kokus Gram positif berantai", "Gram-positive cocci in chains", "Streptococcus", "Purple", "Ungu", "Kokus berantai", "Bakteri kokus", "Bakteri Gram positif", "Bakteri berwarna ungu", "Bulat", "Berantai", "Rantai kokus"],
+    B: ["Gram stain", "Pewarnaan Gram", "Gram positif", "Ungu", "Positif Gram", "Menyerap kristal violet", "Streptococcus", "Kokus Gram positif"],
+    penjelasan: "Streptococcus pyogenes adalah kokus Gram positif yang tersusun dalam rantai. Dinding selnya memiliki peptidoglikan tebal yang menahan kristal violet-iodine.",
+    penjelasan_en: "Streptococcus pyogenes is a Gram-positive coccus arranged in chains. Its cell wall has thick peptidoglycan that retains the crystal violet-iodine complex."
   },
   15: {
-    A: ["gram-positive cocci in clusters", "kokus gram positif bergerombol", "staphylococcus", "purple", "ungu", "kokus bergerombol", "bakteri kokus", "bakteri gram positif", "bakteri berwarna ungu", "staphylococcus", "kokus", "bulat", "bergerombol", "cluster", "anggur", "seperti anggur"],
-    B: ["gram stain", "pewarnaan gram", "interpretasi: gram positif", "ungu", "positif gram", "menyerap kristal violet", "staphylococcus", "kokus gram positif"]
+    A: ["Kokus Gram positif bergerombol", "Gram-positive cocci in clusters", "Staphylococcus", "Purple", "Ungu", "Kokus bergerombol", "Bakteri kokus", "Bakteri Gram positif", "Bakteri berwarna ungu", "Bulat", "Bergerombol", "Cluster", "Anggur", "Seperti anggur"],
+    B: ["Gram stain", "Pewarnaan Gram", "Gram positif", "Ungu", "Positif Gram", "Menyerap kristal violet", "Staphylococcus", "Kokus Gram positif"],
+    penjelasan: "Staphylococcus aureus adalah kokus Gram positif yang tersusun dalam kelompok seperti anggur.",
+    penjelasan_en: "Staphylococcus aureus is a Gram-positive coccus arranged in grape-like clusters."
   },
   16: {
-    A: ["curved gram-negative rods", "batang gram negatif melengkung", "vibrio", "pink", "merah muda", "batang bengkok", "bakteri batang melengkung", "koma", "comma shaped", "bakteri gram negatif", "bakteri berwarna merah", "vibrio", "batang", "melengkung", "bengkok"],
-    B: ["gram stain", "pewarnaan gram", "interpretasi: gram negatif", "pink", "merah", "merah muda", "negatif gram", "tidak menyerap kristal violet", "vibrio", "batang gram negatif"]
+    A: ["Batang Gram negatif melengkung", "Curved Gram-negative rods", "Vibrio", "Pink", "Merah muda", "Batang bengkok", "Bakteri batang melengkung", "Koma", "Comma shaped", "Bakteri Gram negatif", "Bakteri berwarna merah", "Vibrio", "Batang", "Melengkung", "Bengkok"],
+    B: ["Gram stain", "Pewarnaan Gram", "Gram negatif", "Pink", "Merah", "Merah muda", "Negatif Gram", "Tidak menyerap kristal violet", "Vibrio", "Batang Gram negatif"],
+    penjelasan: "Vibrio cholerae adalah batang Gram negatif melengkung (koma). Dinding selnya tipis sehingga kehilangan kristal violet dan menyerap safranin.",
+    penjelasan_en: "Vibrio cholerae is a curved (comma-shaped) Gram-negative rod. Its cell wall is thin, causing it to lose crystal violet and absorb safranin."
   },
   17: {
-    A: ["gram-negative rods", "batang gram negatif", "pink", "merah muda", "bakteri batang", "bakteri gram negatif", "bakteri berwarna merah", "basil", "rods", "batang pendek", "coccobacilli (jika pendek)"],
-    B: ["gram stain", "pewarnaan gram", "interpretasi: gram negatif", "pink", "merah", "merah muda", "negatif gram", "tidak menyerap kristal violet"]
+    A: ["Batang Gram negatif", "Gram-negative rods", "Pink", "Merah muda", "Bakteri batang", "Bakteri Gram negatif", "Bakteri berwarna merah", "Basil", "Rods", "Batang pendek", "Coccobacilli"],
+    B: ["Gram stain", "Pewarnaan Gram", "Gram negatif", "Pink", "Merah", "Merah muda", "Negatif Gram", "Tidak menyerap kristal violet"],
+    penjelasan: "Escherichia coli adalah batang Gram negatif.",
+    penjelasan_en: "Escherichia coli is a Gram-negative rod."
   },
   18: {
-    A: ["gram-positive cocci in clusters", "kokus gram positif bergerombol", "staphylococcus", "purple", "ungu", "kokus bergerombol", "bakteri kokus", "bakteri gram positif", "bakteri berwarna ungu", "staphylococcus", "kokus", "bulat", "bergerombol", "cluster", "anggur", "seperti anggur"],
-    B: ["gram stain", "pewarnaan gram", "interpretasi: gram positif", "ungu", "positif gram", "menyerap kristal violet", "staphylococcus", "kokus gram positif"]
+    A: ["Kokus Gram positif bergerombol", "Gram-positive cocci in clusters", "Staphylococcus", "Purple", "Ungu", "Kokus bergerombol", "Bakteri kokus", "Bakteri Gram positif", "Bakteri berwarna ungu", "Bulat", "Bergerombol", "Cluster", "Anggur", "Seperti anggur"],
+    B: ["Gram stain", "Pewarnaan Gram", "Gram positif", "Ungu", "Positif Gram", "Menyerap kristal violet", "Staphylococcus", "Kokus Gram positif"],
+    penjelasan: "Staphylococcus aureus adalah kokus Gram positif bergerombol.",
+    penjelasan_en: "Staphylococcus aureus is a clustered Gram-positive coccus."
   },
   19: {
-    A: ["gram-positive cocci in pairs", "diplokokus gram positif", "streptococcus pneumoniae", "purple", "ungu", "kokus berpasangan", "bakteri kokus", "bakteri gram positif", "bakteri berwarna ungu", "diplokokus", "kokus", "bulat", "berpasangan", "pairs", "lancip", "oval"],
-    B: ["gram stain", "pewarnaan gram", "interpretasi: gram positif", "ungu", "positif gram", "menyerap kristal violet", "streptococcus pneumoniae", "diplokokus gram positif"]
+    A: ["Diplokokus Gram positif", "Gram-positive cocci in pairs", "Streptococcus pneumoniae", "Purple", "Ungu", "Kokus berpasangan", "Bakteri kokus", "Bakteri Gram positif", "Bakteri berwarna ungu", "Diplokokus", "Kokus", "Bulat", "Berpasangan", "Pairs", "Lancip", "Oval"],
+    B: ["Gram stain", "Pewarnaan Gram", "Gram positif", "Ungu", "Positif Gram", "Menyerap kristal violet", "Streptococcus pneumoniae", "Diplokokus Gram positif"],
+    penjelasan: "Streptococcus pneumoniae adalah diplokokus Gram positif yang sering berbentuk lancip (flame-shaped).",
+    penjelasan_en: "Streptococcus pneumoniae is a Gram-positive diplococcus often described as flame-shaped."
   },
   20: {
-    A: ["gram-negative rods", "batang gram negatif", "pink", "merah muda", "bakteri batang", "bakteri gram negatif", "bakteri berwarna merah", "basil", "rods", "batang pendek", "coccobacilli (jika pendek)"],
-    B: ["gram stain", "pewarnaan gram", "interpretasi: gram negatif", "pink", "merah", "merah muda", "negatif gram", "tidak menyerap kristal violet"]
+    A: ["Batang Gram negatif", "Gram-negative rods", "Pink", "Merah muda", "Bakteri batang", "Bakteri Gram negatif", "Bakteri berwarna merah", "Basil", "Rods", "Batang pendek", "Coccobacilli"],
+    B: ["Gram stain", "Pewarnaan Gram", "Gram negatif", "Pink", "Merah", "Merah muda", "Negatif Gram", "Tidak menyerap kristal violet"],
+    penjelasan: "Bakteri batang Gram negatif.",
+    penjelasan_en: "Gram-negative rod bacterium."
   },
   // Topik 3
   21: {
-    A: ["membrane filtration", "filtrasi membran", "filtrasi", "metode filtras", "sterilisasi filtras", "membrane filter", "millipore", "filter steril"],
-    B: ["filter", "membran filter", "millipore", "syringe filter", "filter 0.22 µm", "filter 0.45 µm", "membran", "alat filtras", "filter bakteri"]
+    A: ["Filtrasi membran", "Membrane filtration", "Filtrasi", "Sterilisasi filtrasi", "Filtrasi vakum", "Filtrasi tekanan"],
+    B: ["Filter membran", "Membrane filter", "Millipore", "Syringe filter", "Filter 0.22 µm", "Filter 0.45 µm", "Filter bakteri", "Membran", "Alat filtrasi"],
+    penjelasan: "Filtrasi digunakan untuk media heat-labile (tidak tahan panas) seperti serum, vitamin, atau antibiotik karena tidak menggunakan panas. Filter 0.22 µm menahan bakteri.",
+    penjelasan_en: "Filtration is used for heat-labile media (not heat-resistant) such as serum, vitamins, or antibiotics because it does not use heat. A 0.22 µm filter retains bacteria."
   },
   22: {
-    A: ["flaming", "pemijaran", "sterilisasi dengan api", "sterilisasi api", "flame sterilization", "red-hot", "dibakar", "panas kering", "dry heat", "sterilisasi panas kering"],
-    B: ["membakar sampai merah", "red-hot", "membunuh mikroorganisme dengan panas", "panas kering", "denaturasi protein", "oksidasi", "membakar seluruh permukaan", "memijarkan", "sterilisasi dengan pemijaran", "panas tinggi"]
+    A: ["Flaming", "Pemijaran", "Sterilisasi api", "Flame sterilization", "Panas kering", "Dry heat", "Red-hot", "Dibakar"],
+    B: ["Membakar sampai merah", "Red-hot", "Panas tinggi", "Denaturasi protein", "Oksidasi", "Membunuh mikroorganisme", "Memijarkan", "Sterilisasi dengan pemijaran", "Panas kering"],
+    penjelasan: "Pemijaran membunuh mikroorganisme melalui panas kering yang sangat tinggi (sampai merah). Prinsipnya adalah denaturasi protein dan oksidasi komponen sel.",
+    penjelasan_en: "Flaming kills microorganisms through very high dry heat (until red-hot). The principle is protein denaturation and oxidation of cell components."
   },
   23: {
-    A: ["70% alcohol", "alkohol 70%", "etanol 70%", "isopropyl alcohol 70%", "alkohol", "ethanol", "isopropanol", "desinfektan"],
-    B: ["chlorhexidine", "klorheksidin", "iodine", "povidone iodine", "betadine", "iodofor", "hydrogen peroxide", "h2o2", "glutaraldehyde", "desinfektan lain", "antiseptik"]
+    A: ["Alkohol 70%", "70% alcohol", "Etanol 70%", "Isopropyl alcohol 70%", "Alkohol", "Ethanol", "Isopropanol", "Desinfektan"],
+    B: ["Klorheksidin", "Chlorhexidine", "Iodine", "Povidone iodine", "Betadine", "Iodofor", "Hidrogen peroksida", "H2O2", "Glutaraldehid", "Desinfektan lain", "Antiseptik", "Sodium hipoklorit", "Bayclin", "Pemutih"],
+    penjelasan: "Alkohol 70% efektif mendesinfeksi permukaan karena denaturasi protein dan melarutkan lipid. Air dalam alkohol 70% membantu penetrasi ke dinding sel.",
+    penjelasan_en: "70% alcohol is effective for surface disinfection due to protein denaturation and lipid dissolution. The water in 70% alcohol helps penetrate the cell wall."
   },
   24: {
-    A: ["thioglycollate broth", "thioglycolate", "media thioglikolat", "thioglycollate", "media anaerob", "broth anaerob", "media cair anaerob", "thioglikolat"],
-    B: ["gas pack", "anaerobic jar", "anaerobic indicator", "methylene blue", "resazurin", "palladium catalyst", "katalis paladium", "kantung gas", "anaerobik jar", "jar anaerob", "sistem evacuation replacement"]
+    A: ["Thioglycollate broth", "Thioglycolate", "Media thioglikolat", "Thioglycollate", "Media anaerob", "Broth anaerob", "Media cair anaerob", "Thioglikolat"],
+    B: ["Gas pack", "Anaerobic jar", "Anaerobic indicator", "Methylene blue", "Resazurin", "Palladium catalyst", "Katalis paladium", "Kantung gas", "Anaerobik jar", "Jar anaerob", "Sistem evacuation replacement", "Campuran gas H2/CO2"],
+    penjelasan: "Thioglycollate broth mengandung agen pereduksi yang menurunkan potensial redoks. Gas pack atau jar anaerob menciptakan atmosfer tanpa oksigen dengan mengonsumsi O2.",
+    penjelasan_en: "Thioglycollate broth contains reducing agents that lower redox potential. A gas pack or anaerobic jar creates an oxygen-free atmosphere by consuming O2."
   },
   25: {
-    A: ["macconkey agar", "macconkey", "ss agar", "salmonella-shigella agar", "media selektif", "media diferensial", "media selektif-diferensial"],
-    B: ["lactose fermenter", "lf", "e. coli", "klebsiella", "non-lactose fermenter", "nlf", "salmonella", "shigella", "pseudomonas", "bakteri lf", "bakteri nlf"]
+    A: ["Media selektif", "Selective media", "Media selektif-diferensial", "Media selektif dan diferensial"],
+    B: ["MacConkey agar", "SS agar", "TCBS", "MSA", "Chocolate agar", "LJ"],
+    penjelasan: "Media selektif mengandung zat yang menghambat pertumbuhan mikroorganisme tertentu, sehingga hanya mikroorganisme target yang tumbuh.",
+    penjelasan_en: "Selective media contain substances that inhibit the growth of certain microorganisms, so only the target microorganisms grow."
   },
   26: {
-    A: ["macconkey agar", "macconkey", "media diferensial", "media selektif", "media laktosa"],
-    B: ["lactose fermenter: e. coli", "klebsiella", "enterobacter", "non-lactose fermenter: salmonella", "shigella", "pseudomonas", "proteus", "bakteri lf", "bakteri nlf"]
+    A: ["MacConkey agar", "MacConkey", "Media diferensial", "Media selektif", "Media laktosa"],
+    B: ["E. coli", "Klebsiella", "Enterobacter", "Salmonella", "Shigella", "Pseudomonas", "Proteus", "Bakteri LF", "Bakteri NLF"],
+    penjelasan: "MacConkey mengandung laktosa dan phenol red; LF menghasilkan asam (pink), NLF tidak (colorless).",
+    penjelasan_en: "MacConkey contains lactose and phenol red; LF produces acid (pink), NLF does not (colorless)."
   },
   27: {
-    A: ["triple sugar iron (tsi) agar", "tsi", "tsi agar", "media tsi", "triple sugar iron"],
-    B: ["glucose", "glukosa", "lactose", "laktosa", "sucrose", "sukrosa", "ferrous sulfate", "feso4", "phenol red", "indikator ph", "merah fenol", "pepton", "agar", "natrium tiosulfat", "h2s"]
+    A: ["Triple Sugar Iron (TSI) agar", "TSI", "TSI agar", "Media TSI", "Triple sugar iron"],
+    B: ["Glukosa", "Glucose", "Laktosa", "Lactose", "Sukrosa", "Sucrose", "FeSO4", "Ferrous sulfate", "Phenol red", "Indikator pH", "Merah fenol", "Pepton", "Agar", "Natrium tiosulfat", "H2S"],
+    penjelasan: "TSI menguji fermentasi tiga gula (glukosa, laktosa, sukrosa) dan produksi H2S (dari natrium tiosulfat + FeSO4).",
+    penjelasan_en: "TSI tests the fermentation of three sugars (glucose, lactose, sucrose) and H2S production (from sodium thiosulfate + FeSO4)."
   },
   28: {
-    A: ["chocolate agar", "agar coklat", "media coklat", "chocolate agar plate", "cap", "hemoglobin agar"],
-    B: ["haemophilus influenzae", "h. influenzae", "neisseria gonorrhoeae", "n. gonorrhoeae", "streptococcus pneumoniae", "s. pneumoniae", "bakteri fastidius", "bakteri rewel", "fastidious bacteria"]
+    A: ["Chocolate agar", "Agar coklat", "Media coklat", "Chocolate agar plate", "CAP", "Hemoglobin agar"],
+    B: ["Haemophilus influenzae", "H. influenzae", "Neisseria gonorrhoeae", "N. gonorrhoeae", "Streptococcus pneumoniae", "S. pneumoniae", "Bakteri fastidius", "Bakteri rewel", "Fastidious bacteria"],
+    penjelasan: "Chocolate agar mengandung faktor X (hemin) dan V (NAD) yang dibutuhkan bakteri fastidius.",
+    penjelasan_en: "Chocolate agar contains factor X (hemin) and V (NAD) required by fastidious bacteria."
   },
   29: {
-    A: ["motility test medium", "sim", "motility indole ornithine", "media motilitas", "media sim", "semi-solid agar", "agar tusuk", "motility medium", "uji motilitas"],
-    B: ["diffuse growth", "pertumbuhan menyebar = motile", "pertumbuhan hanya di garis tusukan = non-motile", "turbid", "keruh di seluruh media", "growth only along stab line", "tidak menyebar", "hanya di tusukan", "motil", "non-motil"]
+    A: ["SIM", "Motility test medium", "Media motilitas", "Media SIM", "Semi-solid agar", "Agar tusuk", "Motility medium", "Uji motilitas"],
+    B: ["Menyebar", "Diffuse growth = motil", "Hanya di garis tusukan", "Growth only along stab line = non-motil", "Turbid", "Keruh di seluruh media", "Tidak menyebar", "Hanya di tusukan", "Motil", "Non-motil"],
+    penjelasan: "Bakteri motil menyebar dari garis tusukan karena memiliki flagela; non-motil hanya tumbuh di garis tusukan.",
+    penjelasan_en: "Motile bacteria spread from the stab line due to flagella; non-motile bacteria grow only along the stab line."
   },
   30: {
-    A: ["agar", "agar-agar", "bacto agar", "agar powder", "pemadat", "solidifying agent", "gelling agent", "agarosa"],
-    B: ["blood agar", "macconkey agar", "nutrient agar", "tsa", "trypticase soy agar", "bap", "media padat", "solid media", "plate agar"]
+    A: ["Agar", "Agar-agar", "Bacto agar", "Agar powder", "Pemadat", "Solidifying agent", "Gelling agent", "Agarosa"],
+    B: ["Blood agar", "MacConkey agar", "Nutrient agar", "TSA", "Trypticase soy agar", "BAP", "Media padat", "Solid media", "Plate agar"],
+    penjelasan: "Agar adalah polisakarida dari alga yang memadatkan media pada suhu kamar tetapi mencair pada suhu >90°C.",
+    penjelasan_en: "Agar is a polysaccharide from algae that solidifies media at room temperature but melts at >90°C."
   },
   // Topik 4
   31: {
-    A: ["tcbs agar", "thiosulfate-citrate-bile salts-sucrose agar", "tcbs", "yellow colonies", "koloni kuning", "media selektif vibrio", "koloni berwarna kuning", "sucrose fermenter", "vibrio cholerae"],
-    B: ["oxidase test", "uji oksidase", "string test", "tsi a/a", "fermentasi sukrosa", "sucrose positive", "uji string", "motil", "indole positive", "uji biokimia", "oksidase positif", "tsi a/a", "sukrosa positif"]
+    A: ["TCBS agar", "Thiosulfate-citrate-bile salts-sucrose agar", "TCBS", "Kuning", "Yellow", "Koloni kuning", "Sucrose fermenter", "Vibrio cholera"],
+    B: ["Oksidase", "Oxidase test", "String test", "TSI A/A", "Fermentasi sukrosa", "Sucrose positive", "Uji string", "Motil", "Indole positive", "Uji biokimia", "Oksidase positif", "TSI A/A", "Sukrosa positif"],
+    penjelasan: "Vibrio cholera memfermentasi sukrosa sehingga koloni berwarna kuning pada TCBS (indikator bromothymol blue dan thymol blue berubah kuning karena asam).",
+    penjelasan_en: "Vibrio cholera ferments sucrose, causing colonies to appear yellow on TCBS (bromothymol blue and thymol blue indicators turn yellow due to acid)."
   },
   32: {
-    A: ["gram-negative rods", "batang gram negatif", "pink", "merah muda", "bakteri batang", "bakteri gram negatif", "bakteri berwarna merah", "basil", "rods", "batang"],
-    B: ["oxidase positive", "oksidase positif", "pyocyanin", "pyoverdine", "green pigment", "pigmen hijau", "pigmen biru-hijau", "non-fermenter", "macconkey colorless", "tsi alk/alk", "oksidase", "pigmen", "hijau", "biru"]
+    A: ["Batang Gram negatif", "Gram-negative rods", "Pink", "Merah muda", "Bakteri batang", "Bakteri Gram negatif", "Bakteri berwarna merah", "Basil", "Rods", "Batang"],
+    B: ["Oksidase positif", "Oxidase positive", "Pyocyanin", "Pyoverdine", "Pigmen hijau", "Green pigment", "Pigmen biru-hijau", "Non-fermenter", "MacConkey colorless", "TSI Alk/Alk", "Oksidase", "Pigmen", "Hijau", "Biru"],
+    penjelasan: "Pseudomonas aeruginosa menghasilkan pigmen pyocyanin (biru-hijau) dan pyoverdine (kuning-hijau) yang khas. Oksidase positif dan non-fermenter.",
+    penjelasan_en: "Pseudomonas aeruginosa produces characteristic pigments pyocyanin (blue-green) and pyoverdine (yellow-green). It is oxidase-positive and non-fermenter."
   },
   33: {
-    A: ["gram-negative coccobacilli", "kokobasil gram negatif", "pink", "merah muda", "bakteri kokobasil", "bakteri gram negatif", "bakteri berwarna merah", "coccobacilli", "batang pendek", "bulat lonjong"],
-    B: ["oxidase negative", "oksidase negatif", "non-fermenter", "macconkey colorless", "tsi alk/alk", "urease negative", "motility negative", "oksidase negatif", "non-fermenter", "urease negatif"]
+    A: ["Kokobasil Gram negatif", "Gram-negative coccobacilli", "Pink", "Merah muda", "Bakteri kokobasil", "Bakteri Gram negatif", "Bakteri berwarna merah", "Coccobacilli", "Batang pendek", "Bulat lonjong"],
+    B: ["Oksidase negatif", "Oxidase negative", "Non-fermenter", "MacConkey colorless", "TSI Alk/Alk", "Urease variable", "Sitrat variable", "Oksidase negatif", "Non-fermenter", "Urease variable"],
+    penjelasan: "Acinetobacter baumannii adalah kokobasil Gram negatif, oksidase negatif, non-fermenter, dan dapat memanfaatkan sitrat.",
+    penjelasan_en: "Acinetobacter baumannii is a Gram-negative coccobacillus, oxidase-negative, non-fermenter, and can utilize citrate."
   },
   34: {
-    A: ["gram-negative rods", "batang gram negatif", "pink", "merah muda", "bakteri batang", "bakteri gram negatif", "bakteri berwarna merah", "basil", "rods", "batang"],
-    B: ["oxidase positive", "oksidase positif", "non-fermenter", "macconkey colorless", "tsi alk/alk", "oksidase", "non-fermenter", "tidak memfermentasi laktosa", "oksidase positif"]
+    A: ["Batang Gram negatif", "Gram-negative rods", "Pink", "Merah muda", "Bakteri batang", "Bakteri Gram negatif", "Bakteri berwarna merah", "Basil", "Rods", "Batang"],
+    B: ["Oksidase positif", "Oxidase positive", "Non-fermenter", "MacConkey colorless", "TSI Alk/Alk", "Oksidase", "Non-fermenter", "Tidak memfermentasi laktosa", "Oksidase positif"],
+    penjelasan: "Pseudomonas aeruginosa adalah batang Gram negatif, oksidase positif, non-fermenter.",
+    penjelasan_en: "Pseudomonas aeruginosa is a Gram-negative rod, oxidase-positive, non-fermenter."
   },
   35: {
-    A: ["gram-negative rods", "batang gram negatif", "pink", "merah muda", "bakteri batang", "bakteri gram negatif", "bakteri berwarna merah", "basil", "rods", "batang"],
-    B: ["oxidase positive", "oksidase positif", "non-fermenter", "macconkey colorless", "tsi alk/alk", "oksidase", "non-fermenter", "tidak memfermentasi laktosa", "oksidase positif"]
+    A: ["Batang Gram negatif", "Gram-negative rods", "Pink", "Merah muda", "Bakteri batang", "Bakteri Gram negatif", "Bakteri berwarna merah", "Basil", "Rods", "Batang"],
+    B: ["Oksidase positif", "Oxidase positive", "Non-fermenter", "TSI Alk/Alk", "Oksidase", "Non-fermenter", "Tidak memfermentasi laktosa", "Oksidase positif"],
+    penjelasan: "Pseudomonas aeruginosa.",
+    penjelasan_en: "Pseudomonas aeruginosa."
   },
   36: {
-    A: ["gram-negative coccobacilli", "kokobasil gram negatif", "pink", "merah muda", "bakteri kokobasil", "bakteri gram negatif", "bakteri berwarna merah", "coccobacilli", "batang pendek", "bulat lonjong"],
-    B: ["oxidase negative", "oksidase negatif", "citrate positive", "non-fermenter", "sitrat positif", "oksidase negatif", "non-fermenter", "tsi alk/alk", "urease variable"]
+    A: ["Kokobasil Gram negatif", "Gram-negative coccobacilli", "Pink", "Merah muda", "Bakteri kokobasil", "Bakteri Gram negatif", "Bakteri berwarna merah", "Coccobacilli", "Batang pendek", "Bulat lonjong"],
+    B: ["Oksidase negatif", "Oxidase negative", "Sitrat positif", "Citrate positive", "Non-fermenter", "Sitrat positif", "Oksidase negatif", "Non-fermenter", "TSI Alk/Alk", "Urease variable"],
+    penjelasan: "Acinetobacter baumannii dapat memanfaatkan sitrat sebagai sumber karbon.",
+    penjelasan_en: "Acinetobacter baumannii can utilize citrate as a carbon source."
   },
   37: {
-    A: ["gram-negative rods", "batang gram negatif", "pink", "merah muda", "bakteri batang", "bakteri gram negatif", "bakteri berwarna merah", "basil", "rods", "batang"],
-    B: ["oxidase positive", "oksidase positif", "urease positive", "non-fermenter", "urease positif", "oksidase positif", "non-fermenter", "tsi alk/alk", "urease"]
+    A: ["Batang Gram negatif", "Gram-negative rods", "Pink", "Merah muda", "Bakteri batang", "Bakteri Gram negatif", "Bakteri berwarna merah", "Basil", "Rods", "Batang"],
+    B: ["Oksidase positif", "Oxidase positive", "Urease positif", "Urease positive", "Non-fermenter", "Urease positif", "Oksidase positif", "Non-fermenter", "TSI Alk/Alk"],
+    penjelasan: "Pseudomonas aeruginosa dapat menghasilkan urease.",
+    penjelasan_en: "Pseudomonas aeruginosa can produce urease."
   },
   38: {
-    A: ["gram-negative rods", "batang gram negatif", "pink", "merah muda", "bakteri batang", "bakteri gram negatif", "bakteri berwarna merah", "basil", "rods", "batang"],
-    B: ["oxidase positive", "oksidase positif", "pyocyanin", "green pigment", "non-fermenter", "pigmen hijau", "oksidase positif", "non-fermenter", "tsi alk/alk"]
+    A: ["Batang Gram negatif", "Gram-negative rods", "Pink", "Merah muda", "Bakteri batang", "Bakteri Gram negatif", "Bakteri berwarna merah", "Basil", "Rods", "Batang"],
+    B: ["Oksidase positif", "Oxidase positive", "Pyocyanin", "Green pigment", "Pigmen hijau", "Non-fermenter", "Oksidase positif", "Non-fermenter", "TSI Alk/Alk"],
+    penjelasan: "Pseudomonas aeruginosa menghasilkan pigmen hijau.",
+    penjelasan_en: "Pseudomonas aeruginosa produces green pigment."
   },
   39: {
-    A: ["gram-negative coccobacilli", "kokobasil gram negatif", "pink", "merah muda", "bakteri kokobasil", "bakteri gram negatif", "bakteri berwarna merah", "coccobacilli", "batang pendek", "bulat lonjong"],
-    B: ["oxidase negative", "oksidase negatif", "non-fermenter", "tsi alk/alk", "oksidase negatif", "non-fermenter", "urease variable", "sitrat variable"]
+    A: ["Kokobasil Gram negatif", "Gram-negative coccobacilli", "Pink", "Merah muda", "Bakteri kokobasil", "Bakteri Gram negatif", "Bakteri berwarna merah", "Coccobacilli", "Batang pendek", "Bulat lonjong"],
+    B: ["Oksidase negatif", "Oxidase negative", "Non-fermenter", "TSI Alk/Alk", "Oksidase negatif", "Non-fermenter", "Urease variable", "Sitrat variable"],
+    penjelasan: "Acinetobacter baumannii.",
+    penjelasan_en: "Acinetobacter baumannii."
   },
   40: {
-    A: ["gram-negative rods", "batang gram negatif", "pink", "merah muda", "bakteri batang", "bakteri gram negatif", "bakteri berwarna merah", "basil", "rods", "batang"],
-    B: ["oxidase positive", "oksidase positif", "non-fermenter", "tsi alk/alk", "oksidase positif", "non-fermenter", "tidak memfermentasi laktosa", "tsi alk/alk"]
+    A: ["Batang Gram negatif", "Gram-negative rods", "Pink", "Merah muda", "Bakteri batang", "Bakteri Gram negatif", "Bakteri berwarna merah", "Basil", "Rods", "Batang"],
+    B: ["Oksidase positif", "Oxidase positive", "Non-fermenter", "TSI Alk/Alk", "Oksidase positif", "Non-fermenter", "Tidak memfermentasi laktosa", "TSI Alk/Alk"],
+    penjelasan: "Pseudomonas aeruginosa.",
+    penjelasan_en: "Pseudomonas aeruginosa."
   },
   // Topik 5
   41: {
-    A: ["disk diffusion", "kirby-bauer", "uji difusi disk", "uji kepekaan", "antibiotic susceptibility test", "ast", "interpretasi: resistant", "mrsa (zone ≤ 21 mm)", "resisten", "tidak sensitif", "zona hambat kecil", "mrsa", "methicillin-resistant"],
-    B: ["oxacillin disk", "cefoxitin disk", "pbp2a test", "pcr meca", "uji konfirmasi mrsa", "cefoxitin", "oxacillin", "disk cefoxitin", "disk oxacillin"]
+    A: ["Disk diffusion", "Kirby-Bauer", "Uji difusi disk", "Uji kepekaan", "Antibiotic susceptibility test", "AST", "Resisten", "Resistant", "MRSA (zone ≤ 21 mm)", "Tidak sensitif", "Zona hambat kecil", "MRSA", "Methicillin-resistant"],
+    B: ["Oxacillin disk", "Cefoxitin disk", "PBP2a test", "PCR mecA", "Uji konfirmasi MRSA", "Cefoxitin", "Oxacillin", "Disk cefoxitin", "Disk oxacillin"],
+    penjelasan: "MRSA resisten terhadap cefoxitin (zona ≤ 21 mm) karena memiliki gen mecA yang mengkode PBP2a. Cefoxitin adalah disk pengganti oxacillin yang lebih stabil.",
+    penjelasan_en: "MRSA is resistant to cefoxitin (zone ≤ 21 mm) because it possesses the mecA gene encoding PBP2a. Cefoxitin is a more stable substitute disk for oxacillin."
   },
   42: {
-    A: ["disk diffusion", "kirby-bauer", "uji difusi disk", "uji kepekaan", "ast", "interpretasi: sensitive", "intermediate", "resistant based on zone size", "sensitif", "intermediate", "resisten", "zona hambat", "diameter zona hambat"],
-    B: ["inoculum size", "ukuran inokulum", "media thickness", "ketebalan media", "disk potency", "potensi disk", "incubation time", "waktu inkubasi", "temperature", "suhu", "ph media", "konsentrasi antibiotik", "faktor uji"]
+    A: ["Disk diffusion", "Kirby-Bauer", "Uji difusi disk", "Uji kepekaan", "AST", "Sensitif", "Intermediate", "Resisten berdasarkan diameter zona", "Zona hambat", "Diameter zona hambat"],
+    B: ["Ukuran inokulum", "Inoculum size", "Ketebalan media", "Media thickness", "Potensi disk", "Disk potency", "Waktu inkubasi", "Incubation time", "Suhu", "Temperature", "pH media", "Konsentrasi antibiotik"],
+    penjelasan: "Faktor-faktor ini mempengaruhi difusi antibiotik dan pertumbuhan bakteri, sehingga dapat mengubah diameter zona hambat.",
+    penjelasan_en: "These factors affect antibiotic diffusion and bacterial growth, thereby potentially altering the inhibition zone diameter."
   },
   43: {
-    A: ["broth microdilution", "dilusi cair", "mic test", "uji mic", "minimum inhibitory concentration", "mikrodilusi", "dilusi", "interpretasi: mic value (clear well)", "nilai mic", "sumur jernih", "konsentrasi hambat minimum"],
-    B: ["provides quantitative result", "hasil kuantitatif", "more precise", "lebih presisi", "can test multiple antibiotics in one plate", "dapat menguji banyak antibiotik", "menghemat waktu", "kuantitatif", "mic"]
+    A: ["Broth microdilution", "Mikrodilusi", "MIC test", "Uji MIC", "Minimum inhibitory concentration", "Dilusi", "Nilai MIC", "MIC value", "Sumur jernih", "Clear well", "Konsentrasi hambat minimum"],
+    B: ["Kuantitatif", "Quantitative", "Lebih presisi", "More precise", "Dapat menguji banyak antibiotik", "Menghemat waktu", "Hasil MIC", "Lebih akurat"],
+    penjelasan: "Mikrodilusi memberikan nilai MIC kuantitatif (konsentrasi terendah yang menghambat pertumbuhan), lebih presisi daripada difusi disk yang hanya kualitatif.",
+    penjelasan_en: "Microdilution provides a quantitative MIC value (the lowest concentration that inhibits growth), which is more precise than disk diffusion, which is only qualitative."
   },
   44: {
-    A: ["disk diffusion", "kirby-bauer", "uji difusi disk", "interpretasi: resistant (zone ≤ 15 mm) for s. saprophyticus", "resisten", "zona hambat kecil", "s. saprophyticus", "novobiocin resistant"],
-    B: ["s. saprophyticus", "coagulase-negative staphylococci", "cons", "staphylococcus saprophyticus", "bakteri resisten novobiocin", "bakteri gram positif", "kokus gram positif"]
+    A: ["Disk diffusion", "Kirby-Bauer", "Uji difusi disk", "Resisten", "Resistant (zone ≤ 15 mm) untuk S. saprophyticus", "Zona hambat kecil", "Novobiocin resistant"],
+    B: ["Coagulase-negative staphylococci", "CONS", "Staphylococcus saprophyticus", "Bakteri resisten novobiocin", "Bakteri Gram positif", "Kokus Gram positif"],
+    penjelasan: "S. saprophyticus resisten terhadap novobiocin, berbeda dengan S. epidermidis yang sensitif. Ini adalah uji kunci untuk membedakan keduanya.",
+    penjelasan_en: "S. saprophyticus is resistant to novobiocin, unlike S. epidermidis, which is sensitive. This is a key test to differentiate the two."
   },
   45: {
-    A: ["disk diffusion", "kirby-bauer", "uji difusi disk", "interpretasi: sensitive (large zone)", "sensitif", "zona hambat besar", "ampicillin sensitive", "enterococcus faecalis"],
-    B: ["ampicillin", "penicillin g", "vancomycin", "ampisilin", "penisilin", "vankomisin", "antibiotik lini pertama", "lini kedua"]
+    A: ["Disk diffusion", "Kirby-Bauer", "Uji difusi disk", "Sensitif", "Sensitive (large zone)", "Zona hambat besar", "Ampicillin sensitive", "Enterococcus faecalis"],
+    B: ["Ampicillin", "Penicillin G", "Vancomycin", "Ampisilin", "Penisilin", "Vankomisin", "Antibiotik lini pertama", "Lini kedua"],
+    penjelasan: "Ampicillin atau penisilin G adalah pilihan untuk Enterococcus faecalis yang sensitif; vankomisin untuk strain resisten.",
+    penjelasan_en: "Ampicillin or penicillin G are choices for susceptible Enterococcus faecalis; vancomycin is for resistant strains."
   },
   46: {
-    A: ["double-disk synergy test (ddst)", "esbl test", "uji esbl", "uji sinergi", "interpretasi: esbl positive (keyhole/synergy)", "positif esbl", "efek keyhole", "sinergi", "zona hambat melebar"],
-    B: ["cefotaxime", "ceftazidime", "ceftriaxone", "aztreonam", "sefotaksim", "seftazidim", "seftriakson", "aztreonam", "antibiotik beta-laktam", "sefalosporin generasi 3"]
+    A: ["Double-Disk Synergy Test (DDST)", "ESBL test", "Uji ESBL", "Uji sinergi", "ESBL positif", "ESBL positive", "Keyhole", "Sinergi", "Zona hambat melebar"],
+    B: ["Cefotaxime", "Ceftazidime", "Ceftriaxone", "Aztreonam", "Sefotaksim", "Seftazidim", "Seftriakson", "Aztreonam", "Antibiotik beta-laktam", "Sefalosporin generasi 3"],
+    penjelasan: "DDST mendeteksi ESBL dengan melihat efek sinergi (keyhole) antara disk sefalosporin dan clavulanate. Clavulanate menghambat ESBL, sehingga zona hambat sefalosporin melebar.",
+    penjelasan_en: "DDST detects ESBL by observing the synergy effect (keyhole) between cephalosporin and clavulanate disks. Clavulanate inhibits ESBL, causing the cephalosporin inhibition zone to expand."
   },
   47: {
-    A: ["disk diffusion", "kirby-bauer", "uji difusi disk", "interpretasi: multidrug resistant (mdr)", "resistant pattern", "pola resistensi", "mdr", "resisten terhadap banyak antibiotik", "tidak ada zona hambat"],
-    B: ["beta-lactamase production", "produksi beta-laktamase", "efflux pump", "pompa efflux", "porin mutation", "mutasi porin", "target modification", "modifikasi target", "enzim", "mekanisme resistensi"]
+    A: ["Disk diffusion", "Kirby-Bauer", "Uji difusi disk", "Multidrug resistant (MDR)", "Pola resistensi", "Resistant pattern", "MDR", "Resisten terhadap banyak antibiotik", "Tidak ada zona hambat"],
+    B: ["Beta-laktamase", "Produksi beta-laktamase", "Efflux pump", "Pompa efflux", "Porin mutation", "Mutasi porin", "Target modification", "Modifikasi target", "Enzim", "Mekanisme resistensi"],
+    penjelasan: "MDR menunjukkan resistensi terhadap ≥3 kelas antibiotik. Mekanisme resistensi dapat berupa enzim (beta-laktamase), efflux pump, mutasi porin, atau modifikasi target.",
+    penjelasan_en: "MDR indicates resistance to ≥3 classes of antibiotics. Resistance mechanisms can include enzymes (beta-lactamase), efflux pumps, porin mutations, or target modifications."
   },
   48: {
-    A: ["disk diffusion", "kirby-bauer", "uji difusi disk", "interpretasi: sensitive (zone ≥ 20 mm) or resistant based on clsi", "sensitif", "resisten", "zona hambat", "diameter zona hambat", "imipenem"],
-    B: ["meropenem", "colistin", "polymyxin b", "tigecycline", "meropenem", "kolistin", "polimiksin b", "tigesiklin", "antibiotik cadangan", "antibiotik lini terakhir"]
+    A: ["Disk diffusion", "Kirby-Bauer", "Uji difusi disk", "Sensitif", "Resisten berdasarkan zona (CLSI)", "Zona hambat", "Diameter zona hambat", "Imipenem"],
+    B: ["Meropenem", "Colistin", "Polymyxin B", "Tigecycline", "Meropenem", "Kolistin", "Polimiksin B", "Tigesiklin", "Antibiotik cadangan", "Antibiotik lini terakhir"],
+    penjelasan: "Imipenem adalah carbapenem untuk Acinetobacter; alternatif termasuk meropenem dan kolistin (untuk MDR).",
+    penjelasan_en: "Imipenem is a carbapenem for Acinetobacter; alternatives include meropenem and colistin (for MDR)."
   },
   49: {
-    A: ["disk diffusion", "kirby-bauer", "uji difusi disk", "interpretasi: sensitive (zone ≥ 15 mm) for vancomycin", "sensitif", "zona hambat", "vancomycin sensitive", "vankomisin sensitif"],
-    B: ["linezolid", "daptomycin", "teicoplanin", "tigecycline", "linezolid", "daptomisin", "teikoplanin", "tigesiklin", "antibiotik alternatif", "lini kedua"]
+    A: ["Disk diffusion", "Kirby-Bauer", "Uji difusi disk", "Sensitif", "Sensitive (zone ≥ 15 mm) untuk vancomycin", "Zona hambat", "Vancomycin sensitive", "Vankomisin sensitif"],
+    B: ["Linezolid", "Daptomycin", "Teicoplanin", "Tigecycline", "Linezolid", "Daptomisin", "Teikoplanin", "Tigesiklin", "Antibiotik alternatif", "Lini kedua"],
+    penjelasan: "Vancomycin adalah pilihan untuk MRSA; alternatif termasuk linezolid dan daptomycin.",
+    penjelasan_en: "Vancomycin is the choice for MRSA; alternatives include linezolid and daptomycin."
   },
   50: {
-    A: ["disk diffusion", "kirby-bauer", "uji difusi disk", "interpretasi: sensitive (zone ≥ 35 mm) for ceftriaxone", "sensitif", "zona hambat", "seftriakson sensitif", "neisseria gonorrhoeae"],
-    B: ["azithromycin", "doxycycline", "cefixime", "spectinomycin", "azitromisin", "doksisiklin", "sefiksim", "spektinomisin", "antibiotik alternatif", "lini kedua"]
+    A: ["Disk diffusion", "Kirby-Bauer", "Uji difusi disk", "Sensitif", "Sensitive (zone ≥ 35 mm) untuk ceftriaxone", "Zona hambat", "Seftriakson sensitif", "Neisseria gonorrhoeae"],
+    B: ["Azithromycin", "Doxycycline", "Cefixime", "Spectinomycin", "Azitromisin", "Doksisiklin", "Sefiksim", "Spektinomisin", "Antibiotik alternatif", "Lini kedua"],
+    penjelasan: "Ceftriaxone adalah lini pertama untuk gonorrhoeae; alternatif termasuk azithromycin dan doxycycline.",
+    penjelasan_en: "Ceftriaxone is the first-line for gonorrhoeae; alternatives include azithromycin and doxycycline."
   },
   // Topik 6
   51: {
-    A: ["gram-positive cocci in clusters", "kokus gram positif bergerombol", "purple", "ungu", "kokus bergerombol", "bakteri kokus", "bakteri gram positif", "bakteri berwarna ungu", "staphylococcus", "kokus", "bulat", "bergerombol", "cluster", "anggur", "seperti anggur"],
-    B: ["catalase positive", "katalase positif", "coagulase positive", "koagulase positif", "mannitol fermentation", "fermentasi mannitol", "katalase", "koagulase", "msa", "mannitol salt agar", "kuning"]
+    A: ["Kokus Gram positif bergerombol", "Gram-positive cocci in clusters", "Purple", "Ungu", "Kokus bergerombol", "Bakteri kokus", "Bakteri Gram positif", "Bakteri berwarna ungu", "Staphylococcus", "Kokus", "Bulat", "Bergerombol", "Cluster", "Anggur", "Seperti anggur"],
+    B: ["Katalase positif", "Catalase positive", "Koagulase positif", "Coagulase positive", "Fermentasi mannitol", "Mannitol fermentation", "Katalase", "Koagulase", "MSA", "Mannitol salt agar", "Kuning"],
+    penjelasan: "Staphylococcus aureus adalah katalase dan koagulase positif, memfermentasi mannitol (MSA kuning).",
+    penjelasan_en: "Staphylococcus aureus is catalase and coagulase positive, fermenting mannitol (yellow MSA)."
   },
   52: {
-    A: ["gram-positive cocci in chains", "kokus gram positif berantai", "purple", "ungu", "kokus berantai", "bakteri kokus", "bakteri gram positif", "bakteri berwarna ungu", "streptococcus", "kokus", "bulat", "berantai", "rantai kokus"],
-    B: ["bacitracin sensitive", "basitrasin sensitif", "beta-hemolysis", "hemolisis beta", "catalase negative", "katalase negatif", "basitrasin", "hemolisis", "katalase negatif", "s. pyogenes", "streptococcus pyogenes"]
+    A: ["Kokus Gram positif berantai", "Gram-positive cocci in chains", "Purple", "Ungu", "Kokus berantai", "Bakteri kokus", "Bakteri Gram positif", "Bakteri berwarna ungu", "Streptococcus", "Kokus", "Bulat", "Berantai", "Rantai kokus"],
+    B: ["Basitrasin sensitif", "Bacitracin sensitive", "Hemolisis beta", "Beta-hemolysis", "Katalase negatif", "Catalase negative", "Basitrasin", "Hemolisis", "Katalase negatif", "S. pyogenes", "Streptococcus pyogenes"],
+    penjelasan: "Streptococcus pyogenes (GAS) adalah basitrasin sensitif, beta-hemolitik, katalase negatif.",
+    penjelasan_en: "Streptococcus pyogenes (GAS) is bacitracin-sensitive, beta-hemolytic, and catalase-negative."
   },
   53: {
-    A: ["gram-positive cocci in clusters", "kokus gram positif bergerombol", "purple", "ungu", "kokus bergerombol", "bakteri kokus", "bakteri gram positif", "bakteri berwarna ungu", "staphylococcus", "kokus", "bulat", "bergerombol", "cluster", "anggur", "seperti anggur"],
-    B: ["coagulase positive", "koagulase positif", "mannitol salt agar yellow", "msa kuning", "catalase positive", "katalase positif", "koagulase", "msa", "katalase", "s. aureus", "staphylococcus aureus", "fermentasi mannitol", "kuning"]
+    A: ["Kokus Gram positif bergerombol", "Gram-positive cocci in clusters", "Purple", "Ungu", "Kokus bergerombol", "Bakteri kokus", "Bakteri Gram positif", "Bakteri berwarna ungu", "Staphylococcus", "Kokus", "Bulat", "Bergerombol", "Cluster", "Anggur", "Seperti anggur"],
+    B: ["Koagulase positif", "Coagulase positive", "MSA kuning", "Mannitol salt agar yellow", "Katalase positif", "Catalase positive", "Koagulase", "MSA", "Katalase", "S. aureus", "Staphylococcus aureus", "Fermentasi mannitol", "Kuning"],
+    penjelasan: "Staphylococcus aureus.",
+    penjelasan_en: "Staphylococcus aureus."
   },
   54: {
-    A: ["gram-positive cocci in clusters", "kokus gram positif bergerombol", "purple", "ungu", "kokus bergerombol", "bakteri kokus", "bakteri gram positif", "bakteri berwarna ungu", "staphylococcus", "kokus", "bulat", "bergerombol", "cluster", "anggur", "seperti anggur"],
-    B: ["novobiocin resistant", "novobiocin resistant", "coagulase negative", "koagulase negatif", "mannitol salt agar pink", "msa merah muda", "novobiocin", "koagulase negatif", "msa", "s. saprophyticus", "staphylococcus saprophyticus"]
+    A: ["Kokus Gram positif bergerombol", "Gram-positive cocci in clusters", "Purple", "Ungu", "Kokus bergerombol", "Bakteri kokus", "Bakteri Gram positif", "Bakteri berwarna ungu", "Staphylococcus", "Kokus", "Bulat", "Bergerombol", "Cluster", "Anggur", "Seperti anggur"],
+    B: ["Novobiocin resisten", "Novobiocin resistant", "Koagulase negatif", "Coagulase negative", "MSA merah muda", "MSA pink", "Novobiocin", "Koagulase negatif", "MSA", "S. saprophyticus", "Staphylococcus saprophyticus"],
+    penjelasan: "Staphylococcus saprophyticus resisten novobiocin, koagulase negatif.",
+    penjelasan_en: "Staphylococcus saprophyticus is novobiocin-resistant, coagulase-negative."
   },
   55: {
-    A: ["gram-positive cocci in chains", "kokus gram positif berantai", "purple", "ungu", "kokus berantai", "bakteri kokus", "bakteri gram positif", "bakteri berwarna ungu", "streptococcus", "kokus", "bulat", "berantai", "rantai kokus"],
-    B: ["camp test positive", "camp test positif", "hippurate hydrolysis", "hidrolisis hipurat", "beta-hemolysis", "hemolisis beta", "camp", "hipurat", "s. agalactiae", "streptococcus agalactiae", "group b strep"]
+    A: ["Kokus Gram positif berantai", "Gram-positive cocci in chains", "Purple", "Ungu", "Kokus berantai", "Bakteri kokus", "Bakteri Gram positif", "Bakteri berwarna ungu", "Streptococcus", "Kokus", "Bulat", "Berantai", "Rantai kokus"],
+    B: ["CAMP test positif", "CAMP test positive", "Hidrolisis hipurat", "Hippurate hydrolysis", "Hemolisis beta", "Beta-hemolysis", "CAMP", "Hipurat", "S. agalactiae", "Streptococcus agalactiae", "Group B strep"],
+    penjelasan: "Streptococcus agalactiae (GBS) adalah CAMP positif, hipurat positif.",
+    penjelasan_en: "Streptococcus agalactiae (GBS) is CAMP-positive, hippurate-positive."
   },
   56: {
-    A: ["gram-positive cocci in pairs", "diplokokus gram positif", "purple", "ungu", "kokus berpasangan", "bakteri kokus", "bakteri gram positif", "bakteri berwarna ungu", "streptococcus pneumoniae", "diplokokus", "kokus", "bulat", "berpasangan", "pairs", "lancip", "oval"],
-    B: ["optochin sensitive", "optochin sensitif", "alpha-hemolysis", "hemolisis alfa", "bile soluble", "larut empedu", "inulin fermentation", "fermentasi inulin", "optochin", "hemolisis alfa", "larut empedu", "inulin", "s. pneumoniae", "streptococcus pneumoniae"]
+    A: ["Diplokokus Gram positif", "Gram-positive cocci in pairs", "Purple", "Ungu", "Kokus berpasangan", "Bakteri kokus", "Bakteri Gram positif", "Bakteri berwarna ungu", "Streptococcus pneumoniae", "Diplokokus", "Kokus", "Bulat", "Berpasangan", "Pairs", "Lancip", "Oval"],
+    B: ["Optochin sensitif", "Optochin sensitive", "Hemolisis alfa", "Alpha-hemolysis", "Larut empedu", "Bile soluble", "Fermentasi inulin", "Inulin fermentation", "Optochin", "Hemolisis alfa", "Larut empedu", "Inulin", "S. pneumoniae", "Streptococcus pneumoniae"],
+    penjelasan: "Streptococcus pneumoniae adalah optochin sensitif, alpha-hemolitik, larut empedu, dan memfermentasi inulin.",
+    penjelasan_en: "Streptococcus pneumoniae is optochin-sensitive, alpha-hemolytic, bile-soluble, and ferments inulin."
   },
   57: {
-    A: ["gram-positive cocci in chains", "kokus gram positif berantai", "purple", "ungu", "kokus berantai", "bakteri kokus", "bakteri gram positif", "bakteri berwarna ungu", "streptococcus", "kokus", "bulat", "berantai", "rantai kokus"],
-    B: ["bile solubility positive", "larut empedu", "optochin sensitive", "optochin sensitif", "alpha-hemolysis", "hemolisis alfa", "larut empedu", "optochin", "hemolisis alfa", "s. pneumoniae", "streptococcus pneumoniae"]
+    A: ["Kokus Gram positif berantai", "Gram-positive cocci in chains", "Purple", "Ungu", "Kokus berantai", "Bakteri kokus", "Bakteri Gram positif", "Bakteri berwarna ungu", "Streptococcus", "Kokus", "Bulat", "Berantai", "Rantai kokus"],
+    B: ["Larut empedu", "Bile solubility positive", "Optochin sensitif", "Optochin sensitive", "Hemolisis alfa", "Alpha-hemolysis", "Larut empedu", "Optochin", "Hemolisis alfa", "S. pneumoniae", "Streptococcus pneumoniae"],
+    penjelasan: "Streptococcus pneumoniae.",
+    penjelasan_en: "Streptococcus pneumoniae."
   },
   58: {
-    A: ["gram-positive cocci in clusters", "kokus gram positif bergerombol", "purple", "ungu", "kokus bergerombol", "bakteri kokus", "bakteri gram positif", "bakteri berwarna ungu", "staphylococcus", "kokus", "bulat", "bergerombol", "cluster", "anggur", "seperti anggur"],
-    B: ["cefoxitin resistant", "sefoksitin resisten (zone ≤ 21 mm)", "mrsa", "coagulase positive", "koagulase positif", "sefoksitin", "mrsa", "koagulase", "methicillin-resistant staphylococcus aureus"]
+    A: ["Kokus Gram positif bergerombol", "Gram-positive cocci in clusters", "Purple", "Ungu", "Kokus bergerombol", "Bakteri kokus", "Bakteri Gram positif", "Bakteri berwarna ungu", "Staphylococcus", "Kokus", "Bulat", "Bergerombol", "Cluster", "Anggur", "Seperti anggur"],
+    B: ["Sefoksitin resisten", "Cefoxitin resistant", "MRSA", "Koagulase positif", "Coagulase positive", "Sefoksitin", "MRSA", "Koagulase", "Methicillin-resistant Staphylococcus aureus"],
+    penjelasan: "MRSA resisten terhadap cefoxitin karena gen mecA.",
+    penjelasan_en: "MRSA is resistant to cefoxitin due to the mecA gene."
   },
   59: {
-    A: ["acid-fast bacilli", "basil tahan asam", "bta", "red rods", "batang merah", "bakteri batang merah", "basil tahan asam", "bakteri tahan asam", "afb", "acid-fast bacilli", "bakteri berwarna merah", "batang merah", "mycobacterium", "bakteri batang", "basil", "globi", "globus"],
-    B: ["ziehl-neelsen stain", "pewarnaan zn", "pewarnaan ziehl-neelsen", "interpretasi: mycobacterium leprae", "bta positif", "acid-fast", "tahan asam", "basil tahan asam", "bakteri tahan asam", "zn positif", "merah", "tahan asam", "m. leprae"]
+    A: ["BTA", "Basil tahan asam", "Acid-fast bacilli", "Batang merah", "Red rods", "Bakteri batang merah", "Basil tahan asam", "Bakteri tahan asam", "AFB", "Mycobacterium", "Bakteri batang", "Basil", "Globi", "Globus"],
+    B: ["Ziehl-Neelsen", "ZN", "Pewarnaan Ziehl-Neelsen", "Mycobacterium leprae", "BTA positif", "Acid-fast", "Tahan asam", "Basil tahan asam", "Bakteri tahan asam", "ZN positif", "Merah", "Tahan asam", "M. leprae"],
+    penjelasan: "Mycobacterium leprae adalah basil tahan asam yang dapat membentuk globi (kumpulan basil di dalam makrofag).",
+    penjelasan_en: "Mycobacterium leprae is an acid-fast bacillus that can form globi (clusters of bacilli within macrophages)."
   },
   60: {
-    A: ["gram-positive cocci in chains", "kokus gram positif berantai", "purple", "ungu", "kokus berantai", "bakteri kokus", "bakteri gram positif", "bakteri berwarna ungu", "streptococcus", "kokus", "bulat", "berantai", "rantai kokus"],
-    B: ["inulin fermentation", "fermentasi inulin", "optochin sensitive", "optochin sensitif", "alpha-hemolysis", "hemolisis alfa", "inulin", "optochin", "hemolisis alfa", "s. pneumoniae", "streptococcus pneumoniae"]
+    A: ["Kokus Gram positif berantai", "Gram-positive cocci in chains", "Purple", "Ungu", "Kokus berantai", "Bakteri kokus", "Bakteri Gram positif", "Bakteri berwarna ungu", "Streptococcus", "Kokus", "Bulat", "Berantai", "Rantai kokus"],
+    B: ["Fermentasi inulin", "Inulin fermentation", "Optochin sensitif", "Optochin sensitive", "Hemolisis alfa", "Alpha-hemolysis", "Inulin", "Optochin", "Hemolisis alfa", "S. pneumoniae", "Streptococcus pneumoniae"],
+    penjelasan: "Streptococcus pneumoniae.",
+    penjelasan_en: "Streptococcus pneumoniae."
   },
   // Topik 7
   61: {
-    A: ["gram-negative diplococci", "diplokokus gram negatif", "pink", "merah muda", "intracellular", "intraseluler", "di dalam leukosit", "kokus berpasangan", "diplokokus", "bakteri gram negatif", "bakteri berwarna merah", "bakteri berbentuk biji kopi", "coffee bean shaped", "kidney bean shaped", "bakteri berbentuk kacang"],
-    B: ["oxidase positive", "oksidase positif", "glucose fermentation", "fermentasi glukosa", "thayer-martin agar", "oksidase", "glukosa", "thayer-martin", "tm agar", "n. gonorrhoeae", "neisseria gonorrhoeae"]
+    A: ["Diplokokus Gram negatif", "Gram-negative diplococci", "Pink", "Merah muda", "Intracellular", "Intraseluler", "Di dalam leukosit", "Kokus berpasangan", "Diplokokus", "Bakteri Gram negatif", "Bakteri berwarna merah", "Bakteri berbentuk biji kopi", "Coffee bean shaped", "Kidney bean shaped", "Bakteri berbentuk kacang"],
+    B: ["Oksidase positif", "Oxidase positive", "Fermentasi glukosa", "Glucose fermentation", "Thayer-Martin agar", "Oksidase", "Glukosa", "Thayer-Martin", "TM agar", "N. gonorrhoeae", "Neisseria gonorrhoeae"],
+    penjelasan: "Neisseria gonorrhoeae adalah diplokokus Gram negatif intraseluler, oksidase positif, memfermentasi glukosa, tumbuh di Thayer-Martin.",
+    penjelasan_en: "Neisseria gonorrhoeae is an intracellular Gram-negative diplococcus, oxidase-positive, ferments glucose, grows on Thayer-Martin."
   },
   62: {
-    A: ["clue cells", "sel clue", "epithelial cells covered with bacteria", "sel epitel yang dikelilingi bakteri", "sel epitel bertabur bakteri", "clue cell", "sel epitel dengan bakteri menempel", "sel epitel yang dipenuhi bakteri", "bakteri menempel pada sel epitel", "sel epitel vagina", "squamous epithelial cells", "epitel skuamosa", "bakteri kecil menempel"],
-    B: ["whiff test positive", "amine test", "koh test", "fishy odor", "nugent score", "uji whiff", "uji amin", "bau amis", "skor nugent", "bacterial vaginosis", "vaginosis bakteri", "bv", "gardnerella vaginalis"]
+    A: ["Clue cells", "Sel clue", "Sel epitel bertabur bakteri", "Epithelial cells covered with bacteria", "Sel epitel yang dikelilingi bakteri", "Sel epitel dengan bakteri menempel", "Sel epitel yang dipenuhi bakteri", "Bakteri menempel pada sel epitel", "Sel epitel vagina", "Squamous epithelial cells", "Epitel skuamosa", "Bakteri kecil menempel"],
+    B: ["Whiff test positif", "Amine test", "KOH test", "Bau amis", "Fishy odor", "Nugent score", "Skor Nugent", "Uji whiff", "Uji amin", "Bacterial vaginosis", "Vaginosis bakteri", "BV", "Gardnerella vaginalis"],
+    penjelasan: "Clue cells adalah sel epitel yang dipenuhi Gardnerella vaginalis. Diagnosis BV ditegakkan dengan kriteria Amsel (termasuk whiff test) atau Nugent score.",
+    penjelasan_en: "Clue cells are epithelial cells covered with Gardnerella vaginalis. BV diagnosis is established using Amsel criteria (including whiff test) or Nugent score."
   },
   63: {
-    A: ["gram-negative rods", "batang gram negatif", "pleomorphic", "pink", "merah muda", "bakteri batang", "bakteri gram negatif", "bakteri berwarna merah", "basil", "rods", "batang", "pleomorfik", "beragam bentuk"],
-    B: ["bile esculin positive", "bile esculin positif", "kanamycin resistant", "kanamisin resisten", "anaerobic growth", "tumbuh anaerob", "bile esculin", "kanamisin", "anaerob", "bacteroides", "prevotella"]
+    A: ["Batang Gram negatif", "Gram-negative rods", "Pleomorphic", "Pink", "Merah muda", "Bakteri batang", "Bakteri Gram negatif", "Bakteri berwarna merah", "Basil", "Rods", "Batang", "Pleomorfik", "Beragam bentuk"],
+    B: ["Bile esculin positif", "Bile esculin positive", "Kanamycin resistant", "Kanamisin resisten", "Anaerobic growth", "Tumbuh anaerob", "Bile esculin", "Kanamisin", "Anaerob", "Bacteroides", "Prevotella"],
+    penjelasan: "Bacteroides fragilis adalah batang Gram negatif anaerob, resisten kanamisin, bile esculin positif.",
+    penjelasan_en: "Bacteroides fragilis is an anaerobic Gram-negative rod, kanamycin-resistant, bile esculin-positive."
   },
   64: {
-    A: ["gram-negative diplococci", "diplokokus gram negatif", "pink", "merah muda", "intracellular", "intraseluler", "di dalam leukosit", "kokus berpasangan", "diplokokus", "bakteri gram negatif", "bakteri berwarna merah", "bakteri berbentuk biji kopi", "coffee bean shaped", "kidney bean shaped", "bakteri berbentuk kacang"],
-    B: ["glucose fermentation", "fermentasi glukosa", "oxidase positive", "oksidase positif", "thayer-martin agar", "glukosa", "oksidase", "thayer-martin", "tm agar", "n. gonorrhoeae", "neisseria gonorrhoeae"]
+    A: ["Diplokokus Gram negatif", "Gram-negative diplococci", "Pink", "Merah muda", "Intracellular", "Intraseluler", "Di dalam leukosit", "Kokus berpasangan", "Diplokokus", "Bakteri Gram negatif", "Bakteri berwarna merah", "Bakteri berbentuk biji kopi", "Coffee bean shaped", "Kidney bean shaped", "Bakteri berbentuk kacang"],
+    B: ["Fermentasi glukosa", "Glucose fermentation", "Oksidase positif", "Oxidase positive", "Thayer-Martin agar", "Glukosa", "Oksidase", "Thayer-Martin", "TM agar", "N. gonorrhoeae", "Neisseria gonorrhoeae"],
+    penjelasan: "Neisseria gonorrhoeae.",
+    penjelasan_en: "Neisseria gonorrhoeae."
   },
   65: {
-    A: ["gram-negative rods", "batang gram negatif", "pink", "merah muda", "bakteri batang", "bakteri gram negatif", "bakteri berwarna merah", "basil", "rods", "batang"],
-    B: ["non-fermenter", "macconkey colorless", "tsi alk/alk", "oxidase positive (if pseudomonas)", "non-fermenter", "tidak memfermentasi laktosa", "oksidase positif", "tsi alk/alk", "pseudomonas", "acinetobacter"]
+    A: ["Batang Gram negatif", "Gram-negative rods", "Pink", "Merah muda", "Bakteri batang", "Bakteri Gram negatif", "Bakteri berwarna merah", "Basil", "Rods", "Batang"],
+    B: ["Non-fermenter", "MacConkey colorless", "TSI Alk/Alk", "Oxidase positive (if Pseudomonas)", "Non-fermenter", "Tidak memfermentasi laktosa", "Oksidase positif", "TSI Alk/Alk", "Pseudomonas", "Acinetobacter"],
+    penjelasan: "Bakteri non-fermenter Gram negatif (misalnya Pseudomonas atau Acinetobacter).",
+    penjelasan_en: "Gram-negative non-fermenter bacteria (e.g., Pseudomonas or Acinetobacter)."
   },
   66: {
-    A: ["gram-positive cocci in clusters", "kokus gram positif bergerombol", "purple", "ungu", "kokus bergerombol", "bakteri kokus", "bakteri gram positif", "bakteri berwarna ungu", "staphylococcus", "kokus", "bulat", "bergerombol", "cluster", "anggur", "seperti anggur"],
-    B: ["catalase negative", "katalase negatif", "coagulase negative", "koagulase negatif", "novobiocin sensitive", "novobiocin sensitif", "katalase negatif", "koagulase negatif", "streptococcus", "enterococcus"]
+    A: ["Kokus Gram positif bergerombol", "Gram-positive cocci in clusters", "Purple", "Ungu", "Kokus bergerombol", "Bakteri kokus", "Bakteri Gram positif", "Bakteri berwarna ungu", "Staphylococcus", "Kokus", "Bulat", "Bergerombol", "Cluster", "Anggur", "Seperti anggur"],
+    B: ["Katalase negatif", "Catalase negative", "Koagulase negatif", "Coagulase negative", "Novobiocin sensitive", "Novobiocin sensitif", "Katalase negatif", "Koagulase negatif", "Novobiocin", "Streptococcus", "Enterococcus"],
+    penjelasan: "Kokus Gram positif katalase negatif adalah Streptococcus atau Enterococcus.",
+    penjelasan_en: "Catalase-negative Gram-positive cocci are Streptococcus or Enterococcus."
   },
   67: {
-    A: ["gram-negative rods", "batang gram negatif", "pleomorphic", "pink", "merah muda", "bakteri batang", "bakteri gram negatif", "bakteri berwarna merah", "basil", "rods", "batang", "pleomorfik", "beragam bentuk"],
-    B: ["kanamycin sensitive", "kanamisin sensitif", "anaerobic growth", "tumbuh anaerob", "bile esculin positive", "bile esculin positif", "kanamisin", "anaerob", "bile esculin", "bacteroides", "prevotella"]
+    A: ["Batang Gram negatif", "Gram-negative rods", "Pleomorphic", "Pink", "Merah muda", "Bakteri batang", "Bakteri Gram negatif", "Bakteri berwarna merah", "Basil", "Rods", "Batang", "Pleomorfik", "Beragam bentuk"],
+    B: ["Kanamycin sensitive", "Kanamisin sensitif", "Anaerobic growth", "Tumbuh anaerob", "Bile esculin positive", "Bile esculin positif", "Kanamisin", "Anaerob", "Bile esculin", "Bacteroides", "Prevotella"],
+    penjelasan: "Prevotella species adalah batang Gram negatif anaerob, sensitif kanamisin.",
+    penjelasan_en: "Prevotella species are anaerobic Gram-negative rods, kanamycin-sensitive."
   },
   68: {
-    A: ["clue cells", "sel clue", "epithelial cells covered with bacteria", "sel epitel yang dikelilingi bakteri", "sel epitel bertabur bakteri", "clue cell", "sel epitel dengan bakteri menempel", "sel epitel yang dipenuhi bakteri", "bakteri menempel pada sel epitel", "sel epitel vagina", "squamous epithelial cells", "epitel skuamosa", "bakteri kecil menempel"],
-    B: ["amine test positive", "whiff test", "fishy odor", "nugent score", "uji amin", "uji whiff", "bau amis", "skor nugent", "bacterial vaginosis", "vaginosis bakteri", "bv", "gardnerella vaginalis"]
+    A: ["Clue cells", "Sel clue", "Sel epitel bertabur bakteri", "Epithelial cells covered with bacteria", "Sel epitel yang dikelilingi bakteri", "Sel epitel dengan bakteri menempel", "Sel epitel yang dipenuhi bakteri", "Bakteri menempel pada sel epitel", "Sel epitel vagina", "Squamous epithelial cells", "Epitel skuamosa", "Bakteri kecil menempel"],
+    B: ["Amine test positive", "Whiff test", "Fishy odor", "Nugent score", "Uji amin", "Uji whiff", "Bau amis", "Skor Nugent", "Bacterial vaginosis", "Vaginosis bakteri", "BV", "Gardnerella vaginalis"],
+    penjelasan: "Bacterial vaginosis.",
+    penjelasan_en: "Bacterial vaginosis."
   },
   69: {
-    A: ["gram-negative rods", "batang gram negatif", "pink", "merah muda", "bakteri batang", "bakteri gram negatif", "bakteri berwarna merah", "basil", "rods", "batang"],
-    B: ["motility positive", "motilitas positif", "non-fermenter", "macconkey colorless", "oxidase positive", "motil", "non-fermenter", "oksidase positif", "pseudomonas", "acinetobacter"]
+    A: ["Batang Gram negatif", "Gram-negative rods", "Pink", "Merah muda", "Bakteri batang", "Bakteri Gram negatif", "Bakteri berwarna merah", "Basil", "Rods", "Batang"],
+    B: ["Motility positive", "Motilitas positif", "Non-fermenter", "MacConkey colorless", "Oxidase positive", "Motil", "Non-fermenter", "Oksidase positif", "Pseudomonas", "Acinetobacter"],
+    penjelasan: "Pseudomonas aeruginosa (motil, non-fermenter, oksidase positif).",
+    penjelasan_en: "Pseudomonas aeruginosa (motile, non-fermenter, oxidase-positive)."
   },
   70: {
-    A: ["gram-positive cocci in chains", "kokus gram positif berantai", "purple", "ungu", "kokus berantai", "bakteri kokus", "bakteri gram positif", "bakteri berwarna ungu", "streptococcus", "kokus", "bulat", "berantai", "rantai kokus"],
-    B: ["bile esculin positive", "bile esculin positif", "growth in 6.5% nacl", "tumbuh di nacl 6.5%", "gamma-hemolysis", "hemolisis gamma", "bile esculin", "nacl 6.5%", "gamma", "enterococcus faecalis", "e. faecalis"]
+    A: ["Kokus Gram positif berantai", "Gram-positive cocci in chains", "Purple", "Ungu", "Kokus berantai", "Bakteri kokus", "Bakteri Gram positif", "Bakteri berwarna ungu", "Streptococcus", "Kokus", "Bulat", "Berantai", "Rantai kokus"],
+    B: ["Bile esculin positive", "Bile esculin positif", "Growth in 6.5% NaCl", "Tumbuh di NaCl 6.5%", "Gamma-hemolysis", "Hemolisis gamma", "Bile esculin", "NaCl 6.5%", "Gamma", "Enterococcus faecalis", "E. faecalis"],
+    penjelasan: "Enterococcus faecalis adalah kokus Gram positif yang tumbuh di NaCl 6.5%, bile esculin positif, gamma-hemolitik.",
+    penjelasan_en: "Enterococcus faecalis is a Gram-positive coccus that grows in 6.5% NaCl, is bile esculin-positive, and gamma-hemolytic."
   },
   // Topik 8
   71: {
-    A: ["macconkey agar", "ss agar", "macconkey", "salmonella-shigella agar", "colorless colonies", "koloni tidak berwarna", "black center", "pusat hitam", "koloni transparan", "koloni pucat", "koloni bening"],
-    B: ["h2s positive", "h2s positif", "tsi alk/a", "tsi alk/a", "non-lactose fermenter", "nlf", "h2s", "tsi", "nlf", "salmonella", "shigella", "bakteri nlf", "tidak memfermentasi laktosa"]
+    A: ["MacConkey agar", "SS agar", "MacConkey", "Salmonella-Shigella agar", "Colorless", "Tidak berwarna", "Black center", "Pusat hitam", "Koloni transparan", "Koloni pucat", "Koloni bening"],
+    B: ["H2S positive", "H2S positif", "TSI Alk/A", "TSI Alk/A", "Non-lactose fermenter", "NLF", "H2S", "TSI", "NLF", "Salmonella", "Shigella", "Bakteri NLF", "Tidak memfermentasi laktosa"],
+    penjelasan: "Salmonella species adalah NLF, H2S positif (black center pada SS agar), TSI Alk/A.",
+    penjelasan_en: "Salmonella species are NLF, H2S-positive (black center on SS agar), TSI Alk/A."
   },
   72: {
-    A: ["macconkey agar", "macconkey", "pink colonies", "koloni merah muda", "koloni pink", "koloni merah", "lactose fermenter", "lf"],
-    B: ["indole positive", "indole positif", "citrate positive", "sitrat positif", "tsi a/a", "tsi a/a", "indole", "sitrat", "tsi", "e. coli", "escherichia coli", "bakteri lf"]
+    A: ["MacConkey agar", "MacConkey", "Pink", "Merah muda", "Koloni pink", "Koloni merah", "Lactose fermenter", "LF"],
+    B: ["Indole positive", "Indole positif", "Citrate positive", "Sitrat positif", "TSI A/A", "TSI A/A", "Indole", "Sitrat", "TSI", "E. coli", "Escherichia coli", "Bakteri LF"],
+    penjelasan: "Escherichia coli adalah LF, indole positif, sitrat negatif (umumnya), TSI A/A.",
+    penjelasan_en: "Escherichia coli is LF, indole-positive, citrate-negative (generally), TSI A/A."
   },
   73: {
-    A: ["macconkey agar", "macconkey", "pink mucoid colonies", "koloni merah muda mukoid", "koloni pink", "koloni mukoid", "lactose fermenter", "lf", "klebsiella"],
-    B: ["citrate positive", "sitrat positif", "tsi a/a", "tsi a/a", "non-motile", "non-motil", "sitrat", "tsi", "non-motil", "klebsiella pneumoniae", "k. pneumoniae"]
+    A: ["MacConkey agar", "MacConkey", "Pink", "Merah muda", "Mukoid", "Mucoid", "Koloni pink", "Koloni mukoid", "Lactose fermenter", "LF", "Klebsiella"],
+    B: ["Citrate positive", "Sitrat positif", "TSI A/A", "TSI A/A", "Non-motile", "Non-motil", "Sitrat", "TSI", "Non-motil", "Klebsiella pneumoniae", "K. pneumoniae"],
+    penjelasan: "Klebsiella pneumoniae adalah LF mukoid, sitrat positif, non-motil.",
+    penjelasan_en: "Klebsiella pneumoniae is mucoid LF, citrate-positive, non-motile."
   },
   74: {
-    A: ["macconkey agar", "macconkey", "pink colonies", "koloni merah muda", "koloni pink", "koloni merah", "lactose fermenter", "lf"],
-    B: ["indole positive", "indole positif", "motile", "motil", "tsi a/a", "tsi a/a", "indole", "motil", "tsi", "e. coli", "escherichia coli", "bakteri lf"]
+    A: ["MacConkey agar", "MacConkey", "Pink", "Merah muda", "Koloni pink", "Koloni merah", "Lactose fermenter", "LF"],
+    B: ["Indole positive", "Indole positif", "Motile", "Motil", "TSI A/A", "TSI A/A", "Indole", "Motil", "TSI", "E. coli", "Escherichia coli", "Bakteri LF"],
+    penjelasan: "Escherichia coli (indole positif, motil).",
+    penjelasan_en: "Escherichia coli (indole-positive, motile)."
   },
   75: {
-    A: ["macconkey agar", "macconkey", "colorless colonies", "koloni tidak berwarna", "koloni transparan", "koloni pucat", "non-lactose fermenter", "nlf"],
-    B: ["urease positive", "urease positif", "motile", "motil", "tsi alk/a", "tsi alk/a", "urease", "motil", "tsi", "proteus", "proteus mirabilis", "bakteri nlf"]
+    A: ["MacConkey agar", "MacConkey", "Colorless", "Tidak berwarna", "Koloni transparan", "Koloni pucat", "Non-lactose fermenter", "NLF"],
+    B: ["Urease positive", "Urease positif", "Motile", "Motil", "TSI Alk/A", "TSI Alk/A", "Urease", "Motil", "TSI", "Proteus", "Proteus mirabilis", "Bakteri NLF"],
+    penjelasan: "Proteus mirabilis adalah NLF, urease positif, motil (swarming).",
+    penjelasan_en: "Proteus mirabilis is NLF, urease-positive, motile (swarming)."
   },
   76: {
-    A: ["macconkey agar", "macconkey", "colorless colonies", "koloni tidak berwarna", "koloni transparan", "koloni pucat", "non-lactose fermenter", "nlf"],
-    B: ["oxidase positive", "oksidase positif", "non-motile", "non-motil", "tsi alk/a", "tsi alk/a", "oksidase", "non-motil", "tsi", "shigella", "bakteri nlf"]
+    A: ["MacConkey agar", "MacConkey", "Colorless", "Tidak berwarna", "Koloni transparan", "Koloni pucat", "Non-lactose fermenter", "NLF"],
+    B: ["Non-motile", "Non-motil", "TSI Alk/A", "TSI Alk/A", "H2S negative", "H2S negatif", "Non-motil", "TSI", "H2S negatif", "Shigella", "Bakteri NLF"],
+    penjelasan: "Shigella species adalah NLF, non-motil, H2S negatif.",
+    penjelasan_en: "Shigella species are NLF, non-motile, H2S-negative."
   },
   77: {
-    A: ["macconkey agar", "macconkey", "colorless colonies", "koloni tidak berwarna", "koloni transparan", "koloni pucat", "non-lactose fermenter", "nlf"],
-    B: ["urease positive", "urease positif", "non-motile", "non-motil", "tsi a/a", "tsi a/a", "urease", "non-motil", "tsi", "yersinia enterocolitica", "bakteri nlf"]
+    A: ["MacConkey agar", "MacConkey", "Colorless", "Tidak berwarna", "Koloni transparan", "Koloni pucat", "Non-lactose fermenter", "NLF"],
+    B: ["Urease positive", "Urease positif", "Non-motile", "Non-motil", "TSI A/A", "TSI A/A", "Urease", "Non-motil", "TSI", "Yersinia enterocolitica", "Bakteri NLF"],
+    penjelasan: "Yersinia enterocolitica adalah NLF, urease positif, non-motil pada 37°C.",
+    penjelasan_en: "Yersinia enterocolitica is NLF, urease-positive, non-motile at 37°C."
   },
   78: {
-    A: ["macconkey agar", "macconkey", "pink colonies", "koloni merah muda", "koloni pink", "koloni merah", "lactose fermenter", "lf"],
-    B: ["indole positive", "indole positif", "citrate positive", "sitrat positif", "tsi a/a", "tsi a/a", "indole", "sitrat", "tsi", "klebsiella oxytoca", "bakteri lf"]
+    A: ["MacConkey agar", "MacConkey", "Pink", "Merah muda", "Koloni pink", "Koloni merah", "Lactose fermenter", "LF"],
+    B: ["Indole positive", "Indole positif", "Citrate positive", "Sitrat positif", "TSI A/A", "TSI A/A", "Indole", "Sitrat", "TSI", "Klebsiella oxytoca", "Bakteri LF"],
+    penjelasan: "Klebsiella oxytoca adalah LF, indole positif, sitrat positif.",
+    penjelasan_en: "Klebsiella oxytoca is LF, indole-positive, citrate-positive."
   },
   79: {
-    A: ["macconkey agar", "macconkey", "pink colonies", "koloni merah muda", "koloni pink", "koloni merah", "lactose fermenter", "lf"],
-    B: ["indole positive", "indole positif", "non-motile", "non-motil", "tsi a/a", "tsi a/a", "indole", "non-motil", "tsi", "klebsiella pneumoniae", "bakteri lf"]
+    A: ["MacConkey agar", "MacConkey", "Pink", "Merah muda", "Koloni pink", "Koloni merah", "Lactose fermenter", "LF"],
+    B: ["Indole positive", "Indole positif", "Non-motile", "Non-motil", "TSI A/A", "TSI A/A", "Indole", "Non-motil", "TSI", "Klebsiella pneumoniae", "Bakteri LF"],
+    penjelasan: "Klebsiella pneumoniae umumnya indole negatif, tetapi beberapa strain dapat positif.",
+    penjelasan_en: "Klebsiella pneumoniae is generally indole-negative, but some strains can be positive."
   },
   80: {
-    A: ["macconkey agar", "macconkey", "pink colonies", "koloni merah muda", "koloni pink", "koloni merah", "lactose fermenter", "lf"],
-    B: ["indole positive", "indole positif", "urease positive", "urease positif", "tsi a/a", "tsi a/a", "indole", "urease", "tsi", "klebsiella", "bakteri lf"]
+    A: ["MacConkey agar", "MacConkey", "Pink", "Merah muda", "Koloni pink", "Koloni merah", "Lactose fermenter", "LF"],
+    B: ["Indole positive", "Indole positif", "Urease positive", "Urease positif", "TSI A/A", "TSI A/A", "Indole", "Urease", "TSI", "Klebsiella", "Bakteri LF"],
+    penjelasan: "Klebsiella species (urease positif).",
+    penjelasan_en: "Klebsiella species (urease-positive)."
   },
   // Topik 9
   81: {
-    A: ["acid-fast bacilli", "basil tahan asam", "bta", "red rods", "batang merah", "bakteri batang merah", "basil tahan asam", "bakteri tahan asam", "afb", "acid-fast bacilli", "bakteri berwarna merah", "batang merah", "mycobacterium", "bakteri batang", "basil", "basil tahan asam"],
-    B: ["löwenstein-jensen (lj) media", "lj slant", "lowenstein-jensen", "media lj", "lj agar", "media padat", "media kultur tb", "media untuk mycobacterium"]
+    A: ["BTA", "Basil tahan asam", "Acid-fast bacilli", "Batang merah", "Red rods", "Bakteri batang merah", "Basil tahan asam", "Bakteri tahan asam", "AFB", "Mycobacterium", "Bakteri batang", "Basil"],
+    B: ["Löwenstein-Jensen (LJ)", "LJ slant", "Lowenstein-Jensen", "Media LJ", "LJ agar", "Media padat", "Media kultur TB", "Media untuk Mycobacterium"],
+    penjelasan: "Mycobacterium tuberculosis adalah BTA, tumbuh pada media LJ dengan koloni kering, kasar, krem.",
+    penjelasan_en: "Mycobacterium tuberculosis is AFB, grows on LJ media with dry, rough, cream-colored colonies."
   },
   82: {
-    A: ["gram-positive rods", "batang gram positif", "purple", "chinese letter arrangement", "huruf cina", "bakteri batang", "bakteri gram positif", "bakteri berwarna ungu", "basil", "rods", "batang", "tersusun seperti huruf cina", "chinese letter", "v-shape", "l-shape", "club-shaped"],
-    B: ["elek test", "uji toksin elek", "toxigenicity test", "uji toksigenisitas", "uji elek", "uji toksin", "difteri", "corynebacterium diphtheriae", "c. diphtheriae"]
+    A: ["Batang Gram positif", "Gram-positive rods", "Purple", "Chinese letter arrangement", "Huruf cina", "Bakteri batang", "Bakteri Gram positif", "Bakteri berwarna ungu", "Basil", "Rods", "Batang", "Tersusun seperti huruf cina", "Chinese letter", "V-shape", "L-shape", "Club-shaped"],
+    B: ["Elek test", "Uji toksin Elek", "Toxigenicity test", "Uji toksigenisitas", "Uji Elek", "Uji toksin", "Difteri", "Corynebacterium diphtheriae", "C. diphtheriae"],
+    penjelasan: "Corynebacterium diphtheriae adalah batang Gram positif dengan susunan huruf cina. Toksigenisitas diuji dengan Elek test (presipitasi garis toksin-antitoksin).",
+    penjelasan_en: "Corynebacterium diphtheriae is a Gram-positive rod with Chinese letter arrangement. Toxigenicity is tested with the Elek test (toxin-antitoxin line precipitation)."
   },
   83: {
-    A: ["acid-fast bacilli", "basil tahan asam", "bta", "red rods", "batang merah", "bakteri batang merah", "basil tahan asam", "bakteri tahan asam", "afb", "acid-fast bacilli", "bakteri berwarna merah", "batang merah", "mycobacterium", "bakteri batang", "basil"],
-    B: ["ziehl-neelsen stain", "pewarnaan zn", "pewarnaan ziehl-neelsen", "lj media", "media lj", "lowenstein-jensen", "bta", "tahan asam", "zn", "lj"]
+    A: ["BTA", "Basil tahan asam", "Batang merah", "Bakteri batang merah", "Basil tahan asam", "Bakteri tahan asam", "AFB", "Mycobacterium", "Bakteri batang", "Basil"],
+    B: ["Ziehl-Neelsen", "ZN", "Pewarnaan Ziehl-Neelsen", "LJ media", "Media LJ", "Lowenstein-Jensen", "BTA", "Tahan asam", "ZN", "LJ"],
+    penjelasan: "Mycobacterium tuberculosis.",
+    penjelasan_en: "Mycobacterium tuberculosis."
   },
   84: {
-    A: ["gram-positive rods", "batang gram positif", "purple", "chinese letter arrangement", "huruf cina", "bakteri batang", "bakteri gram positif", "bakteri berwarna ungu", "basil", "rods", "batang", "tersusun seperti huruf cina", "chinese letter", "v-shape", "l-shape", "club-shaped"],
-    B: ["cystinase test", "uji sistinase", "tellurite reduction", "uji telurit", "sistinase", "telurit", "c. diphtheriae", "corynebacterium diphtheriae", "difteri"]
+    A: ["Batang Gram positif", "Gram-positive rods", "Purple", "Chinese letter arrangement", "Huruf cina", "Bakteri batang", "Bakteri Gram positif", "Bakteri berwarna ungu", "Basil", "Rods", "Batang", "Tersusun seperti huruf cina", "Chinese letter", "V-shape", "L-shape", "Club-shaped"],
+    B: ["Cystinase test", "Uji sistinase", "Tellurite reduction", "Uji telurit", "Sistinase", "Telurit", "C. diphtheriae", "Corynebacterium diphtheriae", "Difteri"],
+    penjelasan: "Corynebacterium diphtheriae dapat mereduksi telurit (koloni hitam) dan menghasilkan sistinase.",
+    penjelasan_en: "Corynebacterium diphtheriae can reduce tellurite (black colonies) and produce cystinase."
   },
   85: {
-    A: ["acid-fast bacilli", "basil tahan asam", "bta", "red rods", "batang merah", "bakteri batang merah", "basil tahan asam", "bakteri tahan asam", "afb", "acid-fast bacilli", "bakteri berwarna merah", "batang merah", "mycobacterium", "bakteri batang", "basil"],
-    B: ["ziehl-neelsen stain", "pewarnaan zn", "pewarnaan ziehl-neelsen", "lj media", "media lj", "lowenstein-jensen", "bta", "tahan asam", "zn", "lj"]
+    A: ["BTA", "Basil tahan asam", "Batang merah", "Bakteri batang merah", "Basil tahan asam", "Bakteri tahan asam", "AFB", "Mycobacterium", "Bakteri batang", "Basil"],
+    B: ["Ziehl-Neelsen", "ZN", "Pewarnaan Ziehl-Neelsen", "LJ media", "Media LJ", "Lowenstein-Jensen", "BTA", "Tahan asam", "ZN", "LJ"],
+    penjelasan: "Mycobacterium tuberculosis.",
+    penjelasan_en: "Mycobacterium tuberculosis."
   },
   86: {
-    A: ["gram-positive rods", "batang gram positif", "purple", "chinese letter arrangement", "huruf cina", "bakteri batang", "bakteri gram positif", "bakteri berwarna ungu", "basil", "rods", "batang", "tersusun seperti huruf cina", "chinese letter", "v-shape", "l-shape", "club-shaped"],
-    B: ["tellurite reduction test", "uji telurit", "cystinase test", "uji sistinase", "telurit", "sistinase", "c. diphtheriae", "corynebacterium diphtheriae", "difteri"]
+    A: ["Batang Gram positif", "Gram-positive rods", "Purple", "Chinese letter arrangement", "Huruf cina", "Bakteri batang", "Bakteri Gram positif", "Bakteri berwarna ungu", "Basil", "Rods", "Batang", "Tersusun seperti huruf cina", "Chinese letter", "V-shape", "L-shape", "Club-shaped"],
+    B: ["Tellurite reduction test", "Uji telurit", "Cystinase test", "Uji sistinase", "Telurit", "Sistinase", "C. diphtheriae", "Corynebacterium diphtheriae", "Difteri"],
+    penjelasan: "Corynebacterium diphtheriae.",
+    penjelasan_en: "Corynebacterium diphtheriae."
   },
   87: {
-    A: ["acid-fast bacilli", "basil tahan asam", "bta", "red rods", "batang merah", "bakteri batang merah", "basil tahan asam", "bakteri tahan asam", "afb", "acid-fast bacilli", "bakteri berwarna merah", "batang merah", "mycobacterium", "bakteri batang", "basil"],
-    B: ["ziehl-neelsen stain", "pewarnaan zn", "pewarnaan ziehl-neelsen", "lj media", "media lj", "lowenstein-jensen", "bta", "tahan asam", "zn", "lj"]
+    A: ["BTA", "Basil tahan asam", "Batang merah", "Bakteri batang merah", "Basil tahan asam", "Bakteri tahan asam", "AFB", "Mycobacterium", "Bakteri batang", "Basil"],
+    B: ["Ziehl-Neelsen", "ZN", "Pewarnaan Ziehl-Neelsen", "LJ media", "Media LJ", "Lowenstein-Jensen", "BTA", "Tahan asam", "ZN", "LJ"],
+    penjelasan: "Mycobacterium tuberculosis.",
+    penjelasan_en: "Mycobacterium tuberculosis."
   },
   88: {
-    A: ["gram-positive rods", "batang gram positif", "purple", "chinese letter arrangement", "huruf cina", "bakteri batang", "bakteri gram positif", "bakteri berwarna ungu", "basil", "rods", "batang", "tersusun seperti huruf cina", "chinese letter", "v-shape", "l-shape", "club-shaped"],
-    B: ["neisser stain", "pewarnaan neisser", "metachromatic granules", "granula metakromatik", "neisser", "granula", "c. diphtheriae", "corynebacterium diphtheriae", "difteri"]
+    A: ["Batang Gram positif", "Gram-positive rods", "Purple", "Chinese letter arrangement", "Huruf cina", "Bakteri batang", "Bakteri Gram positif", "Bakteri berwarna ungu", "Basil", "Rods", "Batang", "Tersusun seperti huruf cina", "Chinese letter", "V-shape", "L-shape", "Club-shaped"],
+    B: ["Neisser stain", "Pewarnaan Neisser", "Metachromatic granules", "Granula metakromatik", "Neisser", "Granula", "C. diphtheriae", "Corynebacterium diphtheriae", "Difteri"],
+    penjelasan: "Corynebacterium diphtheriae memiliki granula metakromatik yang terlihat dengan pewarnaan Neisser.",
+    penjelasan_en: "Corynebacterium diphtheriae has metachromatic granules visible with Neisser stain."
   },
   89: {
-    A: ["acid-fast bacilli", "basil tahan asam", "bta", "red rods", "batang merah", "bakteri batang merah", "basil tahan asam", "bakteri tahan asam", "afb", "acid-fast bacilli", "bakteri berwarna merah", "batang merah", "mycobacterium", "bakteri batang", "basil"],
-    B: ["ziehl-neelsen stain", "pewarnaan zn", "pewarnaan ziehl-neelsen", "lj media", "media lj", "lowenstein-jensen", "bta", "tahan asam", "zn", "lj"]
+    A: ["BTA", "Basil tahan asam", "Batang merah", "Bakteri batang merah", "Basil tahan asam", "Bakteri tahan asam", "AFB", "Mycobacterium", "Bakteri batang", "Basil"],
+    B: ["Ziehl-Neelsen", "ZN", "Pewarnaan Ziehl-Neelsen", "LJ media", "Media LJ", "Lowenstein-Jensen", "BTA", "Tahan asam", "ZN", "LJ"],
+    penjelasan: "Mycobacterium tuberculosis.",
+    penjelasan_en: "Mycobacterium tuberculosis."
   },
   90: {
-    A: ["gram-positive rods", "batang gram positif", "purple", "chinese letter arrangement", "huruf cina", "bakteri batang", "bakteri gram positif", "bakteri berwarna ungu", "basil", "rods", "batang", "tersusun seperti huruf cina", "chinese letter", "v-shape", "l-shape", "club-shaped"],
-    B: ["urease test", "uji urease", "cystinase test", "uji sitinase", "urease", "sistinase", "c. diphtheriae", "corynebacterium diphtheriae", "difteri"]
+    A: ["Batang Gram positif", "Gram-positive rods", "Purple", "Chinese letter arrangement", "Huruf cina", "Bakteri batang", "Bakteri Gram positif", "Bakteri berwarna ungu", "Basil", "Rods", "Batang", "Tersusun seperti huruf cina", "Chinese letter", "V-shape", "L-shape", "Club-shaped"],
+    B: ["Urease test", "Uji urease", "Cystinase test", "Uji sistinase", "Urease", "Sistinase", "C. diphtheriae", "Corynebacterium diphtheriae", "Difteri"],
+    penjelasan: "Corynebacterium diphtheriae.",
+    penjelasan_en: "Corynebacterium diphtheriae."
   },
   // Topik 10
   91: {
-    A: ["budding yeast cells", "sel ragi bertunas", "pseudohyphae", "pseudohifa", "ragi", "yeast", "sel ragi", "bertunas", "budding", "hifa palsu", "pseudohifa", "candida"],
-    B: ["germ tube test", "uji germ tube", "carbohydrate assimilation", "asimilasi karbohidrat", "germ tube", "tabung germ", "asimilasi", "fermentasi karbohidrat", "candida albicans", "c. albicans"]
+    A: ["Budding yeast cells", "Sel ragi bertunas", "Pseudohyphae", "Pseudohifa", "Ragi", "Yeast", "Sel ragi", "Bertunas", "Budding", "Hifa palsu", "Pseudohifa", "Candida"],
+    B: ["Germ tube test", "Uji germ tube", "Carbohydrate assimilation", "Asimilasi karbohidrat", "Germ tube", "Tabung germ", "Asimilasi", "Fermentasi karbohidrat", "Candida albicans", "C. albicans"],
+    penjelasan: "Candida albicans membentuk germ tube (tabung germ) dan memfermentasi karbohidrat.",
+    penjelasan_en: "Candida albicans forms germ tubes and ferments carbohydrates."
   },
   92: {
-    A: ["septate hyphae", "hifa bersekat", "arthroconidia", "artrokonidia", "hifa", "bersekat", "artrokonidia", "fragmen hifa", "arthrospore", "coccidioides", "geotrichum"],
-    B: ["urease test", "uji urease", "sabouraud dextrose agar", "sda", "urease", "sda", "sabouraud", "jamur", "fungi"]
+    A: ["Septate hyphae", "Hifa bersekat", "Arthroconidia", "Artrokonidia", "Hifa", "Bersekat", "Artrokonidia", "Fragmen hifa", "Arthrospore", "Coccidioides", "Geotrichum"],
+    B: ["Urease test", "Uji urease", "Sabouraud dextrose agar", "SDA", "Urease", "SDA", "Sabouraud", "Jamur", "Fungi"],
+    penjelasan: "Dermatophytes (misalnya Trichophyton) memiliki hifa bersekat dan artrokonidia.",
+    penjelasan_en: "Dermatophytes (e.g., Trichophyton) have septate hyphae and arthroconidia."
   },
   93: {
-    A: ["septate hyphae", "hifa bersekat", "microconidia", "macrocionidia", "konidia", "hifa", "bersekat", "mikrokonidia", "makrokonidia", "konidia", "spora", "dermatophytes", "microsporum", "trichophyton", "epidermophyton"],
-    B: ["sabouraud dextrose agar", "sda", "lactophenol cotton blue stain", "lpcb", "sda", "sabouraud", "lpcb", "pewarnaan", "jamur", "fungi"]
+    A: ["Septate hyphae", "Hifa bersekat", "Microconidia", "Macroconidia", "Konidia", "Hifa", "Bersekat", "Mikrokonidia", "Makrokonidia", "Konidia", "Spora", "Dermatophytes", "Microsporum", "Trichophyton", "Epidermophyton"],
+    B: ["Sabouraud dextrose agar", "SDA", "Lactophenol cotton blue stain", "LPCB", "SDA", "Sabouraud", "LPCB", "Pewarnaan", "Jamur", "Fungi"],
+    penjelasan: "Dermatophytes.",
+    penjelasan_en: "Dermatophytes."
   },
   94: {
-    A: ["broad, non-septate hyphae", "hifa lebar tidak bersekat", "sporangiophores", "sporangium", "hifa", "tidak bersekat", "lebar", "sporangiofor", "sporangium", "rhizopus", "mucor", "zygomycetes"],
-    B: ["sabouraud dextrose agar", "sda", "lactophenol cotton blue stain", "lpcb", "sda", "sabouraud", "lpcb", "pewarnaan", "jamur", "fungi"]
+    A: ["Broad, non-septate hyphae", "Hifa lebar tidak bersekat", "Sporangiophores", "Sporangium", "Hifa", "Tidak bersekat", "Lebar", "Sporangiofor", "Sporangium", "Rhizopus", "Mucor", "Zygomycetes"],
+    B: ["Sabouraud dextrose agar", "SDA", "Lactophenol cotton blue stain", "LPCB", "SDA", "Sabouraud", "LPCB", "Pewarnaan", "Jamur", "Fungi"],
+    penjelasan: "Mucor atau Rhizopus (Zygomycetes) memiliki hifa lebar tidak bersekat dan sporangium.",
+    penjelasan_en: "Mucor or Rhizopus (Zygomycetes) have broad, non-septate hyphae and sporangia."
   },
   95: {
-    A: ["septate hyphae", "hifa bersekat", "microconidia", "macrocionidia", "konidia", "hifa", "bersekat", "mikrokonidia", "makrokonidia", "konidia", "spora", "dermatophytes", "microsporum", "trichophyton", "epidermophyton"],
-    B: ["sabouraud dextrose agar", "sda", "lactophenol cotton blue stain", "lpcb", "sda", "sabouraud", "lpcb", "pewarnaan", "jamur", "fungi"]
+    A: ["Septate hyphae", "Hifa bersekat", "Microconidia", "Macroconidia", "Konidia", "Hifa", "Bersekat", "Mikrokonidia", "Makrokonidia", "Konidia", "Spora", "Dermatophytes", "Microsporum", "Trichophyton", "Epidermophyton"],
+    B: ["Sabouraud dextrose agar", "SDA", "Lactophenol cotton blue stain", "LPCB", "SDA", "Sabouraud", "LPCB", "Pewarnaan", "Jamur", "Fungi"],
+    penjelasan: "Dermatophytes.",
+    penjelasan_en: "Dermatophytes."
   },
   // Topik 11
   96: {
-    A: ["elisa", "enzyme-linked immunosorbent assay", "eia", "uji elisa", "immunoassay", "interpretasi: positive (yellow color)", "positif (warna kuning)", "reaktif", "berwarna kuning", "terjadi reaksi warna", "absorbansi tinggi"],
-    B: ["western blot", "pcr", "rapid test", "immunofluorescence assay (ifa)", "uji konfirmasi", "western blot", "pcr", "rapid test", "ifa", "tes cepat", "konfirmasi"]
+    A: ["ELISA", "Enzyme-linked immunosorbent assay", "EIA", "Uji ELISA", "Immunoassay", "Positif", "Positive (yellow color)", "Warna kuning", "Reaktif", "Berwarna kuning", "Terjadi reaksi warna", "Absorbansi tinggi"],
+    B: ["Western blot", "PCR", "Rapid test", "Immunofluorescence assay (IFA)", "Uji konfirmasi", "Western blot", "PCR", "Rapid test", "IFA", "Tes cepat", "Konfirmasi"],
+    penjelasan: "ELISA mendeteksi antigen atau antibodi dengan reaksi warna (enzim-substrat). Western blot atau PCR digunakan untuk konfirmasi.",
+    penjelasan_en: "ELISA detects antigens or antibodies with a color reaction (enzyme-substrate). Western blot or PCR is used for confirmation."
   },
   97: {
-    A: ["real-time pcr", "qpcr", "quantitative pcr", "pcr real-time", "pcr kuantitatif", "interpretasi: positive amplification (sigmoidal curve)", "amplifikasi positif", "kurva sigmoid", "kurva s", "terjadi amplifikasi", "positif", "cq", "ct value"],
-    B: ["faster", "lebih cepat", "more sensitive", "lebih sensitif", "quantitative", "kuantitatif", "can detect low viral load", "dapat mendeteksi viral load rendah", "waktu lebih singkat", "tat cepat", "sensitivitas tinggi", "spesifisitas tinggi"]
+    A: ["Real-time PCR", "qPCR", "Quantitative PCR", "PCR real-time", "PCR kuantitatif", "Positif", "Positive amplification", "Amplifikasi positif", "Kurva sigmoid", "Kurva S", "Terjadi amplifikasi", "Cq", "Ct value"],
+    B: ["Cepat", "Faster", "Sensitif", "More sensitive", "Kuantitatif", "Quantitative", "Dapat mendeteksi viral load rendah", "Waktu lebih singkat", "TAT cepat", "Sensitivitas tinggi", "Spesifisitas tinggi"],
+    penjelasan: "qPCR mengkuantifikasi DNA/RNA virus secara real-time, lebih cepat dan sensitif daripada kultur virus.",
+    penjelasan_en: "qPCR quantifies viral DNA/RNA in real-time, faster and more sensitive than viral culture."
   },
   98: {
-    A: ["elisa", "enzyme-linked immunosorbent assay", "eia", "uji elisa", "immunoassay", "interpretasi: positive (yellow color)", "positif (warna kuning)", "reaktif", "berwarna kuning", "terjadi reaksi warna", "absorbansi tinggi"],
-    B: ["hbsag", "anti-hbs", "hbeag", "anti-hbe", "anti-hbc", "penanda hepatitis b", "marker hbv", "hbsag", "anti-hbs", "hbeag", "anti-hbe", "anti-hbcc", "hepatitis b", "hbv"]
+    A: ["ELISA", "Enzyme-linked immunosorbent assay", "EIA", "Uji ELISA", "Immunoassay", "Positif", "Positive (yellow color)", "Warna kuning", "Reaktif", "Berwarna kuning", "Terjadi reaksi warna", "Absorbansi tinggi"],
+    B: ["HBsAg", "Anti-HBs", "HBeAg", "Anti-HBe", "Anti-HBc", "Penanda hepatitis B", "Marker HBV", "Hepatitis B", "HBV"],
+    penjelasan: "HBsAg adalah penanda infeksi hepatitis B aktif.",
+    penjelasan_en: "HBsAg is a marker of active hepatitis B infection."
   },
   99: {
-    A: ["real-time pcr", "qpcr", "quantitative pcr", "pcr real-time", "pcr kuantitatif", "interpretasi: positive amplification (sigmoidal curve)", "amplifikasi positif", "kurva sigmoid", "kurva s", "terjadi amplifikasi", "positif", "cq", "ct value"],
-    B: ["faster", "lebih cepat", "more sensitive", "lebih sensitif", "quantitative", "kuantitatif", "can detect low viral load", "dapat mendeteksi viral load rendah", "waktu lebih singkat", "tat cepat", "sensitivitas tinggi", "spesifisitas tinggi"]
+    A: ["Real-time PCR", "qPCR", "Quantitative PCR", "PCR real-time", "PCR kuantitatif", "Positif", "Positive amplification", "Amplifikasi positif", "Kurva sigmoid", "Kurva S", "Terjadi amplifikasi", "Cq", "Ct value"],
+    B: ["Cepat", "Faster", "Sensitif", "More sensitive", "Kuantitatif", "Quantitative", "Dapat mendeteksi viral load rendah", "Waktu lebih singkat", "TAT cepat", "Sensitivitas tinggi", "Spesifisitas tinggi"],
+    penjelasan: "qPCR.",
+    penjelasan_en: "qPCR."
   },
   100: {
-    A: ["elisa", "enzyme-linked immunosorbent assay", "eia", "uji elisa", "immunoassay", "interpretasi: positive (yellow color)", "positif (warna kuning)", "reaktif", "berwarna kuning", "terjadi reaksi warna", "absorbansi tinggi"],
-    B: ["western blot", "pcr", "neutralization test", "hemagglutination inhibition", "uji netralisasi", "hi test", "western blot", "pcr", "konfirmasi", "uji konfirmasi"]
+    A: ["ELISA", "Enzyme-linked immunosorbent assay", "EIA", "Uji ELISA", "Immunoassay", "Positif", "Positive (yellow color)", "Warna kuning", "Reaktif", "Berwarna kuning", "Terjadi reaksi warna", "Absorbansi tinggi"],
+    B: ["Western blot", "PCR", "Neutralization test", "Hemagglutination inhibition", "Uji netralisasi", "HI test", "Western blot", "PCR", "Konfirmasi", "Uji konfirmasi"],
+    penjelasan: "Western blot atau PCR digunakan untuk konfirmasi.",
+    penjelasan_en: "Western blot or PCR is used for confirmation."
   },
   // Topik 12
   101: {
-    A: ["elisa", "enzyme-linked immunosorbent assay", "eia", "uji elisa", "immunoassay", "interpretasi: positive (yellow color)", "positif (warna kuning)", "reaktif", "berwarna kuning", "terjadi reaksi warna", "absorbansi tinggi"],
-    B: ["western blot", "pcr", "rapid test", "ifa", "uji konfirmasi", "western blot", "pcr", "rapid test", "tes cepat", "konfirmasi"]
+    A: ["ELISA", "Enzyme-linked immunosorbent assay", "EIA", "Uji ELISA", "Immunoassay", "Positif", "Positive (yellow color)", "Warna kuning", "Reaktif", "Berwarna kuning", "Terjadi reaksi warna", "Absorbansi tinggi"],
+    B: ["Western blot", "PCR", "Rapid test", "IFA", "Uji konfirmasi", "Western blot", "PCR", "Rapid test", "Tes cepat", "Konfirmasi"],
+    penjelasan: "ELISA.",
+    penjelasan_en: "ELISA."
   },
   102: {
-    A: ["real-time pcr", "qpcr", "quantitative pcr", "pcr real-time", "pcr kuantitatif", "interpretasi: positive amplification (sigmoidal curve)", "amplifikasi positif", "kurva sigmoid", "kurva s", "terjadi amplifikasi", "positif", "cq", "ct value"],
-    B: ["faster", "lebih cepat", "more sensitive", "lebih sensitif", "quantitative", "kuantitatif", "can detect low viral load", "dapat mendeteksi viral load rendah", "waktu lebih singkat", "tat cepat", "sensitivitas tinggi", "spesifisitas tinggi"]
+    A: ["Real-time PCR", "qPCR", "Quantitative PCR", "PCR real-time", "PCR kuantitatif", "Positif", "Positive amplification", "Amplifikasi positif", "Kurva sigmoid", "Kurva S", "Terjadi amplifikasi", "Cq", "Ct value"],
+    B: ["Cepat", "Faster", "Sensitif", "More sensitive", "Kuantitatif", "Quantitative", "Dapat mendeteksi viral load rendah", "Waktu lebih singkat", "TAT cepat", "Sensitivitas tinggi", "Spesifisitas tinggi"],
+    penjelasan: "qPCR.",
+    penjelasan_en: "qPCR."
   },
   103: {
-    A: ["elisa", "enzyme-linked immunosorbent assay", "eia", "uji elisa", "immunoassay", "interpretasi: positive (yellow color)", "positif (warna kuning)", "reaktif", "berwarna kuning", "terjadi reaksi warna", "absorbansi tinggi"],
-    B: ["hbsag", "anti-hbs", "hbeag", "anti-hbe", "anti-hbc", "penanda hepatitis b", "marker hbv", "hbsag", "anti-hbs", "hbeag", "anti-hbe", "anti-hbс", "hepatitis b", "hbv"]
+    A: ["ELISA", "Enzyme-linked immunosorbent assay", "EIA", "Uji ELISA", "Immunoassay", "Positif", "Positive (yellow color)", "Warna kuning", "Reaktif", "Berwarna kuning", "Terjadi reaksi warna", "Absorbansi tinggi"],
+    B: ["HBsAg", "Anti-HBs", "HBeAg", "Anti-HBe", "Anti-HBc", "Penanda hepatitis B", "Marker HBV", "Hepatitis B", "HBV"],
+    penjelasan: "HBsAg.",
+    penjelasan_en: "HBsAg."
   },
   104: {
-    A: ["real-time pcr", "qpcr", "quantitative pcr", "pcr real-time", "pcr kuantitatif", "interpretasi: positive amplification (sigmoidal curve)", "amplifikasi positif", "kurva sigmoid", "kurva s", "terjadi amplifikasi", "positif", "cq", "ct value"],
-    B: ["faster", "lebih cepat", "more sensitive", "lebih sensitif", "quantitative", "kuantitatif", "can detect low viral load", "dapat mendeteksi viral load rendah", "waktu lebih singkat", "tat cepat", "sensitivitas tinggi", "spesifisitas tinggi"]
+    A: ["Real-time PCR", "qPCR", "Quantitative PCR", "PCR real-time", "PCR kuantitatif", "Positif", "Positive amplification", "Amplifikasi positif", "Kurva sigmoid", "Kurva S", "Terjadi amplifikasi", "Cq", "Ct value"],
+    B: ["Cepat", "Faster", "Sensitif", "More sensitive", "Kuantitatif", "Quantitative", "Dapat mendeteksi viral load rendah", "Waktu lebih singkat", "TAT cepat", "Sensitivitas tinggi", "Spesifisitas tinggi"],
+    penjelasan: "qPCR.",
+    penjelasan_en: "qPCR."
   },
   105: {
-    A: ["elisa", "enzyme-linked immunosorbent assay", "eia", "uji elisa", "immunoassay", "interpretasi: positive (yellow color)", "positif (warna kuning)", "reaktif", "berwarna kuning", "terjadi reaksi warna", "absorbansi tinggi"],
-    B: ["western blot", "pcr", "neutralization test", "hemagglutination inhibition", "uji netralisasi", "hi test", "western blot", "pcr", "konfirmasi", "uji konfirmasi"]
+    A: ["ELISA", "Enzyme-linked immunosorbent assay", "EIA", "Uji ELISA", "Immunoassay", "Positif", "Positive (yellow color)", "Warna kuning", "Reaktif", "Berwarna kuning", "Terjadi reaksi warna", "Absorbansi tinggi"],
+    B: ["Western blot", "PCR", "Neutralization test", "Hemagglutination inhibition", "Uji netralisasi", "HI test", "Western blot", "PCR", "Konfirmasi", "Uji konfirmasi"],
+    penjelasan: "Western blot atau PCR.",
+    penjelasan_en: "Western blot or PCR."
   },
   // Topik 13
   106: {
-    A: ["blood culture", "kultur darah", "procalcitonin test", "uji prokalsitonin", "prokalsitonin", "interpretasi: positive (two lines)", "positif (dua garis)", "reaktif", "dua garis", "terjadi reaksi", "sepsis", "bakteremia"],
-    B: ["crp", "c-reactive protein", "lactate", "laktat", "wbc count", "hitung leukosit", "sirs criteria", "kriteria sirs", "penanda inflamasi", "marker inflamasi", "crp", "laktat", "leukosit"]
+    A: ["Kultur darah", "Blood culture", "Prokalsitonin", "Procalcitonin test", "Uji prokalsitonin", "Positif", "Positive (two lines)", "Dua garis", "Reaktif", "Terjadi reaksi", "Sepsis", "Bakteremia"],
+    B: ["CRP", "C-reactive protein", "Laktat", "Lactate", "Hitung leukosit", "WBC count", "SIRS criteria", "Kriteria SIRS", "Penanda inflamasi", "Marker inflamasi", "CRP", "Laktat", "Leukosit"],
+    penjelasan: "Prokalsitonin meningkat pada sepsis bakteri. CRP, laktat, dan hitung leukosit juga digunakan sebagai penanda inflamasi.",
+    penjelasan_en: "Procalcitonin is elevated in bacterial sepsis. CRP, lactate, and WBC count are also used as inflammatory markers."
   },
   107: {
-    A: ["blood culture", "kultur darah", "procalcitonin test", "uji prokalsitonin", "prokalsitonin", "interpretasi: positive (two lines)", "positif (dua garis)", "reaktif", "dua garis", "terjadi reaksi", "sepsis", "bakteremia"],
-    B: ["antibiotic use", "penggunaan antibiotik", "sample timing", "waktu sampling", "contamination", "kontaminasi", "patient's immune status", "status imun pasien", "faktor yang mempengaruhi", "antibiotik", "waktu", "kontaminasi"]
+    A: ["Kultur darah", "Blood culture", "Prokalsitonin", "Procalcitonin test", "Uji prokalsitonin", "Positif", "Positive (two lines)", "Dua garis", "Reaktif", "Terjadi reaksi", "Sepsis", "Bakteremia"],
+    B: ["Penggunaan antibiotik", "Antibiotic use", "Waktu sampling", "Sample timing", "Kontaminasi", "Contamination", "Status imun pasien", "Patient's immune status", "Faktor yang mempengaruhi", "Antibiotik", "Waktu", "Kontaminasi"],
+    penjelasan: "Antibiotik dapat menurunkan sensitivitas kultur; waktu sampling mempengaruhi hasil.",
+    penjelasan_en: "Antibiotics can reduce culture sensitivity; sampling time affects results."
   },
   108: {
-    A: ["blood culture", "kultur darah", "procalcitonin test", "uji prokalsitonin", "prokalsitonin", "interpretasi: positive (two lines)", "positif (dua garis)", "reaktif", "dua garis", "terjadi reaksi", "sepsis", "bakteremia"],
-    B: ["broad-spectrum antibiotics", "antibiotik spektrum luas", "meropenem", "piperacillin-tazobactam", "vancomycin", "meropenem", "piperacillin-tazobactam", "vankomisin", "antibiotik empiris", "terapi empiris"]
+    A: ["Kultur darah", "Blood culture", "Prokalsitonin", "Procalcitonin test", "Uji prokalsitonin", "Positif", "Positive (two lines)", "Dua garis", "Reaktif", "Terjadi reaksi", "Sepsis", "Bakteremia"],
+    B: ["Broad-spectrum antibiotics", "Antibiotik spektrum luas", "Meropenem", "Piperacillin-tazobactam", "Vancomycin", "Meropenem", "Piperacillin-tazobactam", "Vankomisin", "Antibiotik empiris", "Terapi empiris"],
+    penjelasan: "Terapi empiris sepsis biasanya menggunakan antibiotik spektrum luas (misalnya meropenem, piperacillin-tazobactam, atau vancomycin).",
+    penjelasan_en: "Empirical sepsis therapy typically uses broad-spectrum antibiotics (e.g., meropenem, piperacillin-tazobactam, or vancomycin)."
   },
   109: {
-    A: ["blood culture", "kultur darah", "procalcitonin test", "uji prokalsitonin", "prokalsitonin", "interpretasi: positive (two lines)", "positif (dua garis)", "reaktif", "dua garis", "terjadi reaksi", "sepsis", "bakteremia"],
-    B: ["septic shock", "syok septik", "multiple organ failure", "mods", "kegagalan multi organ", "ards", "dic", "disseminated intravascular coagulation", "komplikasi sepsis", "syok", "mods", "ards", "dic"]
+    A: ["Kultur darah", "Blood culture", "Prokalsitonin", "Procalcitonin test", "Uji prokalsitonin", "Positif", "Positive (two lines)", "Dua garis", "Reaktif", "Terjadi reaksi", "Sepsis", "Bakteremia"],
+    B: ["Septic shock", "Syok septik", "Multiple organ failure", "MODS", "Kegagalan multi organ", "ARDS", "DIC", "Disseminated intravascular coagulation", "Komplikasi sepsis", "Syok", "MODS", "ARDS", "DIC"],
+    penjelasan: "Sepsis dapat menyebabkan syok septik, kegagalan multi organ (MODS), ARDS, dan DIC.",
+    penjelasan_en: "Sepsis can cause septic shock, multiple organ failure (MODS), ARDS, and DIC."
   },
   110: {
-    A: ["blood culture", "kultur darah", "procalcitonin test", "uji prokalsitonin", "prokalsitonin", "interpretasi: positive (two lines)", "positif (dua garis)", "reaktif", "dua garis", "terjadi reaksi", "sepsis", "bakteremia"],
-    B: ["gram stain", "pewarnaan gram", "pcr", "maldi-tof", "biochemical tests", "uji biokimia", "serology", "serologi", "identifikasi agen", "kultur", "pcr", "maldi-tof", "gram stain"]
+    A: ["Kultur darah", "Blood culture", "Prokalsitonin", "Procalcitonin test", "Uji prokalsitonin", "Positif", "Positive (two lines)", "Dua garis", "Reaktif", "Terjadi reaksi", "Sepsis", "Bakteremia"],
+    B: ["Gram stain", "Pewarnaan Gram", "PCR", "MALDI-TOF", "Biochemical tests", "Uji biokimia", "Serology", "Serologi", "Identifikasi agen", "Kultur", "PCR", "MALDI-TOF", "Gram stain"],
+    penjelasan: "Identifikasi agen sepsis dapat dilakukan dengan Gram stain, PCR, MALDI-TOF, atau uji biokimia.",
+    penjelasan_en: "Identification of sepsis agents can be done with Gram stain, PCR, MALDI-TOF, or biochemical tests."
   }
 };
 
