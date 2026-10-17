@@ -856,8 +856,8 @@
       document.getElementById('kasus-en').textContent = q.kasus_en || entry.kasus_en || '-';
       document.getElementById('kasus-en').classList.add('hidden');
       const pA = entry.pertanyaan[0]; const pB = entry.pertanyaan[1];
-      document.getElementById('pertanyaan-a').textContent = pA.teks_id;
-      document.getElementById('pertanyaan-b').textContent = pB.teks_id;
+      document.getElementById('pertanyaan-a').textContent = pA.teks_id || 'Pertanyaan A tidak ditemukan';
+document.getElementById('pertanyaan-b').textContent = pB.teks_id || 'Pertanyaan B tidak ditemukan';
 
       const existing = STATE.answers[q.id];
       if (existing) {
